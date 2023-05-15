@@ -1,0 +1,46 @@
+Output of SQL in script 1
+-------------------------
+"CONTENT_TYPE"                "NINJA_VERSION"               "COUNT(*)"                    
+"fields"                      "20.0.0.0"                    "39547"                       
+"fields"                      "21.0.0.0"                    "39656"                       
+"fields"                      "21.1.0.0"                    "39660"                       
+"fields"                      "22.0.0.0"                    "39660"                       
+"fields"                      "23.0.0.0"                    "39660"                       
+"fields a)"                   "tux_fml_buffers_new"         "39681"                       
+"services"                    "20.0.0.0"                    "518"                         
+"services"                    "21.0.0.0"                    "519"                         
+"services"                    "21.1.0.0"                    "519"                         
+"services"                    "22.0.0.0"                    "519"                         
+"services"                    "23.0.0.0"                    "519"                         
+"services a)"                 "tux_services_new"            "519"                         
+
+SQL Script 4: Changed Services
+------------------------------
+"SVC_NAME"                    "IN_USE"                      "In Amdocs doc?"              "Comment"                     
+"csMoveCtn"                   "Y"                           ""                            ""                            
+
+SQL Script 4: New fields
+------------------------
+"SVC_NAME"          "IN_USE"            "BUFFER_TYPE"       "FIELD_NAME"                        "FIELD_SEQ"         "FIELD_TYPE"        "FIELD_SIZE"        "FIELD_MAX_OCCURENCE"
+"csMoveCtn"         "Y"                 "IN"                "PARSVDISCBUFROWCOUNT"              "402"               "LONG"              ""                  "1"
+"csMoveCtn"         "Y"                 "IN"                "PARDISCARRAYACTIONIND"             "403"               "CHAR"              ""                  "100"
+"csMoveCtn"         "Y"                 "IN"                "DEPLOYIND"                         "404"               "CHAR"              ""                  "100"
+"csMoveCtn"         "Y"                 "IN"                "PARBANDISCROWID"                   "405"               "STRING"            "19"                "100"
+"csMoveCtn"         "Y"                 "IN"                "PARBANDISCBAN"                     "406"               "LONG"              ""                  "100"
+"csMoveCtn"         "Y"                 "IN"                "DISCOUNT_CODE"                     "407"               "STRING"            "7"                 "100"
+"csMoveCtn"         "Y"                 "IN"                "PARBANDISCSUBSCRIBER_NO"           "408"               "STRING"            "21"                "100"
+"csMoveCtn"         "Y"                 "IN"                "DISC_SEQ_NO"                       "409"               "LONG"              ""                  "100"
+"csMoveCtn"         "Y"                 "IN"                "PARBANDISCSYS_CREATION_DATE"       "410"               "STRING"            "15"                "100"
+"csMoveCtn"         "Y"                 "IN"                "PARBANDISCSYS_UPDATE_DATE"         "411"               "STRING"            "15"                "100"
+"csMoveCtn"         "Y"                 "IN"                "PARBANDISCOPERATOR_ID"             "412"               "LONG"              ""                  "100"
+"csMoveCtn"         "Y"                 "IN"                "PARBANDISCAPPLICATION_ID"          "413"               "STRING"            "7"                 "100"
+"csMoveCtn"         "Y"                 "IN"                "PARBANDISCDL_SERVICE_CODE"         "414"               "STRING"            "6"                 "100"
+"csMoveCtn"         "Y"                 "IN"                "PARBANDISCDL_UPDATE_STAMP"         "415"               "SHORT"             ""                  "100"
+"csMoveCtn"         "Y"                 "IN"                "PARBANDISCEFFECTIVE_DATE"          "416"               "STRING"            "9"                 "100"
+"csMoveCtn"         "Y"                 "IN"                "DISC_BY_OPID"                      "417"               "LONG"              ""                  "100"
+"csMoveCtn"         "Y"                 "IN"                "PARBANDISCEXPIRATION_DATE"         "418"               "STRING"            "9"                 "100"
+"csMoveCtn"         "Y"                 "IN"                "PARBANDISCCAMPAIGN"                "419"               "STRING"            "10"                "100"
+"csMoveCtn"         "Y"                 "IN"                "PARBANDISCCOMMIT_ORIG_NO_MONTH"    "420"               "SHORT"             ""                  "100"
+"csMoveCtn"         "Y"                 "IN"                "POTENTIAL_SUBS_NO"                 "421"               "LONG"              ""                  "100"
+"csMoveCtn"         "Y"                 "IN"                "LAST_POTENT_DATE"                  "422"               "STRING"            "9"                 "100"
+

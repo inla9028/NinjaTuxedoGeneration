@@ -1,0 +1,54 @@
+
+Fokus 19.1 (based on view files mailed by Sorin Dobre - 19/09/2012 @ 16:34)
+
+
+1. Any services changed (does counts and matches fields by sequence)?
+---------------------------------------------------------------------
+
+2 services, 1 in use (so we'll only be regenerating that):
+
+Service		In use?	Comment
+blBiBuild
+blLsCallsDet	Y
+
+
+2. Any new services?
+--------------------
+
+1 service 
+
+Service		Field count	In Amdocs doc?
+blGtBiPdfData
+
+
+3. Deleted services
+-------------------
+
+0 services:
+
+
+4. New fields (on existing services)
+-------------
+
+2 fields (in 1 service)
+
+Service name	In use 	Buffer	Field name			Seq	Type	Size	Max Occurances
+
+blBiBuild	     		OUT		PDF_BILL_INDICATOR	22	CHAR	(Null)	1
+blBiBuild	     		OUT		TOTAL_PDF_FILESIZE	23	LONG	(Null)	1
+
+
+
+5. Removed fields
+-----------------
+
+None
+
+
+6. Changed fields (ie attribute changes to existing fields)
+-----------------
+
+1 field: field size up from 31 to 101 
+
+Service			Type	Field name
+blLsCallsDet	OUT		DESTINATION_DESC	STRING	STRING	101	31	600	600	(Null)	(Null)

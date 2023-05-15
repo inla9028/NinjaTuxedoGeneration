@@ -1,0 +1,6 @@
+long	GENERATION	1	-	
+long	ROWCOUNT	1	-	
+double	TAX_AMT	100	-	
+char	TAX_CODE	100	-	
+char	TAX_EXMP_IND	100	-	
+double	CURR_ICC_CHRG_AMT	100	-	

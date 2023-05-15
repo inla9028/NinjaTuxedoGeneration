@@ -1,0 +1,87 @@
+
+Fokus 18.0 (based on v2 view files) - for Chess migration
+
+
+1. Any services changed (does counts and matches fields by sequence)?
+---------------------------------------------------------------------
+
+10 services, 6 in use (so we'll only be regenerating those):
+
+Service		In use?	In Amdocs doc?
+arAdjHisLs		                              
+arGtBan   	Y     	                              
+arGtCstBan	Y     	                              
+arGtCtnBan		                              
+arGtManOc 		                              
+arInCstBan	Y     	                              
+arUpBan   		                              
+arUpCstBan	Y     	                              
+csApiBan  	Y     	*** Requires extra mapping work? ***
+cvSvBan   	Y     	                              
+
+
+
+2. Any new services?
+--------------------
+
+3 services
+
+Service		Field count	In Amdocs doc?
+blGetFMSum   
+csCtnNPPen   
+csCtnClInfBuf
+
+
+3. Deleted services
+-------------------
+
+0 services:
+
+
+4. New fields (on existing services)
+-------------
+
+13 fields (in 10 services)
+
+Service name	In use 	Type	Field name		Seq	Type	Size	Max Occurances
+arAdjHisLs	      		OUT		OPERATOR_ID 	22 	LONG  		50
+
+arGtBan   	     Y		OUT		BRAND_ID    	163	CHAR  		1 
+
+arGtCstBan	     Y		OUT		BRAND_ID    	134	CHAR  		1 
+
+arGtCtnBan	      		OUT		BRAND_ID    	119	CHAR  		1 
+
+arGtManOc 	      		IN 		CHG_CATEGORY	17 	STRING	3     	1 
+
+arInCstBan	     Y		IN 		BRAND_ID    	155	CHAR  		1 
+arInCstBan	     Y		OUT		BRAND_ID    	131	CHAR  		1 
+
+arUpBan   	      		IN 		BRAND_ID    	163	CHAR  		1 
+arUpBan   	      		OUT		BRAND_ID    	163	CHAR  		1 
+
+arUpCstBan	     Y		IN 		BRAND_ID    	155	CHAR  		1 
+arUpCstBan	     Y		OUT		BRAND_ID    	131	CHAR  		1 
+
+csApiBan  	     Y		IN 		BRAND_ID    	131	CHAR  		1 
+
+cvSvBan   	     Y		IN 		BRAND_ID    	131	CHAR  		1 
+
+
+
+5. Removed fields
+-----------------
+
+None
+
+
+6. Changed fields (ie attribute changes to existing fields)
+-----------------
+
+1 field. Type changed from CHAR (byte) to STRING.
+Note that this service is NOT in use.
+
+Service		Type	Field name
+arAdjHisLs	OUT		ADJ_CATEGORY
+
+In addition some field_seq values have changed due to new fields being put in the middle of buffers.

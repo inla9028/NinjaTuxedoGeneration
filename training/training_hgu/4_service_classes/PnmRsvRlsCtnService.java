@@ -1,0 +1,91 @@
+package no.netcom.ninja.core.system.tuxedo.service;
+
+import no.netcom.ninja.core.system.tuxedo.TuxedoExecutable;
+import no.netcom.ninja.core.system.tuxedo.exception.EnvironmentException;
+import no.netcom.ninja.core.system.tuxedo.exception.FMLManipulationException;
+import no.netcom.ninja.core.system.tuxedo.exception.ServiceCallException;
+import no.netcom.ninja.core.system.tuxedo.service.parameters.PnmRsvRlsCtnInput;
+import no.netcom.ninja.core.system.tuxedo.service.parameters.PnmRsvRlsCtnOutput;
+
+import bea.jolt.pool.Result;
+
+/**
+ * PnmRsvRlsCtnService Class.
+ * @author  Ninja
+ */
+public class PnmRsvRlsCtnService extends TuxedoService implements TuxedoExecutable {
+    // Name of Tuxedo service
+    private static String NAME = "pnmRsvRlsCtn00";
+
+    /**
+     * Creates a new instance of PnmRsvRlsCtnService.
+     *
+     * @throws EnvironmentException
+     * @throws FMLManipulationException
+     */
+    public PnmRsvRlsCtnService(Integer operatorId) throws EnvironmentException, FMLManipulationException {
+        super(operatorId, NAME);
+        getInput().set_OPERATOR_ID(operatorId);
+    }
+
+    public PnmRsvRlsCtnService() {
+    }
+
+    /**
+     * Calls Tuxedo service 'PnmRsvRlsCtn'
+     *
+     * @return Output value object: PnmRsvRlsCtnOutput
+     * @throws EnvironmentException
+     * @throws FMLManipulationException
+     * @throws ServiceCallException
+     */
+    public PnmRsvRlsCtnOutput exec() throws EnvironmentException, FMLManipulationException, ServiceCallException {
+        return setOutput(toOutput(super.execute()));
+    }
+
+    /**
+     * Returns a input value object for service.
+     *
+     * @return Input value object for service.
+     */
+    public PnmRsvRlsCtnInput getInput() throws FMLManipulationException{
+        if (this.input == null) {
+            this.input = new PnmRsvRlsCtnInput();
+        }
+        return (PnmRsvRlsCtnInput) this.input;
+    }
+
+    /**
+     * @return The tuxedo service name
+     */
+    public String getName() {
+        return getServiceName();
+    }
+
+    /**
+     * @return The tuxedo service name
+     */
+    public static String getServiceName() {
+        return NAME;
+    }
+
+    /**
+     * Returns an output value object for the provided <tt>Result</tt>.
+     *
+     * @return Output value object for this service.
+     */
+    @Override
+    protected PnmRsvRlsCtnOutput toOutput(final Result result) throws FMLManipulationException {
+        return new PnmRsvRlsCtnOutput(result);
+    }
+
+    /**
+     * Sets the output value.
+     *
+     * @return Output value object reference.
+     */
+    private PnmRsvRlsCtnOutput setOutput(final PnmRsvRlsCtnOutput output) {
+        this.output = output;
+        return (PnmRsvRlsCtnOutput) this.output;
+    }
+}

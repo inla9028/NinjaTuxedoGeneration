@@ -1,0 +1,2 @@
+long	GENERATION	1	-	
+double	AR_BALANCE	1	-	

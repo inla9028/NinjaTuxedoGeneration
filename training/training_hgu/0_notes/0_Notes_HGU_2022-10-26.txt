@@ -1,0 +1,252 @@
+-------
+ Step0
+-------
+
+$ svn status
+?       0_notes/0_Notes_HGU_2022-10-26.txt
+M       1_v_files/par_ban_c32_v.v
+M       1_v_files/pgn_hbilling_c32_v.v
+M       1_v_files/pgn_tree_addact_c32_v.v
+$
+
+-------
+ Step1
+-------
+$ java -classpath /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/tools/target/ninja-tools-36.1-SNAPSHOT.jar no.netcom.ninja.tools.Step1CreateOLRFiles | tee log-Step1.log
+. . .
+Processing file 51 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/1_v_files/pcs_ctn_c32_v.v
+Processing file 52 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/1_v_files/par_disc_c32_v.v
+Finished processing files
+$
+
+-------
+ Step2
+-------
+$ java -classpath /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/tools/target/ninja-tools-36.1-SNAPSHOT.jar no.netcom.ninja.tools.Step2CreateBulkloaderFiles | tee log-Step2.log
+. . .
+Processing file 1120 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vo_blGtIToKp_olr.txt
+Processing file 1121 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vi_cvRollback_olr.txt
+Processing file 1122 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vo_cvRollback_olr.txt
+Processing file 1123 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vi_gnGtLgclDt_olr.txt
+Processing file 1124 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vo_gnGtLgclDt_olr.txt
+Processing file 1125 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vi_csCrNpInfo_olr.txt
+Processing file 1126 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vo_csCrNpInfo_olr.txt
+Processing file 1127 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vi_gnGtWsn_olr.txt
+Processing file 1128 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vo_gnGtWsn_olr.txt
+Finished processing files
+$
+
+-------
+ Step3
+-------
+Script: Tuxedo - 1 - check status of tables and clear workspace
+* truncate table TUX_FML_BUFFERS_new;
+
+$ java -classpath /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/common/target/ninja-common-36.1-SNAPSHOT.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/common/dist/common.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/ninja-core-36.1-SNAPSHOT.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/joltwls-10.0.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/xilclient-2.40build025.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/joltjse-10.0.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/ninja-common-36.1-SNAPSHOT.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/xilext-2.40build021.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/ojdbc7-12.1.0.2.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/jolt-10.0.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/log4j-1.2.13.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/xil-2.40build025.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/tools/target/ninja-tools-36.1-SNAPSHOT.jar  no.netcom.ninja.tools.Step3LoadDatabaseFromViewFiles | tee log-Step3.log
+. . .
+Starting File 52 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/1_v_files/par_disc_c32_v.v
+Loading service 560: arLsFeeWa, IN buffer
+Loading service 560: arLsFeeWa, OUT buffer
+Loading service 561: arUpFeeWa, IN buffer
+Loading service 561: arUpFeeWa, OUT buffer
+Loading service 562: arLsDisc, IN buffer
+Loading service 562: arLsDisc, OUT buffer
+Loading service 563: arSvDisc, IN buffer
+Loading service 563: arSvDisc, OUT buffer
+Loading service 564: arGtFeeWa, IN buffer
+Loading service 564: arGtFeeWa, OUT buffer
+Total execution time: 756461 ms
+~12 min 36 sec (via VPN and WiFi at home)
+#~7 min 40 sec (in the office, via Wifi and VPN)
+
+Output of SQL in script 1
+-------------------------
+----------- ------------------- ----------
+CONTENT_TYP NINJA_VERSION         COUNT(*)
+----------- ------------------- ----------
+fields      30.0.0.0                 41799
+fields      31.0.0.0                 41829
+fields      31.0.1.0                 41832
+fields      31.5.0.0                 41899
+fields      31.5.1.0                 41943
+fields      33.0.0.0                 42790
+fields      33.0.0.0.drop1           42056
+fields      33.0.0.0.drop2           42042
+fields      33.0.0.0.drop3           42722
+fields      33.0.0.0.prod            42764
+fields      33.0.7.0                 42798
+fields      34.0.0.0                 42868
+fields      34.0.0.0.drop1           42801
+fields      34.5.0.0                 42912
+fields      34.6.0.0                 43429
+fields      35.0.0.0                 43462
+fields      36.0.0.0                 43490
+fields a)  tux_fml_buffers_new       43495
+services    30.0.0.0                   538
+services    31.0.0.0                   538
+services    31.0.1.0                   538
+services    31.5.0.0                   539
+services    31.5.1.0                   539
+services    33.0.0.0                   560
+services    33.0.0.0.drop1             541
+services    33.0.0.0.drop2             541
+services    33.0.0.0.drop3             559
+services    33.0.0.0.prod              560
+services    33.0.7.0                   560
+services    34.0.0.0                   561
+services    34.0.0.0.drop1             560
+services    34.5.0.0                   561
+services    34.6.0.0                   563
+services    35.0.0.0                   564
+services    36.0.0.0                   564
+services a) tux_services_new           564
+----------- ------------------- ----------
+
+
+SQL Scripts 2 & 3
+-----------------
+Run Script 2: Tuxedo - 2 - update default values.sql
+Run Script 3: Tuxedo - 3 - update conversational mapping values.sql
+
+SQL Script 4: Changed Services
+------------------------------
+
+** Note! Change the current prod-version in the script first, otherwise you need to re-do all previous steps!
+Run Script 4: Tuxedo - 4 - determine service changes and do copies.sql
+HGU: Copy/Paste into a text-file, then:
+$ cat tmp.txt | awk '{printf("%-30s %-7s %-15s %-37s\n", $1,$2,$3,$4);}'
+
+SQL Script 4: 1. Any existing services changed? (Does counts, and matches fields by sequence)
+---------------------------------------------------------------------------------------------
+
+------------------------------ ------ -------------- ------------------------------------
+SVC_NAME                       In Use In Amdocs doc? Comment
+------------------------------ ------ -------------- ------------------------------------
+arInCstBanTr
+csGtSubRank                    Y
+gnGetTreeInfo                  Y
+gnGtTreeBasic                  Y
+gnNodeAct                      Y
+------------------------------ ------ -------------- ------------------------------------
+
+
+SQL Script 4: 4. Any new fields (on existing services)? On which datasets?
+--------------------------------------------------------------------------
+
+------------------------------ ------ --- ------------------------------ ---------- ---------- ---------- -------------------
+SVC_NAME                       IN_USE BUF FIELD_NAME                      FIELD_SEQ FIELD_TYPE FIELD_SIZE FIELD_MAX_OCCURENCE
+------------------------------ ------ --- ------------------------------ ---------- ---------- ---------- -------------------
+arInCstBanTr                          IN  TREE_INDEX                            310 DOUBLE                                  1
+arInCstBanTr                          IN  PNODEACTINPEFFECTIVE_DATE             311 STRING              9                   1
+csGtSubRank                         Y OUT GROUP_NAME                             30 STRING              7                 600
+gnGetTreeInfo                       Y OUT TREE_INDEX                             31 DOUBLE                                  1
+gnGetTreeInfo                       Y OUT PHIERINDEXEFFECTIVE_DATE               32 STRING              9                   1
+gnGtTreeBasic                       Y OUT TREE_INDEX                             47 DOUBLE                                  1
+gnGtTreeBasic                       Y OUT PHIERINDEXEFFECTIVE_DATE               48 STRING              9                   1
+gnNodeAct                           Y IN  TREE_INDEX                             23 DOUBLE                                  1
+gnNodeAct                           Y IN  EFFECTIVE_DATE                         24 STRING              9                   1
+------------------------------ ------ --- ------------------------------ ---------- ---------- ---------- -------------------
+
+
+SQL Script 4: 5. Any fields removed?
+------------------------------------
+
+--------------- ------------------------------ --- ------------------------------ ---------- ----------
+NINJA_VERSION   SVC_NAME                       BUF FIELD_NAME                      FIELD_SEQ FIELD_TYPE
+--------------- ------------------------------ --- ------------------------------ ---------- ----------
+36.0.0.0        csGtSubRank                    OUT CYCLE_CODE                             31 SHORT
+36.0.0.0        csGtSubRank                    OUT CYCLE_RUN_MONTH                        32 SHORT
+36.0.0.0        csGtSubRank                    OUT CYCLE_RUN_YEAR                         33 SHORT
+36.0.0.0        csGtSubRank                    OUT BILL_SEQ_NO                            34 SHORT
+--------------- ------------------------------ --- ------------------------------ ---------- ----------
+
+
+SQL Script 4: 6. Changes to fields definitions (type, sizes, etc)
+------------------------
+N/A
+
+
+SQL Script 5: Store the data as new version
+-------------------------------------------
+** Note! Change the future prod-version in the script first...
+Run Script 5: Tuxedo - 5 - copies and versioning.sql
+
+
+-----------------
+ Prior to Step 4:
+-----------------
+Are there any new tuxedo-services we should generate Ninja support for? If yes, then run a similar SQL update for the services in question:
+
+UPDATE tux_services_versions a
+   SET a.in_use = 'Y', a.comments = a.comments || '; IN_USE=Y set by HGU at ' || TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+ WHERE a.svc_name IN ( 'csMoveSubLn' )
+   AND a.in_use IS NULL
+   AND a.ninja_version = '36.0.0.0'
+;
+
+-------
+ Step4
+-------
+#
+# Note; remember to use the correct new Fokus version as argument; in Atom it's most often off-screen... -->
+#
+$ java -classpath /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/common/target/ninja-common-36.1-SNAPSHOT.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/common/dist/common.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/ninja-core-36.1-SNAPSHOT.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/joltwls-10.0.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/xilclient-2.40build025.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/joltjse-10.0.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/ninja-common-36.1-SNAPSHOT.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/xilext-2.40build021.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/ojdbc7-12.1.0.2.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/jolt-10.0.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/log4j-1.2.13.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/xil-2.40build025.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/tools/target/ninja-tools-36.1-SNAPSHOT.jar  no.netcom.ninja.tools.Step4CreateServiceAndDatasetClassesFromDatabase All 37.0.0.0 | tee log-Step4.log
+. . .
+ Generating classes for service (190): csLsDlrPabxNl. Conversational = false. Fields shared with csApiBan = false... 194 ms.
+ Generating classes for service (191): csLsPabxNoNl. Conversational = false. Fields shared with csApiBan = false... 202 ms.
+ Generating classes for service (192): csLsOrgPabx. Conversational = false. Fields shared with csApiBan = false... 290 ms.
+ Generating classes for service (193): csGtLastPbxId. Conversational = false. Fields shared with csApiBan = false... 153 ms.
+ Generating classes for service (194): csGtLeadNo. Conversational = false. Fields shared with csApiBan = false... 202 ms.
+ Generating classes for service (195): csLsPabxNl. Conversational = false. Fields shared with csApiBan = false... 266 ms.
+Total execution time (ms): 98133
+$
+~ 1 min, 38 sec (VPN at home)
+#~6 sec (in the office, not over VPN)
+#~37 sec (in the office, via Wifi, over VPN)
+
+---------
+ Summary
+---------
+
+$ svn status
+?       0_notes/0_Notes_HGU_2022-10-26.txt
+M       1_v_files/par_ban_c32_v.v
+M       1_v_files/pgn_hbilling_c32_v.v
+M       1_v_files/pgn_tree_addact_c32_v.v
+M       2_olr_files/vi_arInCstBanTr_olr.txt
+M       2_olr_files/vi_gnNodeAct_olr.txt
+M       2_olr_files/vo_gnGetTreeInfo_olr.txt
+M       2_olr_files/vo_gnGtTreeBasic_olr.txt
+M       3_blk_files/arInCstBanTr00_blk.txt
+M       3_blk_files/gnGetTreeInfo00_blk.txt
+M       3_blk_files/gnGtTreeBasic00_blk.txt
+M       3_blk_files/gnNodeAct00_blk.txt
+M       5_dataset_classes/GnGetTreeInfoOutput.java
+M       5_dataset_classes/GnGtTreeBasicOutput.java
+M       5_dataset_classes/GnNodeActInput.java
+M       Tuxedo - 5 - copies and versioning.sql
+M       doCopyToGerrit
+M       log-Step3.log
+M       log-Step4.log
+$
+
+$ bash ./doGenerateCopyCommands | tee doCopyToGerrit
+$ bash ./doGenerateCopyCommands | tee doCopyToGerrit | awk '{printf("%s %s %-50s %s\n", $1,$2,$3,$4);}'
+cp -p 5_dataset_classes/CvSideEffectInput.java           /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CvSideEffectOutput.java          /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CvStartInput.java                /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CvStartOutput.java               /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CvSvBanInput.java                /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CvSvBanOutput.java               /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CvSvCtnAgrInput.java             /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CvSvCtnAgrOutput.java            /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CvSvCtnInput.java                /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CvSvCtnOutput.java               /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CvSvEsnInput.java                /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CvSvEsnOutput.java               /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CvSvNmAdrInput.java              /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CvSvNmAdrOutput.java             /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/GnGetTreeInfoOutput.java         /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/GnGtTreeBasicOutput.java         /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/GnNodeActInput.java              /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+$

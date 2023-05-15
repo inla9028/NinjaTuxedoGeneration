@@ -1,0 +1,4 @@
+long	GENERATION	1	-	
+string	WS_IP_ADDR	1	16	
+string	WS_LOCATION	1	5	
+string	WS_REGISTER	1	7	

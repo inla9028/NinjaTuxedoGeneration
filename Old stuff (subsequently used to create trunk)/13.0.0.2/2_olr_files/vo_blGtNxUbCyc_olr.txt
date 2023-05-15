@@ -1,0 +1,6 @@
+long	GENERATION	1	-	
+short	CYCLE_CODE	1	-	
+short	CYCLE_RUN_YEAR	1	-	
+short	CYCLE_RUN_MONTH	1	-	
+string	CYCLE_START_DATE	1	9	
+string	CYCLE_CLOSE_DATE	1	9	

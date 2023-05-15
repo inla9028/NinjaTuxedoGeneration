@@ -1,0 +1,6 @@
+long	GENERATION	1	-	
+long	NUMBERKEY_1	1	-	
+string	STRING10_1	1	11	
+string	STRING50_2	1	51	
+string	STRING5_3	1	6	
+string	DATE_1	1	9	

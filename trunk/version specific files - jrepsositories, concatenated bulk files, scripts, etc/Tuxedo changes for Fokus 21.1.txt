@@ -1,0 +1,52 @@
+
+Fokus 21.1 (based on view files mailed by Richard Marriott on 20/01/14 @15:39)
+
+
+1. Any services changed (does counts and matches fields by sequence)?
+---------------------------------------------------------------------
+
+2 services, 1 in use (so we'll only be regenerating that):
+
+Service		In use?	In Amdocs doc?	Comment
+arGtRfnd			Y
+arRfndLs	Y		Y
+
+
+2. Any new services?
+--------------------
+
+0 services:  
+
+Service			Field count	In Amdocs doc?
+			
+
+
+3. Deleted services
+-------------------
+
+0 services:
+
+
+4. New fields (on existing services)
+-------------
+
+2 fields (in 2 services) - all OUTput buffer fields!!
+
+Service name	In use 	Buffer	Field name			Seq	Type	Size	Max Occurrences
+arGtRfnd	      		OUT		DD_CONTRACT_NO   	59	STRING	10		1 
+arGtRfnd	      		OUT		DIRECT_DEBIT_DATE	60	STRING	9 		1 
+arRfndLs	     Y		OUT		DD_CONTRACT_NO   	46	STRING	10		50
+arRfndLs	     Y		OUT		DIRECT_DEBIT_DATE	47	STRING	9 		50
+
+
+
+5. Removed fields
+-----------------
+
+None
+
+
+6. Changed fields (ie attribute changes to existing fields)
+-----------------
+
+0 fields (in 0 services)

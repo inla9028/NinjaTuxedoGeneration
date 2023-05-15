@@ -1,0 +1,91 @@
+package no.netcom.ninja.core.system.tuxedo.service;
+
+import no.netcom.ninja.core.system.tuxedo.TuxedoExecutable;
+import no.netcom.ninja.core.system.tuxedo.exception.EnvironmentException;
+import no.netcom.ninja.core.system.tuxedo.exception.FMLManipulationException;
+import no.netcom.ninja.core.system.tuxedo.exception.ServiceCallException;
+import no.netcom.ninja.core.system.tuxedo.service.parameters.ArLsDefFtrInput;
+import no.netcom.ninja.core.system.tuxedo.service.parameters.ArLsDefFtrOutput;
+
+import bea.jolt.pool.Result;
+
+/**
+ * ArLsDefFtrService Class.
+ * @author  Ninja
+ */
+public class ArLsDefFtrService extends TuxedoService implements TuxedoExecutable {
+    // Name of Tuxedo service
+    private static String NAME = "arLsDefFtr00";
+
+    /**
+     * Creates a new instance of ArLsDefFtrService.
+     *
+     * @throws EnvironmentException
+     * @throws FMLManipulationException
+     */
+    public ArLsDefFtrService(Integer operatorId) throws EnvironmentException, FMLManipulationException {
+        super(operatorId, NAME);
+        getInput().set_OPERATOR_ID(operatorId);
+    }
+
+    public ArLsDefFtrService() {
+    }
+
+    /**
+     * Calls Tuxedo service 'ArLsDefFtr'
+     *
+     * @return Output value object: ArLsDefFtrOutput
+     * @throws EnvironmentException
+     * @throws FMLManipulationException
+     * @throws ServiceCallException
+     */
+    public ArLsDefFtrOutput exec() throws EnvironmentException, FMLManipulationException, ServiceCallException {
+        return setOutput(toOutput(super.execute()));
+    }
+
+    /**
+     * Returns a input value object for service.
+     *
+     * @return Input value object for service.
+     */
+    public ArLsDefFtrInput getInput() throws FMLManipulationException{
+        if (this.input == null) {
+            this.input = new ArLsDefFtrInput();
+        }
+        return (ArLsDefFtrInput) this.input;
+    }
+
+    /**
+     * @return The tuxedo service name
+     */
+    public String getName() {
+        return getServiceName();
+    }
+
+    /**
+     * @return The tuxedo service name
+     */
+    public static String getServiceName() {
+        return NAME;
+    }
+
+    /**
+     * Returns an output value object for the provided <tt>Result</tt>.
+     *
+     * @return Output value object for this service.
+     */
+    @Override
+    protected ArLsDefFtrOutput toOutput(final Result result) throws FMLManipulationException {
+        return new ArLsDefFtrOutput(result);
+    }
+
+    /**
+     * Sets the output value.
+     *
+     * @return Output value object reference.
+     */
+    private ArLsDefFtrOutput setOutput(final ArLsDefFtrOutput output) {
+        this.output = output;
+        return (ArLsDefFtrOutput) this.output;
+    }
+}

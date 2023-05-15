@@ -1,0 +1,184 @@
+
+Fokus 17.0 - <what's it for???>
+
+
+1. Any services changed (does counts and matches fields by sequence)?
+---------------------------------------------------------------------
+
+20 services, 10 in use (so we'll only be regenerating those):
+
+Service			In use?	In Amdocs doc?
+blGetImUsage 	Y 	
+csActvCtn    	Y 	
+csActvMlCtn  	  	
+csApiBan     	Y 	*** Requires extra mapping work? ***
+csChgCtn     	Y 	
+csChgOwner   	  	
+csCrCtn      	Y 	
+csEnvActCtn  	  	
+csGtCtn      	Y 	
+csInCtn      	  	
+csMoveCan    	  	
+csMoveCtn    	Y 	
+csMoveRsv    	  	
+csMoveSusp   	  	
+csRelsCtn    	Y 	
+csRsCanCtn   	Y 	
+csRsvCtn     	  	
+csRsvMlCtn   	  	
+csUpCtn      	  	
+cvSvCtn      	Y 	
+
+
+
+2. Any new services?
+--------------------
+
+0 services
+
+Service		Field count	In Amdocs doc?
+
+
+
+3. Deleted services
+-------------------
+
+0 services:
+
+
+4. New fields (on existing services)
+-------------
+
+67 fields (in 20 services)
+
+Service name	In use 	Type	Field name					   Seq	Type		  Size	Max Occurances
+blGetImUsage 	     Y 	OUT 	RECORD_TYPE           	        14	CHAR   	          	600
+csActvCtn    	     Y 	IN  	EARLY_PORT_OUT        	       276	CHAR   	          	1
+csActvCtn    	     Y 	IN  	EARLY_PO_WAIVE_IND    	       277	CHAR   	          	1
+csActvCtn    	     Y 	IN  	EARLY_PO_WAIVE_REASON 	       278	STRING 	         7	1
+csActvMlCtn  	       	IN  	EARLY_PORT_OUT        	       230	CHAR   	          	1
+csActvMlCtn  	       	IN  	EARLY_PO_WAIVE_IND    	       231	CHAR   	          	1
+csActvMlCtn  	       	IN  	EARLY_PO_WAIVE_REASON 	       232	STRING 	         7	1
+csApiBan     	     Y 	IN  	EARLY_PORT_OUT        	       231	CHAR   	          	1
+csApiBan     	     Y 	IN  	EARLY_PO_WAIVE_IND    	       232	CHAR   	          	1
+csApiBan     	     Y 	IN  	EARLY_PO_WAIVE_REASON 	       233	STRING 	         7	1
+csChgCtn     	     Y 	IN  	EARLY_PORT_OUT        	       267	CHAR   	          	1
+csChgCtn     	     Y 	IN  	EARLY_PO_WAIVE_IND    	       268	CHAR   	          	1
+csChgCtn     	     Y 	IN  	EARLY_PO_WAIVE_REASON 	       269	STRING 	         7	1
+csChgOwner   	       	IN  	EARLY_PORT_OUT        	       271	CHAR   	          	1
+csChgOwner   	       	IN  	EARLY_PO_WAIVE_IND    	       272	CHAR   	          	1
+csChgOwner   	       	IN  	EARLY_PO_WAIVE_REASON 	       273	STRING 	         7	1
+csChgOwner   	       	OUT 	EARLY_PORT_OUT        	       108	CHAR   	          	1
+csChgOwner   	       	OUT 	EARLY_PO_WAIVE_IND    	       109	CHAR   	          	1
+csChgOwner   	       	OUT 	EARLY_PO_WAIVE_REASON 	       110	STRING 	         7	1
+csCrCtn      	     Y 	IN  	EARLY_PORT_OUT        	       275	CHAR   	          	1
+csCrCtn      	     Y 	IN  	EARLY_PO_WAIVE_IND    	       276	CHAR   	          	1
+csCrCtn      	     Y 	IN  	EARLY_PO_WAIVE_REASON 	       277	STRING 	         7	1
+csEnvActCtn  	       	IN  	EARLY_PORT_OUT        	       214	CHAR   	          	1
+csEnvActCtn  	       	IN  	EARLY_PO_WAIVE_IND    	       215	CHAR   	          	1
+csEnvActCtn  	       	IN  	EARLY_PO_WAIVE_REASON 	       216	STRING 	         7	1
+csGtCtn      	     Y 	OUT 	EARLY_PORT_OUT        	        93	CHAR   	          	1
+csGtCtn      	     Y 	OUT 	EARLY_PO_WAIVE_IND    	        94	CHAR   	          	1
+csGtCtn      	     Y 	OUT 	EARLY_PO_WAIVE_REASON 	        95	STRING 	         7	1
+csInCtn      	       	IN  	EARLY_PORT_OUT        	       108	CHAR   	          	1
+csInCtn      	       	IN  	EARLY_PO_WAIVE_IND    	       109	CHAR   	          	1
+csInCtn      	       	IN  	EARLY_PO_WAIVE_REASON 	       110	STRING 	         7	1
+csInCtn      	       	OUT 	EARLY_PORT_OUT        	       108	CHAR   	          	1
+csInCtn      	       	OUT 	EARLY_PO_WAIVE_IND    	       109	CHAR   	          	1
+csInCtn      	       	OUT 	EARLY_PO_WAIVE_REASON 	       110	STRING 	         7	1
+csMoveCan    	       	IN  	EARLY_PORT_OUT        	       245	CHAR   	          	1
+csMoveCan    	       	IN  	EARLY_PO_WAIVE_IND    	       246	CHAR   	          	1
+csMoveCan    	       	IN  	EARLY_PO_WAIVE_REASON 	       247	STRING 	         7	1
+csMoveCtn    	     Y 	IN  	EARLY_PORT_OUT        	       272	CHAR   	          	1
+csMoveCtn    	     Y 	IN  	EARLY_PO_WAIVE_IND    	       273	CHAR   	          	1
+csMoveCtn    	     Y 	IN  	EARLY_PO_WAIVE_REASON 	       274	STRING 	         7	1
+csMoveRsv    	       	IN  	EARLY_PORT_OUT        	       271	CHAR   	          	1
+csMoveRsv    	       	IN  	EARLY_PO_WAIVE_IND    	       272	CHAR   	          	1
+csMoveRsv    	       	IN  	EARLY_PO_WAIVE_REASON 	       273	STRING 	         7	1
+csMoveSusp   	       	IN  	EARLY_PORT_OUT        	       271	CHAR   	          	1
+csMoveSusp   	       	IN  	EARLY_PO_WAIVE_IND    	       272	CHAR   	          	1
+csMoveSusp   	       	IN  	EARLY_PO_WAIVE_REASON 	       273	STRING 	         7	1
+csRelsCtn    	     Y 	IN  	EARLY_PORT_OUT        	       131	CHAR   	          	1
+csRelsCtn    	     Y 	IN  	EARLY_PO_WAIVE_IND    	       132	CHAR   	          	1
+csRelsCtn    	     Y 	IN  	EARLY_PO_WAIVE_REASON 	       133	STRING 	         7	1
+csRsCanCtn   	     Y 	IN  	EARLY_PORT_OUT        	       275	CHAR   	          	1
+csRsCanCtn   	     Y 	IN  	EARLY_PO_WAIVE_IND    	       276	CHAR   	          	1
+csRsCanCtn   	     Y 	IN  	EARLY_PO_WAIVE_REASON 	       277	STRING 	         7	1
+csRsvCtn     	       	IN  	EARLY_PORT_OUT        	       132	CHAR   	          	1
+csRsvCtn     	       	IN  	EARLY_PO_WAIVE_IND    	       133	CHAR   	          	1
+csRsvCtn     	       	IN  	EARLY_PO_WAIVE_REASON 	       134	STRING 	         7	1
+csRsvMlCtn   	       	IN  	EARLY_PORT_OUT        	       321	CHAR   	          	1
+csRsvMlCtn   	       	IN  	EARLY_PO_WAIVE_IND    	       322	CHAR   	          	1
+csRsvMlCtn   	       	IN  	EARLY_PO_WAIVE_REASON 	       323	STRING 	         7	1
+csUpCtn      	       	IN  	EARLY_PORT_OUT        	       108	CHAR   	          	1
+csUpCtn      	       	IN  	EARLY_PO_WAIVE_IND    	       109	CHAR   	          	1
+csUpCtn      	       	IN  	EARLY_PO_WAIVE_REASON 	       110	STRING 	         7	1
+csUpCtn      	       	OUT 	EARLY_PORT_OUT        	       108	CHAR   	          	1
+csUpCtn      	       	OUT 	EARLY_PO_WAIVE_IND    	       109	CHAR   	          	1
+csUpCtn      	       	OUT 	EARLY_PO_WAIVE_REASON 	       110	STRING 	         7	1
+cvSvCtn      	     Y 	IN  	EARLY_PORT_OUT        	       108	CHAR   	          	1
+cvSvCtn      	     Y 	IN  	EARLY_PO_WAIVE_IND    	       109	CHAR   	          	1
+cvSvCtn      	     Y 	IN  	EARLY_PO_WAIVE_REASON 	       110	STRING 	         7	1
+
+
+
+5. Removed fields
+-----------------
+
+None
+
+
+6. Changed fields (ie attribute changes to existing fields)
+-----------------
+
+The following all had their maximum occurances changed from 100 to 500. 
+Note that this service is not in use.
+
+csRsvMlCtn 	IN  	AUTO_CONFIRM
+csRsvMlCtn 	IN  	CSNPSPC
+csRsvMlCtn 	IN  	CURR_SERV_OPER
+csRsvMlCtn 	IN  	CUSTOMER_ID
+csRsvMlCtn 	IN  	CUSTOMER_NAME
+csRsvMlCtn 	IN  	DL_SERVICE_CODE
+csRsvMlCtn 	IN  	DL_UPDATE_STAMP
+csRsvMlCtn 	IN  	EFFECTIVE_DATE
+csRsvMlCtn 	IN  	EIDNODSIGN
+csRsvMlCtn 	IN  	EIDNTYPNUMB
+csRsvMlCtn 	IN  	EXPIRATION_DATE
+csRsvMlCtn 	IN  	FUNCTION_PORT_IND
+csRsvMlCtn 	IN  	HANDLE_MODE
+csRsvMlCtn 	IN  	ICC
+csRsvMlCtn 	IN  	INT_ORDER_ID
+csRsvMlCtn 	IN  	LAST_INT_ORD_ID
+csRsvMlCtn 	IN  	LAST_ORDID_STR
+csRsvMlCtn 	IN  	MUNICIPALITY
+csRsvMlCtn 	IN  	NEIDNTYP
+csRsvMlCtn 	IN  	NEIDNTYPNUMB
+csRsvMlCtn 	IN  	NPEIDNTYP
+csRsvMlCtn 	IN  	NPNEIDNODSIGN
+csRsvMlCtn 	IN  	NPNUMINFORECAPPLICATION_ID
+csRsvMlCtn 	IN  	NPNUMINFORECOPERATOR_ID
+csRsvMlCtn 	IN  	NUMBER_TYPE
+csRsvMlCtn 	IN  	ORDID_STR
+csRsvMlCtn 	IN  	ORG_CUSTOMER_ID
+csRsvMlCtn 	IN  	ORG_OPERATOR
+csRsvMlCtn 	IN  	PABX_IND
+csRsvMlCtn 	IN  	PASSIVE_IND
+csRsvMlCtn 	IN  	POINT_OF_CONNECTION
+csRsvMlCtn 	IN  	PORT_IND
+csRsvMlCtn 	IN  	PORT_NUMBER
+csRsvMlCtn 	IN  	PORT_REQUEST_DATE
+csRsvMlCtn 	IN  	RECIP_SERV_OPER
+csRsvMlCtn 	IN  	ROWID
+csRsvMlCtn 	IN  	SEND_IND
+csRsvMlCtn 	IN  	SERVICE_PROVIDER
+csRsvMlCtn 	IN  	SIM
+csRsvMlCtn 	IN  	SUBSCRIBER_ID
+csRsvMlCtn 	IN  	SUBSCRIBER_NO
+csRsvMlCtn 	IN  	SYS_CREATION_DATE
+csRsvMlCtn 	IN  	SYS_UPDATE_DATE
+csRsvMlCtn 	IN  	TEMPORARY_MSISDN
+csRsvMlCtn 	OUT 	RSVSTATUS
+csRsvMlCtn 	OUT 	SUBSCRIBER_NO
+
+In addition some field_seq values have changed due to new fields being put in the middle of buffers.

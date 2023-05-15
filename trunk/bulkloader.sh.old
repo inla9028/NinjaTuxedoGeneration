@@ -1,0 +1,4 @@
+#!/bin/sh
+#java -classpath .:/usr/lib/classes.zip:/usr/local/tuxedo/udataobj/jolt/jolt.jar:/usr/local/tuxedo/udataobj/jolt/joltadmin.jar bea.jolt.admin.jbld -p NINJA //fokustest:22370 $1
+java -classpath .:/usr/lib/classes.zip:/usr/local/tuxedo/udataobj/jolt/jolt.jar:/usr/local/tuxedo/udataobj/jolt/joltadmin.jar bea.jolt.admin.jbld -p NINJA $1 $2
+#/opt/java1.4/bin/java -classpath .:/usr/lib/classes.zip:/usr/local/tuxedo/udataobj/jolt/jolt.jar:/usr/local/tuxedo/udataobj/jolt/joltadmin.jar bea.jolt.admin.jbld -p NINJA $1 $2

@@ -1,0 +1,5 @@
+long	GENERATION	1	-	
+long	BAN	1	-	
+string	SUBSCRIBER_NO	1	21	
+char	STATUS	1	-	
+long	TOTAL_COUNT	1	-	

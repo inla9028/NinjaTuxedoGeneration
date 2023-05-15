@@ -1,0 +1,370 @@
+-------
+ Step1
+-------
+$ java -classpath /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/tools/target/ninja-tools-31.6-SNAPSHOT.jar no.netcom.ninja.tools.Step1CreateOLRFiles | tee log-Step1.log
+. . .
+Processing file 51 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/1_v_files/par_disc_c32_v.v
+Finished processing files
+
+
+-------
+ Step2
+-------
+$ java -classpath /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/tools/target/ninja-tools-31.6-SNAPSHOT.jar no.netcom.ninja.tools.Step2CreateBulkloaderFiles | tee log-Step2.log
+. . .
+Processing file 1061 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vi_arSvBilPrm_olr.txt
+Processing file 1062 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vo_arSvBilPrm_olr.txt
+Processing file 1063 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vi_csGtPrevPp_olr.txt
+Processing file 1064 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vo_csGtPrevPp_olr.txt
+Processing file 1065 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vi_blDlBodReq_olr.txt
+Processing file 1066 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vo_blDlBodReq_olr.txt
+Processing file 1067 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vi_csSrchMidNam_olr.txt
+Processing file 1068 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vo_csSrchMidNam_olr.txt
+Processing file 1069 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vi_blBlCtnTax_olr.txt
+Processing file 1070 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vo_blBlCtnTax_olr.txt
+Processing file 1071 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vi_gnLsLnkSubs_olr.txt
+Processing file 1072 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vo_gnLsLnkSubs_olr.txt
+Processing file 1073 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vi_blGtIToKp_olr.txt
+Processing file 1074 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vo_blGtIToKp_olr.txt
+Processing file 1075 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vi_cvRollback_olr.txt
+Processing file 1076 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vo_cvRollback_olr.txt
+Processing file 1077 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vi_gnGtLgclDt_olr.txt
+Processing file 1078 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vo_gnGtLgclDt_olr.txt
+Processing file 1079 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vi_csCrNpInfo_olr.txt
+Processing file 1080 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vo_csCrNpInfo_olr.txt
+Processing file 1081 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vi_gnGtWsn_olr.txt
+Processing file 1082 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vo_gnGtWsn_olr.txt
+Finished processing files
+
+
+-------
+ Step3
+-------
+Script: Tuxedo - 1 - check status of tables and clear workspace
+* truncate table TUX_FML_BUFFERS_new;
+
+$ java -classpath /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/common/target/ninja-common-31.6-SNAPSHOT.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/common/dist/common.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/ninja-core-31.6-SNAPSHOT.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/joltwls-10.0.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/xilclient-2.40build025.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/joltjse-10.0.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/ninja-common-31.6-SNAPSHOT.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/xilext-2.40build021.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/ojdbc7-12.1.0.2.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/jolt-10.0.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/log4j-1.2.13.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/xil-2.40build025.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/tools/target/ninja-tools-31.6-SNAPSHOT.jar  no.netcom.ninja.tools.Step3LoadDatabaseFromViewFiles | tee log-Step3.log
+. . .
+Loading service 534: csCtnClInfBuf, OUT buffer
+Loading service 535: csGtMBL, IN buffer
+Loading service 535: csGtMBL, OUT buffer
+Loading service 536: csSvMBL, IN buffer
+Loading service 536: csSvMBL, OUT buffer
+Starting File 51 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/1_v_files/par_disc_c32_v.v
+Loading service 537: arLsFeeWa, IN buffer
+Loading service 537: arLsFeeWa, OUT buffer
+Loading service 538: arUpFeeWa, IN buffer
+Loading service 538: arUpFeeWa, OUT buffer
+Loading service 539: arLsDisc, IN buffer
+Loading service 539: arLsDisc, OUT buffer
+Loading service 540: arSvDisc, IN buffer
+Loading service 540: arSvDisc, OUT buffer
+Loading service 541: arGtFeeWa, IN buffer
+Loading service 541: arGtFeeWa, OUT buffer
+Total execution time: 832020 ms
+~13 min 52 sec (via VPN)
+#~5 min 3 sec (in the office, via Wifi and VPN)
+
+Output of SQL in script 1
+-------------------------
+----------- ------------------- ----------
+CONTENT_TYP NINJA_VERSION         COUNT(*)
+----------- ------------------- ----------
+fields      29.0.0.0                 41799
+fields      30.0.0.0                 41799
+fields      31.0.0.0                 41829
+fields      31.0.1.0                 41832
+fields      31.5.0.0                 41899
+fields      31.5.1.0                 41943
+fields a)   tux_fml_buffers_new      42056
+services    29.0.0.0                   538
+services    30.0.0.0                   538
+services    31.0.0.0                   538
+services    31.0.1.0                   538
+services    31.5.0.0                   539
+services    31.5.1.0                   539
+services a) tux_services_new           539
+----------- ------------------- ----------
+
+
+SQL Scripts 2 & 3
+-----------------
+Run Script 2: Tuxedo - 2 - update default values.sql
+Run Script 3: Tuxedo - 3 - update conversational mapping values.sql
+
+SQL Script 4: Changed Services
+------------------------------
+** Note! Change the current prod-version in the script first, otherwise you need to re-do all previous steps!
+Run Script 4: Tuxedo - 4 - determine service changes and do copies.sql
+
+SQL Script 4: 1. Any existing services changed? (Does counts, and matches fields by sequence)
+---------------------------------------------------------------------------------------------
+SVC_NAME                       I In Amdocs doc? Comment
+------------------------------ - -------------- ------------------------------------
+arCnclBan	                     Y
+arInCstBanTr
+csChgOwner
+csCnclCtn	                     Y
+csCrCtn	                       Y
+csCrNpCncl
+csCrNpTrx	                     Y
+csCtnClInf	                   Y
+csCtnClInfBuf
+csCtnNPPen
+csGtCtn	                       Y
+csGtNpITrx
+csGtOneCtn
+csLsBanCtn	                   Y
+csLsBanMsis
+csLsNpTrx	                     Y
+csMoveCtn	                     Y
+csMoveRsv
+csMoveSusp
+csRsvMlCtn
+csUpNpITrx
+gnChgUtc	                     Y
+------------------------------ - -------------- ------------------------------------
+
+
+SQL Script 4: 4. Any new fields (on existing services)? On which datasets?
+--------------------------------------------------------------------------
+-------------  ------  -----------  --------------  ---------  ----------  ----------  -------------------
+SVC_NAME       IN_USE  BUFFER_TYPE  FIELD_NAME      FIELD_SEQ  FIELD_TYPE  FIELD_SIZE  FIELD_MAX_OCCURENCE
+-------------  ------  -----------  --------------  ---------  ----------  ----------  -------------------
+arCnclBan      Y       IN           MAIN_SIP_IND     40        CHAR        100
+arInCstBanTr           IN           SHOWTREETYPE    298        CHAR        1
+csChgOwner             IN           MAIN_SIP_IND    412        CHAR        100
+csCnclCtn      Y       IN           MAIN_SIP_IND     40        CHAR        100
+csCrNpCncl             IN           MAIN_SIP_IND    175        CHAR        100
+csCtnClInf     Y       IN           MAIN_SIP_IND     40        CHAR        100
+csCtnClInf     Y       OUT          MAIN_SIP_IND     14        CHAR        100
+csCtnClInfBuf          IN           MAIN_SIP_IND     41        CHAR        100
+csCtnClInfBuf          OUT          MAIN_SIP_IND     15        CHAR        100
+csCtnNPPen             OUT          MAIN_SIP_IND     14        CHAR        1
+csGtOneCtn             IN           SELECTMODE       25        CHAR        1
+csLsBanCtn     Y       IN           SELECTMODE       25        CHAR        1
+csLsBanMsis            IN           LEADING_NUMBER   25        STRING      21          1
+csMoveCtn      Y       IN           MAIN_SIP_IND    412        CHAR        100
+csMoveRsv              IN           MAIN_SIP_IND    412        CHAR        100
+csMoveSusp             IN           MAIN_SIP_IND    412        CHAR        100
+gnChgUtc       Y       IN           SHOWTREETYPE     20        CHAR        1
+-------------  ------  -----------  --------------  ---------  ----------  ----------  -------------------
+
+
+SQL Script 4: Any fields removed?
+------------------------
+N/A
+
+SQL Script 4: Changes to fields definitions (type, sizes, etc)
+------------------------
+SVC_NAME                    BUFFER_TYPE                 FIELD_NAME                  FIELD_TYPE                  OLD_FIELD_TYPE              FIELD_SIZE                  OLD_FIELD_SIZE              FIELD_MAX_OCCURENCE         OLD_FIELD_MAX_OCCURENCE     FIELD_DEF_VALUE             OLD_FIELD_DEF_VALUE
+csCrCtn                     IN                          EIDNODSIGN                  STRING                      STRING                      21                          7                           1                           1
+csCrCtn                     IN                          EIDNTYPNUMB                 STRING                      STRING                      21                          5                           1                           1
+csCrCtn                     IN                          NEIDNTYP                    STRING                      STRING                      21                          5                           1                           1
+csCrCtn                     IN                          NEIDNTYPNUMB                STRING                      STRING                      21                          5                           1                           1
+csCrCtn                     IN                          NPEIDNTYP                   STRING                      STRING                      21                          5                           1                           1
+csCrCtn                     IN                          NPNEIDNODSIGN               STRING                      STRING                      21                          7                           1                           1
+csCrNpCncl                  IN                          EIDNODSIGN                  STRING                      STRING                      21                          7                           1                           1
+csCrNpCncl                  IN                          EIDNTYP                     STRING                      STRING                      21                          5                           1                           1
+csCrNpCncl                  IN                          EIDNTYPNUMB                 STRING                      STRING                      21                          5                           1                           1
+csCrNpCncl                  IN                          NEIDNODSIGN                 STRING                      STRING                      21                          7                           1                           1
+csCrNpCncl                  IN                          NEIDNTYP                    STRING                      STRING                      21                          5                           1                           1
+csCrNpCncl                  IN                          NEIDNTYPNUMB                STRING                      STRING                      21                          5                           1                           1
+csCrNpTrx                   IN                          EIDNODSIGN                  STRING                      STRING                      21                          7                           1                           1
+csCrNpTrx                   IN                          EIDNTYP                     STRING                      STRING                      21                          5                           1                           1
+csCrNpTrx                   IN                          EIDNTYPNUMB                 STRING                      STRING                      21                          5                           1                           1
+csCrNpTrx                   IN                          NEIDNODSIGN                 STRING                      STRING                      21                          7                           1                           1
+csCrNpTrx                   IN                          NEIDNTYP                    STRING                      STRING                      21                          5                           1                           1
+csCrNpTrx                   IN                          NEIDNTYPNUMB                STRING                      STRING                      21                          5                           1                           1
+csGtCtn                     OUT                         EIDNODSIGN                  STRING                      STRING                      21                          7                           500                         500
+csGtCtn                     OUT                         EIDNTYP                     STRING                      STRING                      21                          5                           500                         500
+csGtCtn                     OUT                         EIDNTYPNUMB                 STRING                      STRING                      21                          5                           500                         500
+csGtCtn                     OUT                         NEIDNODSIGN                 STRING                      STRING                      21                          7                           500                         500
+csGtCtn                     OUT                         NEIDNTYP                    STRING                      STRING                      21                          5                           500                         500
+csGtCtn                     OUT                         NEIDNTYPNUMB                STRING                      STRING                      21                          5                           500                         500
+csGtNpITrx                  OUT                         EIDNODSIGN                  STRING                      STRING                      21                          7                           1                           1
+csGtNpITrx                  OUT                         EIDNTYP                     STRING                      STRING                      21                          5                           1                           1
+csGtNpITrx                  OUT                         EIDNTYPNUMB                 STRING                      STRING                      21                          5                           1                           1
+csGtNpITrx                  OUT                         NEIDNODSIGN                 STRING                      STRING                      21                          7                           1                           1
+csGtNpITrx                  OUT                         NEIDNTYP                    STRING                      STRING                      21                          5                           1                           1
+csGtNpITrx                  OUT                         NEIDNTYPNUMB                STRING                      STRING                      21                          5                           1                           1
+csGtNpITrx                  OUT                         SIGNALLINGPOINTCODE         STRING                      STRING                      21                          7                           1                           1
+csLsNpTrx                   OUT                         EIDNODSIGN                  STRING                      STRING                      21                          7                           200                         200
+csLsNpTrx                   OUT                         EIDNTYP                     STRING                      STRING                      21                          5                           200                         200
+csLsNpTrx                   OUT                         EIDNTYPNUMB                 STRING                      STRING                      21                          5                           200                         200
+csLsNpTrx                   OUT                         NEIDNODSIGN                 STRING                      STRING                      21                          7                           200                         200
+csLsNpTrx                   OUT                         NEIDNTYP                    STRING                      STRING                      21                          5                           200                         200
+csLsNpTrx                   OUT                         NEIDNTYPNUMB                STRING                      STRING                      21                          5                           200                         200
+csRsvMlCtn                  IN                          EIDNODSIGN                  STRING                      STRING                      21                          7                           500                         500
+csRsvMlCtn                  IN                          EIDNTYPNUMB                 STRING                      STRING                      21                          5                           500                         500
+csRsvMlCtn                  IN                          NEIDNTYP                    STRING                      STRING                      21                          5                           500                         500
+csRsvMlCtn                  IN                          NEIDNTYPNUMB                STRING                      STRING                      21                          5                           500                         500
+csRsvMlCtn                  IN                          NPEIDNTYP                   STRING                      STRING                      21                          5                           500                         500
+csRsvMlCtn                  IN                          NPNEIDNODSIGN               STRING                      STRING                      21                          7                           500                         500
+csUpNpITrx                  IN                          EIDNODSIGN                  STRING                      STRING                      21                          7                           1                           1
+csUpNpITrx                  IN                          EIDNTYP                     STRING                      STRING                      21                          5                           1                           1
+csUpNpITrx                  IN                          EIDNTYPNUMB                 STRING                      STRING                      21                          5                           1                           1
+csUpNpITrx                  IN                          NEIDNODSIGN                 STRING                      STRING                      21                          7                           1                           1
+csUpNpITrx                  IN                          NEIDNTYP                    STRING                      STRING                      21                          5                           1                           1
+csUpNpITrx                  IN                          NEIDNTYPNUMB                STRING                      STRING                      21                          5                           1                           1
+csUpNpITrx                  IN                          SIGNALLINGPOINTCODE         STRING                      STRING                      21                          7                           1                           1
+
+
+SQL Script 5: Store the data as new version
+-------------------------------------------
+** Note! Change the future prod-version in the script first...
+Run Script 5: Tuxedo - 5 - copies and versioning.sql
+
+
+-----------------
+ Prior to Step 4:
+-----------------
+Are there any new tuxedo-services we should generate Ninja support for? If yes, then run a similar SQL update for the services in question:
+
+UPDATE tux_services_versions a
+   SET a.in_use = 'Y', a.comments = 'IN_USE=Y set by HGU at ' || TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+ WHERE a.svc_name IN ( 'csUpSubRank', 'csGtSubRank' )
+   AND a.in_use IS NULL
+   AND a.ninja_version = '33.0.0.0'
+;
+
+-------
+ Step4
+-------
+#
+# Note; remember to use the correct new Fokus version as argument; in Atom it's most often off-screen... -->
+#
+$ java -classpath /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/common/target/ninja-common-31.6-SNAPSHOT.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/common/dist/common.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/ninja-core-31.6-SNAPSHOT.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/joltwls-10.0.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/xilclient-2.40build025.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/joltjse-10.0.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/ninja-common-31.6-SNAPSHOT.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/xilext-2.40build021.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/ojdbc7-12.1.0.2.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/jolt-10.0.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/log4j-1.2.13.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/xil-2.40build025.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/tools/target/ninja-tools-31.6-SNAPSHOT.jar  no.netcom.ninja.tools.Step4CreateServiceAndDatasetClassesFromDatabase All 33.0.0.0 | tee log-Step4.log
+. . .
+ Generating classes for service (140): arGtCurPA. Conversational = false. Fields shared with csApiBan = false... 299 ms.
+ Generating classes for service (141): csChgCtn. Conversational = false. Fields shared with csApiBan = false... 1407 ms.
+ Generating classes for service (142): cvStart. Conversational = true. Fields shared with csApiBan = true... 379 ms.
+ Generating classes for service (143): csSvPNP. Conversational = false. Fields shared with csApiBan = false... 247 ms.
+ Generating classes for service (144): cvSvNmAdr. Conversational = true. Fields shared with csApiBan = true... 772 ms.
+ Generating classes for service (145): gnLsFtrTrx. Conversational = false. Fields shared with csApiBan = false... 212 ms.
+ Generating classes for service (146): arLsDefAgr. Conversational = false. Fields shared with csApiBan = false... 541 ms.
+ Generating classes for service (147): csSrchCtn. Conversational = false. Fields shared with csApiBan = false... 255 ms.
+ Generating classes for service (148): csLsBnIdNum. Conversational = false. Fields shared with csApiBan = false... 368 ms.
+ Generating classes for service (149): csSrchBan. Conversational = false. Fields shared with csApiBan = false... 266 ms.
+ Generating classes for service (150): csGtSplTlFtr. Conversational = false. Fields shared with csApiBan = false... 145 ms.
+ Generating classes for service (151): csChkSubNo. Conversational = false. Fields shared with csApiBan = false... 216 ms.
+ Generating classes for service (152): csRelsCtn. Conversational = false. Fields shared with csApiBan = false... 689 ms.
+ Generating classes for service (153): csAssignRsrc. Conversational = false. Fields shared with csApiBan = false... 211 ms.
+ Generating classes for service (154): csLsOrd. Conversational = false. Fields shared with csApiBan = false... 185 ms.
+ Generating classes for service (155): csLsOrdDtls. Conversational = false. Fields shared with csApiBan = false... 554 ms.
+ Generating classes for service (156): csInsOrd. Conversational = false. Fields shared with csApiBan = false... 540 ms.
+ Generating classes for service (157): csLsOrdLines. Conversational = false. Fields shared with csApiBan = false... 166 ms.
+ Generating classes for service (158): arHndlSocCrg. Conversational = false. Fields shared with csApiBan = false... 255 ms.
+ Generating classes for service (159): arLsOrdPym. Conversational = false. Fields shared with csApiBan = false... 194 ms.
+ Generating classes for service (160): arCrOrdPym. Conversational = false. Fields shared with csApiBan = false... 203 ms.
+ Generating classes for service (161): csGtSubRank. Conversational = false. Fields shared with csApiBan = false... 263 ms.
+ Generating classes for service (162): csUpSubRank. Conversational = false. Fields shared with csApiBan = false... 125 ms.
+Total execution time (ms): 65294
+~ 65 sec (VPN)
+#~6 sec (in the office, not over VPN)
+#~66 sec (in the office, via Wifi, over VPN)
+
+---------
+ Summary
+---------
+
+$ svn status
+?      0_Notes_HGU_2020-10-13.txt
+M      log-Step2.log
+M      log-Step3.log
+M      log-Step4.log
+?      2_olr_files/vo_csUpSubRank_olr.txt
+?      2_olr_files/vi_csUpSubRank_olr.txt
+?      2_olr_files/vo_csGtSubRank_olr.txt
+?      2_olr_files/vi_csGtSubRank_olr.txt
+M      2_olr_files/vi_csCtnClInf_olr.txt
+M      2_olr_files/vi_csMoveRsv_olr.txt
+M      2_olr_files/vi_csChgOwner_olr.txt
+M      2_olr_files/vi_csCnclCtn_olr.txt
+M      2_olr_files/vo_csGtNpITrx_olr.txt
+M      2_olr_files/vo_csLsNpTrx_olr.txt
+M      2_olr_files/vi_gnChgUtc_olr.txt
+M      2_olr_files/vi_arInCstBanTr_olr.txt
+M      2_olr_files/vo_csCtnNPPen_olr.txt
+M      2_olr_files/vi_csMoveCtn_olr.txt
+M      2_olr_files/vi_csCrNpCncl_olr.txt
+M      2_olr_files/vo_csGtCtn_olr.txt
+M      2_olr_files/vi_arCnclBan_olr.txt
+M      2_olr_files/vi_csRsvMlCtn_olr.txt
+M      2_olr_files/vi_csLsBanMsis_olr.txt
+M      2_olr_files/vo_csCtnClInf_olr.txt
+M      2_olr_files/vi_csUpNpITrx_olr.txt
+M      2_olr_files/vi_csMoveSusp_olr.txt
+M      2_olr_files/vi_csCrNpTrx_olr.txt
+M      2_olr_files/vi_csLsBanCtn_olr.txt
+M      2_olr_files/vi_csCtnClInfBuf_olr.txt
+M      2_olr_files/vi_csGtOneCtn_olr.txt
+M      2_olr_files/vi_csCrCtn_olr.txt
+M      2_olr_files/vo_csCtnClInfBuf_olr.txt
+?      4_service_classes/CsUpSubRankService.java
+?      4_service_classes/CsGtSubRankService.java
+?      5_dataset_classes/CsUpSubRankInput.java
+?      5_dataset_classes/CsGtSubRankOutput.java
+?      5_dataset_classes/CsUpSubRankOutput.java
+?      5_dataset_classes/CsGtSubRankInput.java
+M      5_dataset_classes/CsCrCtnInput.java
+M      5_dataset_classes/CsLsNpTrxOutput.java
+M      5_dataset_classes/ArCnclBanInput.java
+M      5_dataset_classes/CsCtnClInfOutput.java
+M      5_dataset_classes/CsLsBanCtnInput.java
+M      5_dataset_classes/CsMoveCtnInput.java
+M      5_dataset_classes/CsCnclCtnInput.java
+M      5_dataset_classes/CsCtnClInfInput.java
+M      5_dataset_classes/CsCrNpTrxInput.java
+M      5_dataset_classes/GnChgUtcInput.java
+M      5_dataset_classes/CsGtCtnOutput.java
+M      Tuxedo - 4 - determine service changes and do copies.sql
+M      Tuxedo - 5 - copies and versioning.sql
+?      1_v_files/pcs_orgpabx_c32_v.v
+M      1_v_files/pcs_ctnact_c32_v.v
+M      1_v_files/pcs_ctnaddact_c32_v.v
+M      1_v_files/pgn_hbilling_c32_v.v
+M      1_v_files/pcs_msisdn_c32_v.v
+M      1_v_files/pcs_pp_c32_v.v
+M      1_v_files/pcs_ctn_c32_v.v
+M      1_v_files/par_banact_c32_v.v
+M      1_v_files/par_ban_c32_v.v
+M      1_v_files/pcs_npctrl_c32_v.v
+?      3_blk_files/csGtSubRank00_blk.txt
+?      3_blk_files/csUpSubRank00_blk.txt
+M      3_blk_files/gnChgUtc00_blk.txt
+M      3_blk_files/csMoveRsv00_blk.txt
+M      3_blk_files/csLsBanMsis00_blk.txt
+M      3_blk_files/csMoveCtn00_blk.txt
+M      3_blk_files/csCnclCtn00_blk.txt
+M      3_blk_files/csCtnNPPen00_blk.txt
+M      3_blk_files/csMoveSusp00_blk.txt
+M      3_blk_files/csCtnClInfBuf00_blk.txt
+M      3_blk_files/arCnclBan00_blk.txt
+M      3_blk_files/csGtOneCtn00_blk.txt
+M      3_blk_files/csLsBanCtn00_blk.txt
+M      3_blk_files/arInCstBanTr00_blk.txt
+M      3_blk_files/csCtnClInf00_blk.txt
+M      3_blk_files/csCrNpCncl00_blk.txt
+M      3_blk_files/csChgOwner00_blk.txt
+$
+
+$ bash ./doGenerateCopyCommands | tee doCopyToGerrit
+cp -p 4_service_classes/CsUpSubRankService.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/
+cp -p 4_service_classes/CsGtSubRankService.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/
+cp -p 5_dataset_classes/CsUpSubRankInput.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CsGtSubRankOutput.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CsUpSubRankOutput.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CsGtSubRankInput.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CsCrCtnInput.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CsLsNpTrxOutput.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/ArCnclBanInput.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CsCtnClInfOutput.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CsLsBanCtnInput.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CsMoveCtnInput.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CsCnclCtnInput.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CsCtnClInfInput.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CsCrNpTrxInput.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/GnChgUtcInput.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CsGtCtnOutput.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+$

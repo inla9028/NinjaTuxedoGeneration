@@ -1,0 +1,3 @@
+long	GENERATION	1	-	
+double	ADJAMT	1	-	
+double	TAX_RATE	1	-	

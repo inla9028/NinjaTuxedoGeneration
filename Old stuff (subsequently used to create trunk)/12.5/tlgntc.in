@@ -1,0 +1,62 @@
+*RESOURCES
+
+# The next two keywords are inserted by the user .
+IPCKEY		32910
+WSNADDR		0x0002565ed42db318
+
+
+#name		#svc	view (one or more)	specific arguments to server
+# Number of svc is needed only in conversational servers .
+
+
+*SERVERS 
+csmNTest                pgn_test_c32_v.V
+csmRBill                pbl_bil_c32_v.V        
+csmRBlim                pbl_blim_c32_v.V      
+csmRColl                pcl_coll_c32_v.V      
+csmRHist                pgn_hist_c32_v.V      
+csmROle                 pcs_ole_c32_v.V       
+csmRPp                  pcs_pp_c32_v.V        
+csmRSearch              pcs_srch_c32_v.V      
+csmRServ                pgn_serv_c32_v.V
+csmRSrchSpcl            pcs_srchspcl_c32_v.V 
+csmRUtils               pgn_utils_c32_v.V
+csmUAddAct              pcs_ctnaddact_c32_v.V
+csmUAddArAct            par_addaract_c32_v.V
+csmUAdj                 par_adj_c32_v.V    
+csmUApiFldr             pcs_apifldr_c32_v.V
+csmUBan                 par_ban_c32_v.V   
+csmUBanAct              par_banact_c32_v.V
+csmUBanAgr              par_banagr_c32_v.V
+csmUBgCdg               pcs_bg_cdg_c32_v.V
+csmUCharge              par_charge_c32_v.V
+csmUCrdVld              pif_crd_valid_c32_v.V
+csmUCtn                 pcs_ctn_c32_v.V   
+csmUCtnAct              pcs_ctnact_c32_v.V
+csmUCvr                 pcs_cv_request_c32_v.V
+csmUCwSusp              pcs_cw_sus_c32_v.V
+csmUCycle               pbl_cycle_c32_v.V    
+csmUDisc                par_disc_c32_v.V    
+csmUEnvAct              pcs_envact_c32_v.V
+csmUFandf               pcs_frndfml_c32_v.V
+csmUFldr                pcv_fldrsvc_c32_v.V    CONV=Y RQADDR=banFldrQue 
+csmUFollowup            pmm_followup_c32_v.V
+csmUFtrTrx              pgn_ftrtrx_c32_v.V   
+csmUHierBill            pgn_hbilling_c32_v.V
+csmUInvColl             pcl_inv_coll_c32_v.V
+csmUIvr                 pcs_ivr_c32_v.V
+csmULnkEnt              pgn_link_ent_c32_v.V
+csmUMemo                pmm_memo_c32_v.V   
+csmUMltAct              pcs_multi_activities_c32_v.V
+csmUMsisdn              pcs_msisdn_c32_v.V
+csmUNpCtrl              pcs_npctrl_c32_v.V
+csmUPrepaid             pcs_prepaid_c32_v.V
+csmUPym                 par_pym_c32_v.V   
+csmUPymAr               par_pymarr_c32_v.V
+csmUTrAddAct		pgn_tree_addact_c32_v.V
+csmUUsage               pbl_usage_c32_v.V 
+csmUWs                  pgn_ws_c32_v.V
+julRSecur               psec_secur_c32_v.V
+pnmUImGn                pnm_im_gn_c32_v.V
+rmsRItem                pic_item_c32_v.V
+rmsUInvent              pic_inventory_c32_v.V 

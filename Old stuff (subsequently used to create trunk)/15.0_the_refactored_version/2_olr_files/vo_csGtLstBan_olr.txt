@@ -1,0 +1,2 @@
+long	GENERATION	1	-	
+long	CUSTOMER_BAN	1	-	

@@ -1,0 +1,58 @@
+1. Any services changed (does counts and matches fields by sequence)?
+---------------------------------------------------------------------
+
+14 services:
+
+arLsBanAgr
+arLsDefAgr
+arSvBanSvc
+csActvCtn
+csApiBan
+csChgCtn
+csCrCtn
+csGtCtn
+csLsNpTrx
+csLsSrvAgr
+csMoveCtn
+csRsCanCtn
+cvSvCtnAgr
+gnChgDisc
+
+
+2. Any new services?
+--------------------
+
+3 Services:
+
+csCallFrwd
+csLsNPRejCtn
+csSrchEAN
+
+
+3. Deleted services
+-------------------
+
+None
+
+
+4. New fields
+-------------
+
+151 altogether - *** WHY ARE THERE 282 FIELDS MORE THAN THERE WERE? FOR THE NEW SERVICES?? ***
+
+Buffer name     	Type	Field count
+csCrCtnInput     	IN  	2                                     
+csApiBanInput    	IN  	1                                     
+csChgCtnInput    	IN  	2                                     
+csGtCtnOutput    	OUT 	109                                   
+csActvCtnInput   	IN  	2                                     
+csLsNpTrxInput   	IN  	1                                     
+csMoveCtnInput   	IN  	2                                     
+gnChgDiscInput   	IN  	24                                    
+arSvBanSvcInput  	IN  	1                                     
+csRsCanCtnInput  	IN  	2                                     
+cvSvCtnAgrInput  	IN  	1                                     
+arLsBanAgrOutput 	OUT 	1                                     
+arLsDefAgrOutput 	OUT 	1                                     
+arSvBanSvcOutput 	OUT 	1                                     
+csLsSrvAgrOutput 	OUT 	1                                     

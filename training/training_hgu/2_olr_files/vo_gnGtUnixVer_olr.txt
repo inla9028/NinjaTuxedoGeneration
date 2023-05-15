@@ -1,0 +1,4 @@
+long	GENERATION	1	-	
+long	ROWCOUNT	1	-	
+string	TAG_NAME	50	61	
+string	TAG_VALUE	50	257	

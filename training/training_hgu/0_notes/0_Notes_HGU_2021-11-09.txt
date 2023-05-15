@@ -1,0 +1,231 @@
+-------
+ Step0
+-------
+
+$ svn status
+?       0_Notes_HGU_2021-11-09.txt
+M       1_v_files/pcs_ctnaddact_c32_v.v
+M       1_v_files/pcs_envact_c32_v.v
+$
+
+-------
+ Step1
+-------
+$ java -classpath /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/tools/target/ninja-tools-34.5-SNAPSHOT.jar no.netcom.ninja.tools.Step1CreateOLRFiles | tee log-Step1.log
+. . .
+Processing file 51 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/1_v_files/pcs_ctn_c32_v.v
+Processing file 52 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/1_v_files/par_disc_c32_v.v
+Finished processing files
+
+
+-------
+ Step2
+-------
+$ java -classpath /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/tools/target/ninja-tools-34.5-SNAPSHOT.jar no.netcom.ninja.tools.Step2CreateBulkloaderFiles | tee log-Step2.log
+. . .
+Processing file 1120 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vo_cvRollback_olr.txt
+Processing file 1121 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vi_gnGtLgclDt_olr.txt
+Processing file 1122 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vo_gnGtLgclDt_olr.txt
+Processing file 1123 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vi_csCrNpInfo_olr.txt
+Processing file 1124 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vo_csCrNpInfo_olr.txt
+Processing file 1125 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vi_gnGtWsn_olr.txt
+Processing file 1126 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vo_gnGtWsn_olr.txt
+Finished processing files
+
+-------
+ Step3
+-------
+Script: Tuxedo - 1 - check status of tables and clear workspace
+* truncate table TUX_FML_BUFFERS_new;
+
+$ java -classpath /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/common/target/ninja-common-34.5-SNAPSHOT.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/common/dist/common.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/ninja-core-34.5-SNAPSHOT.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/joltwls-10.0.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/xilclient-2.40build025.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/joltjse-10.0.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/ninja-common-34.5-SNAPSHOT.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/xilext-2.40build021.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/ojdbc7-12.1.0.2.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/jolt-10.0.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/log4j-1.2.13.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/xil-2.40build025.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/tools/target/ninja-tools-34.5-SNAPSHOT.jar  no.netcom.ninja.tools.Step3LoadDatabaseFromViewFiles | tee log-Step3.log
+. . .
+Starting File 52 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/1_v_files/par_disc_c32_v.v
+Loading service 559: arLsFeeWa, IN buffer
+Loading service 559: arLsFeeWa, OUT buffer
+Loading service 560: arUpFeeWa, IN buffer
+Loading service 560: arUpFeeWa, OUT buffer
+Loading service 561: arLsDisc, IN buffer
+Loading service 561: arLsDisc, OUT buffer
+Loading service 562: arSvDisc, IN buffer
+Loading service 562: arSvDisc, OUT buffer
+Loading service 563: arGtFeeWa, IN buffer
+Loading service 563: arGtFeeWa, OUT buffer
+Total execution time: 1085308 ms
+~18 min 5 sec (via VPN and WiFi at ØP)
+#~5 min 3 sec (in the office, via Wifi and VPN)
+
+Output of SQL in script 1
+-------------------------
+----------- ------------------- ----------
+CONTENT_TYP NINJA_VERSION         COUNT(*)
+----------- ------------------- ----------
+fields      30.0.0.0                 41799
+fields      31.0.0.0                 41829
+fields      31.0.1.0                 41832
+fields      31.5.0.0                 41899
+fields      31.5.1.0                 41943
+fields      33.0.0.0                 42790
+fields      33.0.0.0.drop1           42056
+fields      33.0.0.0.drop2           42042
+fields      33.0.0.0.drop3           42722
+fields      33.0.0.0.prod            42764
+fields      33.0.7.0                 42798
+fields      34.0.0.0                 42868
+fields      34.0.0.0.drop1           42801
+fields      34.5.0.0                 42912
+fields a)   tux_fml_buffers_new      42912
+services    30.0.0.0                   538
+services    31.0.0.0                   538
+services    31.0.1.0                   538
+services    31.5.0.0                   539
+services    31.5.1.0                   539
+services    33.0.0.0                   560
+services    33.0.0.0.drop1             541
+services    33.0.0.0.drop2             541
+services    33.0.0.0.drop3             559
+services    33.0.0.0.prod              560
+services    33.0.7.0                   560
+services    34.0.0.0                   561
+services    34.0.0.0.drop1             560
+services    34.5.0.0                   561
+services a) tux_services_new           561
+----------- ------------------- ----------
+
+
+SQL Scripts 2 & 3
+-----------------
+Run Script 2: Tuxedo - 2 - update default values.sql
+Run Script 3: Tuxedo - 3 - update conversational mapping values.sql
+
+SQL Script 4: Changed Services
+------------------------------
+** Note! Change the current prod-version in the script first, otherwise you need to re-do all previous steps!
+Run Script 4: Tuxedo - 4 - determine service changes and do copies.sql
+HGU: Copy/Paste into a text-file, then:
+$ cat tmp.txt | awk '{printf("%-30s %-7s %-15s %-37s\n", $1,$2,$3,$4);}'
+
+SQL Script 4: 1. Any existing services changed? (Does counts, and matches fields by sequence)
+-----------------------------------------------------------------------------------------
+SVC_NAME                       In Use In Amdocs doc? Comment
+------------------------------ ------ -------------- ------------------------------------
+csInsOrd                       Y
+csLsOrd                        Y
+csLsOrdDtls                    Y
+------------------------------ ------ -------------- ------------------------------------
+
+
+SQL Script 4: 4. Any new fields (on existing services)? On which datasets?
+--------------------------------------------------------------------------
+-------------  ------  -----------  ------------------------  ---------  ----------  ----------  -------------------
+SVC_NAME       IN_USE  BUFFER_TYPE  FIELD_NAME                FIELD_SEQ  FIELD_TYPE  FIELD_SIZE  FIELD_MAX_OCCURENCE
+-------------  ------  -----------  ------------------------  ---------  ----------  ----------  -------------------
+csInsOrd       Y       IN           HDR_BILL_COMMENT          38         STRING      501         1
+csLsOrd	       Y       OUT          HDR_BILL_COMMENT          39         STRING      501         600
+csLsOrdDtls	   Y       OUT          HDR_BILL_COMMENT          38         STRING      501         1
+-------------  ------  -----------  ------------------------  ---------  ----------  ----------  -------------------
+
+
+SQL Script 4: Any fields removed?
+------------------------
+N/A
+
+SQL Script 4: Changes to fields definitions (type, sizes, etc)
+------------------------
+SVC_NAME                    BUFFER_TYPE                 FIELD_NAME                  FIELD_TYPE                  OLD_FIELD_TYPE              FIELD_SIZE                  OLD_FIELD_SIZE              FIELD_MAX_OCCURENCE         OLD_FIELD_MAX_OCCURENCE     FIELD_DEF_VALUE             OLD_FIELD_DEF_VALUE
+N/A
+
+
+SQL Script 5: Store the data as new version
+-------------------------------------------
+** Note! Change the future prod-version in the script first...
+Run Script 5: Tuxedo - 5 - copies and versioning.sql
+
+
+-----------------
+ Prior to Step 4:
+-----------------
+Are there any new tuxedo-services we should generate Ninja support for? If yes, then run a similar SQL update for the services in question:
+
+UPDATE tux_services_versions a
+   SET a.in_use = 'Y', a.comments = a.comments || '; IN_USE=Y set by HGU at ' || TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+ WHERE a.svc_name IN ( 'csLsAvlRngs' )
+   AND a.in_use IS NULL
+   AND A.ninja_version = '33.0.7.0'
+;
+
+-------
+ Step4
+-------
+#
+# Note; remember to use the correct new Fokus version as argument; in Atom it's most often off-screen... -->
+#
+$ java -classpath /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/common/target/ninja-common-34.5-SNAPSHOT.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/common/dist/common.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/ninja-core-34.5-SNAPSHOT.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/joltwls-10.0.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/xilclient-2.40build025.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/joltjse-10.0.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/ninja-common-34.5-SNAPSHOT.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/xilext-2.40build021.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/ojdbc7-12.1.0.2.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/jolt-10.0.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/log4j-1.2.13.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/xil-2.40build025.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/tools/target/ninja-tools-34.5-SNAPSHOT.jar  no.netcom.ninja.tools.Step4CreateServiceAndDatasetClassesFromDatabase All 34.6.0.0 | tee log-Step4.log
+. . .
+ Generating classes for service (170): blBiBuild. Conversational = false. Fields shared with csApiBan = false... 260 ms.
+ Generating classes for service (171): csRsSusCtn. Conversational = false. Fields shared with csApiBan = false... 402 ms.
+ Generating classes for service (172): csSrchNmPrm. Conversational = false. Fields shared with csApiBan = false... 341 ms.
+ Generating classes for service (173): mmMemoLs. Conversational = false. Fields shared with csApiBan = false... 312 ms.
+ Generating classes for service (174): mmUpMemo. Conversational = false. Fields shared with csApiBan = false... 528 ms.
+ Generating classes for service (175): blGtContoInfo. Conversational = false. Fields shared with csApiBan = false... 318 ms.
+ Generating classes for service (176): arBanPym. Conversational = false. Fields shared with csApiBan = false... 523 ms.
+ Generating classes for service (177): blLsCallsDet. Conversational = false. Fields shared with csApiBan = false... 624 ms.
+ Generating classes for service (178): csUpNamAdr. Conversational = false. Fields shared with csApiBan = false... 599 ms.
+ Generating classes for service (179): cvSvCtnAgr. Conversational = true. Fields shared with csApiBan = true... 959 ms.
+ Generating classes for service (180): arUpPymMtd. Conversational = false. Fields shared with csApiBan = false... 374 ms.
+ Generating classes for service (181): csExpNpTrx. Conversational = false. Fields shared with csApiBan = false... 181 ms.
+ Generating classes for service (182): arUpCstBan. Conversational = false. Fields shared with csApiBan = false... 2211 ms.
+ Generating classes for service (183): arLsBanAgr. Conversational = false. Fields shared with csApiBan = false... 488 ms.
+ Generating classes for service (184): arMoveBanLn. Conversational = false. Fields shared with csApiBan = false... 361 ms.
+ Generating classes for service (185): gnChkAdrVld. Conversational = false. Fields shared with csApiBan = false... 262 ms.
+ Generating classes for service (186): icObsSIM. Conversational = false. Fields shared with csApiBan = false... 246 ms.
+ Generating classes for service (187): csGtOcAmt. Conversational = false. Fields shared with csApiBan = false... 242 ms.
+ Generating classes for service (188): gnGetNl. Conversational = false. Fields shared with csApiBan = false... 215 ms.
+ Generating classes for service (189): csGtWrkDate. Conversational = false. Fields shared with csApiBan = false... 245 ms.
+ Generating classes for service (190): csChkMulti. Conversational = false. Fields shared with csApiBan = false... 278 ms.
+ Generating classes for service (191): arLsDisc. Conversational = false. Fields shared with csApiBan = false... 211 ms.
+ Generating classes for service (192): blChngCyc. Conversational = false. Fields shared with csApiBan = false... 416 ms.
+ Generating classes for service (193): blGtCycPrd. Conversational = false. Fields shared with csApiBan = false... 270 ms.
+ Generating classes for service (194): gnGetTreeInfo. Conversational = false. Fields shared with csApiBan = false... 337 ms.
+Total execution time (ms): 106615
+
+~ 2 min, 18 sec (VPN at home)
+#~6 sec (in the office, not over VPN)
+#~66 sec (in the office, via Wifi, over VPN)
+
+---------
+ Summary
+---------
+
+$ svn status
+?       0_Notes_HGU_2021-11-09.txt
+M       1_v_files/pcs_ctnaddact_c32_v.v
+M       1_v_files/pcs_envact_c32_v.v
+M       2_olr_files/vi_csInsOrd_olr.txt
+?       2_olr_files/vi_csLsPrdChgEr_olr.txt
+?       2_olr_files/vi_csMlChgPrd_olr.txt
+M       2_olr_files/vo_csLsOrdDtls_olr.txt
+M       2_olr_files/vo_csLsOrd_olr.txt
+?       2_olr_files/vo_csLsPrdChgEr_olr.txt
+?       2_olr_files/vo_csMlChgPrd_olr.txt
+M       3_blk_files/csInsOrd00_blk.txt
+M       3_blk_files/csLsOrd00_blk.txt
+M       3_blk_files/csLsOrdDtls00_blk.txt
+?       3_blk_files/csLsPrdChgEr00_blk.txt
+?       3_blk_files/csMlChgPrd00_blk.txt
+M       5_dataset_classes/CsInsOrdInput.java
+M       5_dataset_classes/CsLsOrdDtlsOutput.java
+M       5_dataset_classes/CsLsOrdOutput.java
+M       Tuxedo - 4 - determine service changes and do copies.sql
+M       Tuxedo - 5 - copies and versioning.sql
+M       log-Step2.log
+M       log-Step3.log
+M       log-Step4.log
+$
+
+$ bash ./doGenerateCopyCommands | tee doCopyToGerrit
+$ bash ./doGenerateCopyCommands | tee doCopyToGerrit | awk '{printf("%s %s %-50s %s\n", $1,$2,$3,$4);}'
+cp -p 5_dataset_classes/CsInsOrdInput.java               /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CsLsOrdDtlsOutput.java           /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CsLsOrdOutput.java               /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+$

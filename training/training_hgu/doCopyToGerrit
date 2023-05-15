@@ -1,0 +1,3 @@
+cp -p 5_dataset_classes/GnGetTreeInfoOutput.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/GnGtTreeBasicOutput.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/GnNodeActInput.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/

@@ -1,0 +1,4 @@
+long	GENERATION	1	-	
+char	ACTV_STATUS	1	-	
+long	ROWCOUNT	1	-	
+long	CODE	100	-	

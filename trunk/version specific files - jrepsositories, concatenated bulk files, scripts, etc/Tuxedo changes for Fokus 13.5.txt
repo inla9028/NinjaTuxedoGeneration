@@ -1,0 +1,45 @@
+Fokus 13.5 Tuxedo services
+--------------------------
+
+Services changed:
+
+ 
+csMoveCtn
+ - new field PCTNCNCLBUFROW_COUNT inserted at 377
+ - 23 IN fields have had their field_max_occurence increased from 1 to 25: act_code, act_reason, charge_amt, charge_amt_ind, <memo fields>, rms_act_code, susp_rc_rate_type, waive_ind, waive_reason.
+
+So only 1 class is updated: CsMoveCtnInput.java
+
+
+Jolt port on env 1 (on tuxtst1) is 22130
+(ST on old machine is 22380)
+
+type *_blk.txt >> 13_5_bulk_ntc_2008_10_16.txt
+
+bulkloader.sh //fokustest:22130 13_5_bulk_ntc_2008_10_16.txt
+
+bulkloader.sh //212.45.180.172:22130 13_5_bulk_ntc_2008_10_16.txt
+
+
+#!/bin/sh
+#java -classpath .:/usr/lib/classes.zip:/usr/local/tuxedo/udataobj/jolt/jolt.jar:/usr/local/tuxedo/udataobj/jolt/joltadmin.jar bea.jolt.admin.jbld -p NINJA //fokustest:22380 $1
+
+/opt/java1.4/bin/java 
+-classpath .:
+/usr/lib/classes.zip:
+/usr/local/tuxedo/udataobj/jolt/jolt.jar:
+/usr/local/tuxedo/udataobj/jolt/joltadmin.jar 
+bea.jolt.admin.jbld -p NINJA $1 $2
+
+
+csMoveCtn - both changes are to do with supporting multiple memos (for Telia Denmark?)
+---------
+a) existing field ROW_COUNT moved from seq 376 to 152. This shuffles everything else up. A new field PCTNCNCLBUFROW_COUNT inserted in place of the old one - at 377 now due to shuffle up.
+*** Looks like this requires some recoding: I don't think the new field can be null. ***
+
+b) 23 IN fields have had their field_max_occurence increased from 1 to 25: act_code, act_reason, charge_amt, charge_amt_ind, <memo fields>, rms_act_code, susp_rc_rate_type, waive_ind, waive_reason.
+(This is the same set of fields that were increased from 2 to 25 for arSvBanSvc in the last release.)
+*** Because we are going from single to multiple this requires some recoding. ***
+
+
+

@@ -1,0 +1,68 @@
+package no.netcom.ninja.core.system.tuxedo.service;
+
+import no.netcom.ninja.core.system.tuxedo.TuxedoExecutable;
+import no.netcom.ninja.core.system.tuxedo.exception.EnvironmentException;
+import no.netcom.ninja.core.system.tuxedo.exception.FMLManipulationException;
+import no.netcom.ninja.core.system.tuxedo.exception.ServiceCallException;
+import no.netcom.ninja.core.system.tuxedo.service.parameters.BlLsCallsDetInput;
+import no.netcom.ninja.core.system.tuxedo.service.parameters.BlLsCallsDetOutput;
+
+/**
+ * BlLsCallsDetService Class.
+ * @author  Ninja
+ */
+public class BlLsCallsDetService extends TuxedoService implements TuxedoExecutable {
+    // Name of Tuxedo service
+    private static String NAME = "blLsCallsDet00";
+
+    /**
+     * Creates a new instance of BlLsCallsDetService.
+     *
+     * @throws EnvironmentException
+     * @throws FMLManipulationException
+     */
+    public BlLsCallsDetService(Integer operatorId) throws EnvironmentException, FMLManipulationException {
+        super(operatorId, NAME);
+        this.input = new BlLsCallsDetInput();
+        ((BlLsCallsDetInput) this.input).set_OPERATOR_ID(operatorId);
+    }
+
+    public BlLsCallsDetService() {
+    }
+
+    /**
+     * Calls Tuxedo service 'BlLsCallsDet'
+     *
+     * @return Output value object: BlLsCallsDetOutput
+     * @throws EnvironmentException
+     * @throws FMLManipulationException
+     * @throws ServiceCallException
+     */
+    public BlLsCallsDetOutput exec() throws EnvironmentException, FMLManipulationException, ServiceCallException {
+        this.output = new BlLsCallsDetOutput(super.execute());
+        return ((BlLsCallsDetOutput) this.output);
+    }
+
+    /**
+     * Returns a input value object for service.
+     *
+     * @return Input value object for service.
+     */
+    public BlLsCallsDetInput getInput() {
+        return ((BlLsCallsDetInput) this.input);
+    }
+
+   /**
+    * @return The tuxedo service name
+    */
+   public String getName() {
+       return getServiceName();
+   }
+
+   /**
+    * @return The tuxedo service name
+    */
+   public static String getServiceName() {
+       return NAME;
+   }
+}

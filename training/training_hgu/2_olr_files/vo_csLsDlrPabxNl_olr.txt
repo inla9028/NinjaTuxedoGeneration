@@ -1,0 +1,7 @@
+long	GENERATION	1	-	
+short	MOREROWS	1	-	
+long	ROWCOUNT	1	-	
+string	ROWID	600	19	
+string	NL_ID	600	4	
+string	NL_DSC	600	31	
+long	TOTALCOUNT	1	-	

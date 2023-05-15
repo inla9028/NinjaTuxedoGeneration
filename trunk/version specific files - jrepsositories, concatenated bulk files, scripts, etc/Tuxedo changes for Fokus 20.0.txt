@@ -1,0 +1,99 @@
+
+Fokus 20.0 (based on view files mailed by Richard Marriot - 15/04/2013 @ 16:08)
+
+
+1. Any services changed (does counts and matches fields by sequence)?
+---------------------------------------------------------------------
+
+2 services, 1 in use (so we'll only be regenerating that):
+
+Service		In use?	Comment	In Amdocs doc?
+blGtIToKp 						Y
+blSvIKpRls 						Y
+
+
+2. Any new services?
+--------------------
+
+1 service 
+
+Service		Field count	In Amdocs doc?
+csLsBnDdag	78 				Y
+arGtFinAmt	277				Y
+
+
+3. Deleted services
+-------------------
+
+0 services:
+
+
+4. New fields (on existing services)
+-------------
+
+0 fields (in 0 service)
+
+Service name	In use 	Buffer	Field name			Seq	Type	Size	Max Occurances
+
+
+
+
+5. Removed fields
+-----------------
+
+None
+
+
+6. Changed fields (ie attribute changes to existing fields)
+-----------------
+
+46 fields (in 2 services): field size up from 100 to 500 
+
+Service			Type	Field name
+blGtIToKp 	OUT	ALREADY_KEPT_IND       	CHAR  	CHAR  	  	  	500	100		
+blGtIToKp 	OUT	BILL_CONF_STATUS       	CHAR  	CHAR  	  	  	500	100		
+blGtIToKp 	OUT	BILL_DATE              	STRING	STRING	9 	9 	500	100		
+blGtIToKp 	OUT	BILL_SEQ_NO            	SHORT 	SHORT 	  	  	500	100		
+blGtIToKp 	OUT	BILL_STATUS_DATE       	STRING	STRING	9 	9 	500	100		
+blGtIToKp 	OUT	CARRY_OVER_IND         	CHAR  	CHAR  	  	  	500	100		
+blGtIToKp 	OUT	CYCLE_CODE             	SHORT 	SHORT 	  	  	500	100		
+blGtIToKp 	OUT	CYCLE_RUN_MONTH        	SHORT 	SHORT 	  	  	500	100		
+blGtIToKp 	OUT	CYCLE_RUN_YEAR         	SHORT 	SHORT 	  	  	500	100		
+blGtIToKp 	OUT	ENT_SEQ_NO             	LONG  	LONG  	  	  	500	100		
+blGtIToKp 	OUT	INVOICE_SEQ_NO         	STRING	STRING	14	14	500	100		
+blGtIToKp 	OUT	INVOICE_VAT_AMT        	DOUBLE	DOUBLE	  	  	500	100		
+blGtIToKp 	OUT	KEEP_EFF_DATE          	STRING	STRING	9 	9 	500	100		
+blGtIToKp 	OUT	KEEP_EXP_DATE          	STRING	STRING	9 	9 	500	100		
+blGtIToKp 	OUT	LAST_PAYMENT_DATE      	STRING	STRING	9 	9 	500	100		
+blGtIToKp 	OUT	NO_OF_CAR_OVR_BILLS    	LONG  	LONG  	  	  	500	100		
+blGtIToKp 	OUT	PRD_CVRG_END_DATE      	STRING	STRING	9 	9 	500	100		
+blGtIToKp 	OUT	PRD_CVRG_STRT_DATE     	STRING	STRING	9 	9 	500	100		
+blGtIToKp 	OUT	PRODUCTION_DATE        	STRING	STRING	9 	9 	500	100		
+blGtIToKp 	OUT	PRODUCTION_TYPE        	CHAR  	CHAR  	  	  	500	100		
+blGtIToKp 	OUT	PYM_RECEIVED_AMT       	DOUBLE	DOUBLE	  	  	500	100		
+blGtIToKp 	OUT	ROOT_BAN               	LONG  	LONG  	  	  	500	100		
+blGtIToKp 	OUT	TOTAL_DUE_AMT          	DOUBLE	DOUBLE	  	  	500	100		
+blGtIToKp 	OUT	TOT_INVOICE_AMT        	DOUBLE	DOUBLE	  	  	500	100		
+blGtIToKp 	OUT	USAGE_IND              	CHAR  	CHAR  	  	  	500	100		
+
+blSvIKpRls	IN 	BAN                    	LONG  	LONG  	  	  	500	100		
+blSvIKpRls	IN 	BILL_SEQ_NO            	SHORT 	SHORT 	  	  	500	100		
+blSvIKpRls	IN 	CARRY_OVER_IND         	CHAR  	CHAR  	  	  	500	100		
+blSvIKpRls	IN 	CYCLE_CODE             	SHORT 	SHORT 	  	  	500	100		
+blSvIKpRls	IN 	CYCLE_RUN_MONTH        	SHORT 	SHORT 	  	  	500	100		
+blSvIKpRls	IN 	CYCLE_RUN_YEAR         	SHORT 	SHORT 	  	  	500	100		
+blSvIKpRls	IN 	DL_SERVICE_CODE        	STRING	STRING	6 	6 	500	100		
+blSvIKpRls	IN 	DL_UPDATE_STAMP        	SHORT 	SHORT 	  	  	500	100		
+blSvIKpRls	IN 	ENT_SEQ_NO             	LONG  	LONG  	  	  	500	100		
+blSvIKpRls	IN 	KEEP_EFF_DATE          	STRING	STRING	9 	9 	500	100		
+blSvIKpRls	IN 	KEEP_EXP_DATE          	STRING	STRING	9 	9 	500	100		
+blSvIKpRls	IN 	KPINVBUFFAPPLICATION_ID	STRING	STRING	7 	7 	500	100		
+blSvIKpRls	IN 	KPINVBUFFOPERATOR_ID   	LONG  	LONG  	  	  	500	100		
+blSvIKpRls	IN 	NO_OF_CARRY_OVR_BILLS  	LONG  	LONG  	  	  	500	100		
+blSvIKpRls	IN 	ROWID                  	STRING	STRING	19	19	500	100		
+blSvIKpRls	IN 	SYS_CREATION_DATE      	STRING	STRING	15	15	500	100		
+blSvIKpRls	IN 	SYS_UPDATE_DATE        	STRING	STRING	15	15	500	100		
+blSvIKpRls	IN 	USAGE_AVALIABLE_IND    	CHAR  	CHAR  	  	  	500	100		
+blSvIKpRls	IN 	USAGE_COPIED_DATE      	STRING	STRING	9 	9 	500	100		
+blSvIKpRls	IN 	USAGE_COPIED_STATUS    	CHAR  	CHAR  	  	  	500	100		
+blSvIKpRls	IN 	USAGE_KEEP_IND         	CHAR  	CHAR  	  	  	500	100		

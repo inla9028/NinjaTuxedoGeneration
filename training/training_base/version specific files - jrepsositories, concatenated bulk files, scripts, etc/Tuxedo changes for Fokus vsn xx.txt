@@ -1,0 +1,43 @@
+1. Any services changed (does counts and matches fields by sequence)?
+---------------------------------------------------------------------
+
+3 services:
+
+arGtBan
+blLsCallsDet
+csSrchCtn
+
+
+2. Any new services?
+--------------------
+
+1 Service:
+
+csChkIntPort
+
+
+3. Deleted services
+-------------------
+
+None
+
+
+4. New fields
+-------------
+
+2 fields
+
+Buffer name     Type						Field count	Type	Size	Max Occurances
+arGtBan			OUT 	BL_INV_SEQ_NO		162			SHORT			1	
+csSrchCtn   	IN  	ADDITIONAL_SUBNO	18			STRING	21		1	
+
+
+5. Removed fields
+-----------------
+
+None
+
+
+6. Changed fields
+-----------------
+blLsCallsDet 	OUT 	CALL_DUR_SEC 	DOUBLE 	(was LONG)

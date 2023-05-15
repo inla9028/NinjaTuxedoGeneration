@@ -1,0 +1,2 @@
+long	GENERATION	1	-	
+long	PROWNUM	1	-	

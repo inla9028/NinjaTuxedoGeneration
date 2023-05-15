@@ -1,0 +1,96 @@
+
+Comparisons done 5th March 2010
+
+1. "Unused" Tuxedo services (by doing xref in Eclipse)
+---------------------------
+
+ArAdjCrgService.java
+
+BlGtCycPrdService.java
+BlLsSocLoanService.java
+
+CsApiBanService.java ?????
+CsChgCtnService.java
+CsGtOcSocAmtService.java
+CsLsSubPdpService.java
+CsSrchAgrNoService.java
+CsSrchBanService.java
+CsSrchCtrNoService.java
+CsSrchCugService.java
+CsSrchInvNoService.java
+CsSrchOdBanService.java
+CsSvFandFService.java
+CsUpNamAdrService.java
+CsVldImeiIUService.java
+
+???? (but also see 3 below):
+CvCommitService.java
+CvRollbackService.java
+CvSideEffectService.java
+CvStartService.java
+CvSvBanService.java
+CvSvCtnAgrService.java
+CvSvCtnService.java
+CvSvEsnService.java
+CvSvNmAdrService.java
+
+GnGetNlService.java
+GnGtAdNmLnkService.java
+GnGtTreeService.java
+GnLsUsrPrmService.java
+GnLsUtcDscService.java
+GnUpLnkEntService.java
+
+
+2. In Ninja core but not NinjaTuxedoGeneration trunk
+----------------------------------------------------
+
+All 3 of these are in use
+MmLsBanFuService.java
+MmCloseFuService.java
+CsMoveMlCtnService.java
+
+(TuxedoService.java
+ TuxedoServiceRecaller.java
+ NinjaResult.java
+ NinjaCSMWTCTable.java)
+ 
+
+2. In NinjaTuxedoGeneration trunk but not Ninja core
+----------------------------------------------------
+
+Only
+CvSvCtnAgrInputService.java - therefore can't be used!!!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

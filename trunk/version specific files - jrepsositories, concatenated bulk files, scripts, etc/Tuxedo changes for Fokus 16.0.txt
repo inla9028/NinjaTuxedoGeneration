@@ -1,0 +1,79 @@
+
+Below is the normal format. This section is just my notes from the early stages - comparing *.v files, etc.
+
+Changed view files / tlgntc.in:
+1. par_adj_c32_v.v: A couple of views have a new INV_DUE_DATE field. I don't think this affects Ninja.
+2. par_ban_c32_v.v: A couple of views have a new INVOICE_NO field. I don't think this affects Ninja.
+3. *** par_charge_c32_v.v: View vi_arCrCrg has a new CHG_DUE_DATE field, in the middle of the definition. This may need coding as well as regeneration - unless we have a default due date. ***
+4. pbl_bil_c32_v.v: One view has a new INV_DUE_DATE field. I don't think this affects Ninja.
+5. pbl_blim_c32_v.v: One view has a new CHG_DUE_DATE field. I don't think this affects Ninja.
+6. pcs_frndfml_c32_v.v: New view vi_csValFnFRng (and vi_csValFnFRng)
+7. tlgntc.in: server csmUUmaGrps (re)added. Was removed at some point circa 15.2.0.
+
+--------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------
+
+
+Fokus 16.0 - <what's it for???>
+
+
+1. Any services changed (does counts and matches fields by sequence)?
+---------------------------------------------------------------------
+
+6 services, 3 in use (so we'll only be regenerating those 3):
+
+Service			In use?	In Amdocs doc?
+arCrCrg     	Y 			Y
+arGtRfnd    	  			Y
+arImmMnNote 	  			Y
+arRfndLs    	Y 			Y
+blLsMnNtReq 	  			N
+blRprntReq  	Y 			Y
+
+
+2. Any new services?
+--------------------
+
+4 services:
+3 of these (csGtUMAGrp, csLsUMAGrp and csUpdUMAGrp) were removed circa 15.2.0 - probably just from tlgntc.in. Now they're back in, but not mentioned in the Amdocs doc.
+
+Service		Field count	In Amdocs doc?
+csValFnFRng 	56			Y
+csGtUMAGrp  	46			N
+csUpdUMAGrp 	46			N
+csLsUMAGrp  	48			N
+
+Note that the Amdocs documents also refer to csGtSplTlFtr (for CR1321) as a new service for Fokus 16 but they lie. CR1321 (CR to support new VOIP feature type) went into 15.2.5.8 on 19th Sept 2010.
+
+
+3. Deleted services
+-------------------
+
+0 services:
+
+
+4. New fields (on existing services)
+-------------
+
+7 fields (in 6 services)
+
+Service name	In use 	Type	Field name		Seq	Type	Size	Max Occurances
+arCrCrg     	   Y 	IN  	CHG_DUE_DATE 	 20	STRING 	   9	             1
+arGtRfnd    	       	OUT 	INVOICE_NO   	 58	STRING 	  14	             1
+arImmMnNote 	       	IN  	INV_DUE_DATE 	 67	STRING 	   9	             1
+arImmMnNote 	       	OUT 	INV_DUE_DATE 	 44	STRING 	   9	             1
+arRfndLs    	   Y 	OUT 	INVOICE_NO   	 45	STRING 	  14	            50
+blLsMnNtReq 	       	OUT 	INV_DUE_DATE 	 32	STRING 	   9	           300
+blRprntReq  	   Y 	IN  	CHG_DUE_DATE 	 43	STRING 	   9	             1
+
+
+5. Removed fields
+-----------------
+
+None
+
+
+6. Changed fields (ie attribute changes to existing fields)
+-----------------
+
+No (non field_seq) changes. Some field_seq values have changed due to new fields being put in the middle of buffers.

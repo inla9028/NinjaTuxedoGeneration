@@ -1,0 +1,101 @@
+
+Fokus 21.0 (based on view files mailed by Fatema Taiyeby on 20/09/2013 @ 13:31)
+
+
+1. Any services changed (does counts and matches fields by sequence)?
+---------------------------------------------------------------------
+
+20 services, 9 in use (so we'll only be regenerating those):
+
+Service		In use?	In Amdocs doc?	Comment
+arRmBanSrv   	 		                                    
+arSvBanSvc   	Y		                                    
+blGtLtStlLoan	 		                                    
+blLsSocLoan  	Y		                                    
+blRvrsLoanStl	 		                                    
+csActvCtn    	Y		                                    
+csActvMlCtn  	 		                                    
+csApiBan     	Y					*** Requires extra mapping work? ***
+csChgCtn     	Y		                                    
+csChgOwner   	 		                                    
+csCrCtn      	Y		                                    
+csEnvActCtn  	 		                                    
+csGtPrevPp   	 		                                    
+csMoveCan    	 		                                    
+csMoveCtn    	Y		                                    
+csMoveRsv    	 		                                    
+csMoveSusp   	 		                                    
+csRsCanCtn   	Y		                                    
+csRsvMlCtn   	 		                                    
+cvSvCtnAgr   	Y		                                    
+
+
+2. Any new services?
+--------------------
+
+1 service 
+
+Service			Field count	In Amdocs doc?
+csRsMulSusCtn	74				
+
+
+3. Deleted services
+-------------------
+
+0 services:
+
+
+4. New fields (on existing services)
+-------------
+
+35 fields (in 20 services)
+
+Service name	In use 	Buffer	Field name			Seq	Type	Size	Max Occurrences
+arRmBanSrv   	      	IN 		LOAN_SUB_ID       	51 	LONG  	  		50  
+arSvBanSvc   	     Y	IN 		LOAN_SUB_ID       	58 	LONG  	  		50  
+arSvBanSvc   	     Y	OUT		LOAN_SUB_ID       	43 	LONG  	  		50  
+blGtLtStlLoan	      	OUT		SETTLE_ON_CANCEL  	44 	CHAR  	  		1   
+blGtLtStlLoan	      	OUT		SOURCE_MSISDN     	63 	STRING	21		1   
+blLsSocLoan  	     Y	OUT		SETTLE_ON_CANCEL  	31 	CHAR  	  		1000
+blLsSocLoan  	     Y	OUT		SOURCE_MSISDN     	50 	STRING	21		1000
+blRvrsLoanStl	      	IN 		SETTLE_ON_CANCEL  	44 	CHAR  	  		1   
+blRvrsLoanStl	      	IN 		SOURCE_MSISDN     	63 	STRING	21		1   
+csActvCtn    	     Y	IN 		LOAN_SUB_ID       	52 	LONG  	  		50  
+csActvCtn    	     Y	IN 		PAGRRECLOAN_SUB_ID	78 	LONG  	  		1   
+csActvMlCtn  	      	IN 		LOAN_SUB_ID       	52 	LONG  	  		50  
+csActvMlCtn  	      	IN 		PAGRRECLOAN_SUB_ID	78 	LONG  	  		1   
+csApiBan     	     Y	IN 		LOAN_SUB_ID       	268	LONG  	  		50  
+csChgCtn     	     Y	IN 		LOAN_SUB_ID       	43 	LONG  	  		50  
+csChgCtn     	     Y	IN 		PAGRRECLOAN_SUB_ID	69 	LONG  	  		1   
+csChgOwner   	      	IN 		LOAN_SUB_ID       	43 	LONG  	  		50  
+csChgOwner   	      	IN 		PAGRRECLOAN_SUB_ID	69 	LONG  	  		1   
+csCrCtn      	     Y	IN 		LOAN_SUB_ID       	52 	LONG  	  		50  
+csCrCtn      	     Y	IN 		PAGRRECLOAN_SUB_ID	78 	LONG  	  		1   
+csEnvActCtn  	      	IN 		LOAN_SUB_ID       	52 	LONG  	  		50  
+csEnvActCtn  	      	IN 		PAGRRECLOAN_SUB_ID	78 	LONG  	  		1   
+csGtPrevPp   	      	OUT		LOAN_SUB_ID       	49 	LONG  	  		1   
+csMoveCan    	      	IN 		LOAN_SUB_ID       	42 	LONG  	  		1   
+csMoveCtn    	     Y	IN 		LOAN_SUB_ID       	43 	LONG  	  		50  
+csMoveCtn    	     Y	IN 		PAGRRECLOAN_SUB_ID	69 	LONG  	  		1   
+csMoveRsv    	      	IN 		LOAN_SUB_ID       	43 	LONG  	  		50  
+csMoveRsv    	      	IN 		PAGRRECLOAN_SUB_ID	69 	LONG  	  		1   
+csMoveSusp   	      	IN 		LOAN_SUB_ID       	43 	LONG  	  		50  
+csMoveSusp   	      	IN 		PAGRRECLOAN_SUB_ID	69 	LONG  	  		1   
+csRsCanCtn   	     Y	IN 		LOAN_SUB_ID       	52 	LONG  	  		50  
+csRsCanCtn   	     Y	IN 		PAGRRECLOAN_SUB_ID	78 	LONG  	  		1   
+csRsvMlCtn   	      	IN 		LOAN_SUB_ID       	98 	LONG  	  		50  
+csRsvMlCtn   	      	IN 		PAGRRECLOAN_SUB_ID	124	LONG  	  		1   
+cvSvCtnAgr   	     Y	IN 		LOAN_SUB_ID       	49 	LONG  	  		50  
+
+
+
+5. Removed fields
+-----------------
+
+None
+
+
+6. Changed fields (ie attribute changes to existing fields)
+-----------------
+
+0 fields (in 0 services)

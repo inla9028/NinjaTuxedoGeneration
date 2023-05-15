@@ -1,0 +1,3 @@
+long	GENERATION	1	-	
+double	CHARGEAMT	1	-	
+char	RATELEVEL	1	-	

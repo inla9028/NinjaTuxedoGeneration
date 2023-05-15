@@ -1,0 +1,4 @@
+long	GENERATION	1	-	
+string	ROWID	1	19	
+char	TAX_EXMP_IND	1	-	
+double	TAX_AMT	1	-	

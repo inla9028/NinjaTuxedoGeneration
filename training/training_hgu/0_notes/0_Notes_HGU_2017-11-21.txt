@@ -1,0 +1,311 @@
+-------
+ Step1
+-------
+$ java -classpath /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/tools/target/ninja-tools-26.0-SNAPSHOT.jar no.netcom.ninja.tools.Step1CreateOLRFiles | tee log-Step1.log
+. . .
+Processing file 51 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/1_v_files/par_disc_c32_v.v
+Finished processing files
+
+
+-------
+ Step2
+-------
+$ java -classpath /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/tools/target/ninja-tools-26.0-SNAPSHOT.jar no.netcom.ninja.tools.Step2CreateBulkloaderFiles | tee log-Step2.log
+. . .
+Processing file 1054 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vo_gnGtLgclDt_olr.txt
+Processing file 1055 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vi_csCrNpInfo_olr.txt
+Processing file 1056 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vo_csCrNpInfo_olr.txt
+Processing file 1057 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vi_gnGtWsn_olr.txt
+Processing file 1058 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vo_gnGtWsn_olr.txt
+Finished processing files
+
+
+-------
+ Step3
+-------
+Script: Tuxedo - 1 - check status of tables and clear workspace
+* truncate table TUX_FML_BUFFERS_new;
+
+$ java -classpath /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/common/target/ninja-common-26.0-SNAPSHOT.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/common/dist/common.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/ninja-core-26.0-SNAPSHOT.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/joltwls-10.0.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/xilclient-2.40build025.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/joltjse-10.0.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/ninja-common-26.0-SNAPSHOT.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/xilext-2.40build021.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/ojdbc7-12.1.0.2.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/jolt-10.0.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/log4j-1.2.13.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/xil-2.40build025.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/tools/target/ninja-tools-26.0-SNAPSHOT.jar  no.netcom.ninja.tools.Step3LoadDatabaseFromViewFiles | tee log-Step3.log
+. . .
+Loading service 524: csSvMBL, OUT buffer
+Starting File 51 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/1_v_files/par_disc_c32_v.v
+Loading service 525: arLsFeeWa, IN buffer
+Loading service 525: arLsFeeWa, OUT buffer
+Loading service 526: arUpFeeWa, IN buffer
+Loading service 526: arUpFeeWa, OUT buffer
+Loading service 527: arLsDisc, IN buffer
+Loading service 527: arLsDisc, OUT buffer
+Loading service 528: arSvDisc, IN buffer
+Loading service 528: arSvDisc, OUT buffer
+Loading service 529: arGtFeeWa, IN buffer
+Loading service 529: arGtFeeWa, OUT buffer
+Total execution time: 512103 ms
+~8 min 32 sec (via VPN)
+#~1 min 37 sec (in the office, not over VPN)
+
+Output of SQL in script 1
+-------------------------
+CONTENT_TYPE	NINJA_VERSION		COUNT(*)
+fields     	20.0.0.0           	39547
+fields     	21.0.0.0           	39656
+fields     	21.1.0.0           	39660
+fields     	22.0.0.0           	39660
+fields     	23.0.0.0           	39660
+fields     	23.1.0.0           	39681
+fields     	23.5.0.0           	39796
+fields     	23.5.0.1           	39796
+fields     	24.0.0.0           	39799
+fields     	25.0.0.0           	39858
+fields     	25.5.0.0           	39948
+fields     	26.0.0.0           	40443
+fields     	27.0.0.0.drop2     	40443
+fields     	27.0.0.0.drop3     	40467
+fields a)  	tux_fml_buffers_new	40467
+services   	20.0.0.0           	518
+services   	21.0.0.0           	519
+services   	21.1.0.0           	519
+services   	22.0.0.0           	519
+services   	23.0.0.0           	519
+services   	23.1.0.0           	519
+services   	23.5.0.0           	521
+services   	23.5.0.1           	521
+services   	24.0.0.0           	521
+services   	25.0.0.0           	522
+services   	25.5.0.0           	523
+services   	26.0.0.0           	529
+services   	27.0.0.0.drop2     	529
+services   	27.0.0.0.drop3     	529
+services a)	tux_services_new   	0
+
+SQL Scripts 2 & 3
+-----------------
+Run Script 2: "Tuxedo - 2 - update default values.sql"
+Run Script 3: "Tuxedo - 3 - update conversational mapping values.sql"
+
+
+SQL Script 4: Changed Services
+------------------------------
+** Note! Change the current prod-version in the script first, otherwise you need to re-do all previous steps!
+Run Script 4: "Tuxedo - 4 - determine service changes and do copies.sql"
+
+SQL Script 4: 1. Any existing services changed? (Does counts, and matches fields by sequence)
+------------------------
+SVC_NAME	IN_USE	In Amdocs doc?	Comment
+csActvCtn  	Y
+csActvMlCtn
+csApiBan   	Y		*** Requires extra mapping work? ***
+csChgCtn   	Y
+csChgOwner
+csCrCtn    	Y
+csEnvActCtn
+csGtCtn    	Y
+csInCtn
+csMoveCan
+csMoveCtn  	Y
+csMoveRsv
+csMoveSusp
+csRelsCtn  	Y
+csRsCanCtn 	Y
+csRsvCtn
+csRsvMlCtn
+csSrchCtn  	Y
+csUpCtn
+cvSvCtn    	Y
+cvSvCtnAgr 	Y
+cvSvEsn    	Y
+gnLsAgrHst
+
+
+SQL Script 4: 4. Any new fields (on existing services)? On which datasets?
+------------------------
+SVC_NAME	IN_USE BUFFER_TYPE	FIELD_NAME	FIELD_SEQ	FIELD_TYPE	FIELD_SIZE	FIELD_MAX_OCCURENCE
+csActvCtn  	     Y	IN 	ACT_COMPLETE_DATE  	393	STRING	9 	1
+csActvMlCtn	      	IN 	ACT_COMPLETE_DATE  	347	STRING	9 	1
+csApiBan   	     Y	IN 	ACT_COMPLETE_DATE  	246	STRING	9 	1
+csChgCtn   	     Y	IN 	ACT_COMPLETE_DATE  	285	STRING	9 	1
+csCrCtn    	     Y	IN 	ACT_COMPLETE_DATE  	386	STRING	9 	1
+csEnvActCtn	      	IN 	ACT_COMPLETE_DATE  	324	STRING	9 	1
+csMoveCtn  	     Y	IN 	FULLTABLE          	430	CHAR  	  	1
+csMoveCtn  	     Y	IN 	PAPER_WORK_STATUS  	431	STRING	3 	1
+csMoveCtn  	     Y	IN 	PAPER_WORK_REQUIRED	432	CHAR  	  	1
+csMoveCtn  	     Y	IN 	PAPER_WORK_DATE    	433	STRING	9 	1
+csMoveCtn  	     Y	IN 	PAPER_WORK_REF_NO  	434	STRING	12	1
+csMoveCtn  	     Y	IN 	PAPER_WORK_TRNS_NO 	435	STRING	26	1
+csMoveCtn  	     Y	IN 	DELIVERY_TYPE      	436	CHAR  	  	1
+csMoveCtn  	     Y	IN 	ACT_COMPLETE_DATE  	437	STRING	9 	1
+csRsCanCtn 	     Y	IN 	ACT_COMPLETE_DATE  	293	STRING	9 	1
+csRsvMlCtn 	      	IN 	ACT_COMPLETE_DATE  	432	STRING	9 	1
+csUpCtn    	      	IN 	ACT_COMPLETE_DATE  	119	STRING	9 	1
+cvSvCtn    	     Y	IN 	ACT_COMPLETE_DATE  	119	STRING	9 	1
+cvSvCtnAgr 	     Y	IN 	FULLTABLE          	125	CHAR  	  	1
+cvSvCtnAgr 	     Y	IN 	PAPER_WORK_STATUS  	126	STRING	3 	1
+cvSvCtnAgr 	     Y	IN 	PAPER_WORK_REQUIRED	127	CHAR  	  	1
+cvSvCtnAgr 	     Y	IN 	PAPER_WORK_DATE    	128	STRING	9 	1
+cvSvCtnAgr 	     Y	IN 	PAPER_WORK_REF_NO  	129	STRING	12	1
+cvSvCtnAgr 	     Y	IN 	PAPER_WORK_TRNS_NO 	130	STRING	26	1
+cvSvCtnAgr 	     Y	IN 	DELIVERY_TYPE      	131	CHAR  	  	1
+cvSvCtnAgr 	     Y	IN 	ACT_COMPLETE_DATE  	132	STRING	9 	1
+cvSvEsn    	     Y	IN 	FULLTABLE          	70 	CHAR  	  	1
+cvSvEsn    	     Y	IN 	PAPER_WORK_STATUS  	71 	STRING	3 	1
+cvSvEsn    	     Y	IN 	PAPER_WORK_REQUIRED	72 	CHAR  	  	1
+cvSvEsn    	     Y	IN 	PAPER_WORK_DATE    	73 	STRING	9 	1
+cvSvEsn    	     Y	IN 	PAPER_WORK_REF_NO  	74 	STRING	12	1
+cvSvEsn    	     Y	IN 	PAPER_WORK_TRNS_NO 	75 	STRING	26	1
+cvSvEsn    	     Y	IN 	DELIVERY_TYPE      	76 	CHAR  	  	1
+cvSvEsn    	     Y	IN 	ACT_COMPLETE_DATE  	77 	STRING	9 	1
+gnLsAgrHst 	      	OUT	RC_INFO_IND        	20 	CHAR  	  	100
+gnLsAgrHst 	      	OUT	SERVICE_FTR_SEQ_NO 	21 	LONG  	  	100
+gnLsAgrHst 	      	OUT	FEATURE_CODE       	22 	STRING	7 	100
+gnLsAgrHst 	      	OUT	FTR_EFFECTIVE_DATE 	23 	STRING	9 	100
+gnLsAgrHst 	      	OUT	FTR_EXPIRATION_DATE	24 	STRING	9 	100
+gnLsAgrHst 	      	OUT	RC_WAIVER_EFF_DATE 	25 	STRING	9 	100
+gnLsAgrHst 	      	OUT	RC_WAIVER_EXPR_DATE	26 	STRING	9 	100
+
+
+SQL Script 4: Any fields removed?
+------------------------
+NINJA_VERSION SVC_NAME BUFFER_TYPE BUF FIELD_NAME FIELD_SEQ FIELD_TYPE FIELD_SIZE FIELD_MAX_OCCURENCE FIELD_DEF_VALUE EXCLUDE_FROM_CSAPIBAN_COPY CSAPIBAN_MAPPING1 CSAPIBAN_MAPPING2 CSAPIBAN_MAPPING3 COMMENTS
+26.0.0.0	csApiBan   	IN 	EXTERNAL_CIRCUIT_ID	238	STRING	21	1
+26.0.0.0	csRsvCtn   	IN 	EXTERNAL_CIRCUIT_ID	135	STRING	21	1
+26.0.0.0	csGtCtn    	OUT	EXTERNAL_CIRCUIT_ID	96 	STRING	21	1
+26.0.0.0	csRelsCtn  	IN 	EXTERNAL_CIRCUIT_ID	134	STRING	21	1
+26.0.0.0	csMoveCan  	IN 	EXTERNAL_CIRCUIT_ID	252	STRING	21	1
+26.0.0.0	csActvMlCtn	IN 	EXTERNAL_CIRCUIT_ID	240	STRING	21	1
+26.0.0.0	csMoveSusp 	IN 	EXTERNAL_CIRCUIT_ID	281	STRING	21	1
+26.0.0.0	csEnvActCtn	IN 	EXTERNAL_CIRCUIT_ID	223	STRING	21	1
+26.0.0.0	csRsvMlCtn 	IN 	EXTERNAL_CIRCUIT_ID	331	STRING	21	1
+26.0.0.0	csChgOwner 	OUT	EXTERNAL_CIRCUIT_ID	111	STRING	21	1
+26.0.0.0	csMoveCtn  	IN 	EXTERNAL_CIRCUIT_ID	282	STRING	21	1
+26.0.0.0	csMoveRsv  	IN 	EXTERNAL_CIRCUIT_ID	281	STRING	21	1
+26.0.0.0	csChgCtn   	IN 	EXTERNAL_CIRCUIT_ID	277	STRING	21	1
+26.0.0.0	csChgOwner 	IN 	EXTERNAL_CIRCUIT_ID	281	STRING	21	1
+26.0.0.0	csInCtn    	IN 	EXTERNAL_CIRCUIT_ID	111	STRING	21	1
+26.0.0.0	csInCtn    	OUT	EXTERNAL_CIRCUIT_ID	111	STRING	21	1
+26.0.0.0	csUpCtn    	IN 	EXTERNAL_CIRCUIT_ID	111	STRING	21	1
+26.0.0.0	csCrCtn    	IN 	EXTERNAL_CIRCUIT_ID	285	STRING	21	1
+26.0.0.0	csRsCanCtn 	IN 	EXTERNAL_CIRCUIT_ID	285	STRING	21	1
+26.0.0.0	csUpCtn    	OUT	EXTERNAL_CIRCUIT_ID	111	STRING	21	1
+26.0.0.0	cvSvCtn    	IN 	EXTERNAL_CIRCUIT_ID	111	STRING	21	1
+26.0.0.0	csActvCtn  	IN 	EXTERNAL_CIRCUIT_ID	286	STRING	21	1
+
+
+SQL Script 4: Changes to fields definitions (type, sizes, etc)
+------------------------
+SVC_NAME	BUFFER_TYPE	FIELD_NAME	FIELD_TYPE	OLD_FIELD_TYPE	FIELD_SIZE	OLD_FIELD_SIZE	FIELD_MAX_OCCURENCE	OLD_FIELD_MAX_OCCURENCE	FIELD_DEF_VALUE	OLD_FIELD_DEF_VALUE
+csSrchCtn	IN	PRODTP_ARR	STRING	STRING	4	4	50	10
+
+
+
+SQL Script 5: Store the data as new version
+-------------------------------------------
+** Note! Change the future prod-version in the script first...
+Run Script 5: "Tuxedo - 5 - copies and versioning.sql"
+
+
+-----------------
+ Prior to Step 4:
+-----------------
+Are there any new tuxedo-services we should generate Ninja support for? If yes, then run a similar SQL update for the services in question:
+
+UPDATE tux_services_versions a
+   SET a.in_use = 'Y', a.comments = 'IN_USE=Y set by HGU at ' || TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+ WHERE a.svc_name IN ( 'csActvLoan', 'arMoveBanLn', 'csSrchAddInfo', 'csLsDvcTrx', 'csLsSrvTrx' )
+   AND a.in_use IS NULL
+   AND a.ninja_version = '26.0.0.0'
+;
+
+-------
+ Step4
+-------
+$ java -classpath /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/common/target/ninja-common-26.0-SNAPSHOT.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/common/dist/common.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/ninja-core-26.0-SNAPSHOT.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/joltwls-10.0.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/xilclient-2.40build025.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/joltjse-10.0.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/ninja-common-26.0-SNAPSHOT.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/xilext-2.40build021.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/ojdbc7-12.1.0.2.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/jolt-10.0.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/log4j-1.2.13.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/xil-2.40build025.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/tools/target/ninja-tools-26.0-SNAPSHOT.jar  no.netcom.ninja.tools.Step4CreateServiceAndDatasetClassesFromDatabase All 27.0.0.0 | tee log-Step4.log
+. . .
+Generating classes for service (121): csLsNpTrx. Conversational = false. Fields shared with csApiBan = false... 455 ms.
+Generating classes for service (122): cvSideEffect. Conversational = false. Fields shared with csApiBan = false... 137 ms.
+Generating classes for service (123): cvSvBan. Conversational = false. Fields shared with csApiBan = false... 401 ms.
+Generating classes for service (124): csVldImeiIU. Conversational = false. Fields shared with csApiBan = false... 99 ms.
+Generating classes for service (125): arGtOcInfo. Conversational = false. Fields shared with csApiBan = false... 119 ms.
+Generating classes for service (126): arInCstBan. Conversational = false. Fields shared with csApiBan = false... 1149 ms.
+Generating classes for service (127): csSrchInvNo. Conversational = false. Fields shared with csApiBan = false... 181 ms.
+Generating classes for service (128): csSrchAgrNo. Conversational = false. Fields shared with csApiBan = false... 160 ms.
+Generating classes for service (129): csSrchCug. Conversational = false. Fields shared with csApiBan = false... 204 ms.
+Generating classes for service (130): csLsCtnEsn. Conversational = false. Fields shared with csApiBan = false... 249 ms.
+Generating classes for service (131): clManInt. Conversational = false. Fields shared with csApiBan = false... 467 ms.
+Generating classes for service (132): gnNodeAct. Conversational = false. Fields shared with csApiBan = false... 113 ms.
+Generating classes for service (133): gnChgDisc. Conversational = false. Fields shared with csApiBan = false... 181 ms.
+Generating classes for service (134): mmGtMemo. Conversational = false. Fields shared with csApiBan = false... 200 ms.
+Generating classes for service (135): arPymActLs. Conversational = false. Fields shared with csApiBan = false... 143 ms.
+Generating classes for service (136): gnChgUtc. Conversational = false. Fields shared with csApiBan = false... 116 ms.
+Generating classes for service (137): mmOpenFu. Conversational = false. Fields shared with csApiBan = false... 175 ms.
+Generating classes for service (138): pnmImAoage. Conversational = false. Fields shared with csApiBan = false... 99 ms.
+Generating classes for service (139): pnmRsvRlsCtn. Conversational = false. Fields shared with csApiBan = false... 135 ms.
+Generating classes for service (140): csLsFandF. Conversational = false. Fields shared with csApiBan = false... 140 ms.
+Generating classes for service (141): csGtSimNr. Conversational = false. Fields shared with csApiBan = false... 226 ms.
+Generating classes for service (142): arSvBanSvc. Conversational = false. Fields shared with csApiBan = false... 464 ms.
+Generating classes for service (143): csSrchSrlNo. Conversational = false. Fields shared with csApiBan = false... 179 ms.
+Generating classes for service (144): arSvBilPrm. Conversational = false. Fields shared with csApiBan = false... 644 ms.
+Generating classes for service (145): csSrchOdBan. Conversational = false. Fields shared with csApiBan = false... 204 ms.
+Generating classes for service (146): csSrchSplTel. Conversational = false. Fields shared with csApiBan = false... 183 ms.
+Generating classes for service (147): arGtBan. Conversational = false. Fields shared with csApiBan = false... 420 ms.
+Total execution time (ms): 41150
+~ 41 sec (VPN)
+#~6 sec (in the office, not over VPN)
+
+If there had been any new classes, I would have had to add them manually; like this (for Fokus 23.1):
+
+BEGIN>>
+
+Since we want to generate classes for three never-before used tuxedo-services, arMultCrd, blGtBillDet & blGtBilledChg, I had to manually update the TUX_SERVICES_VERSIONS table...:
+
+update tux_services_versions a
+   set a.in_use = 'Y', a.comments = 'IN_USE=Y set by HGU at ' || TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+ where a.svc_name in ('blLsBillList', 'blGtBillDet', 'blGtBilledChg', 'arMultCrd')
+   and a.in_use is null
+   and a.ninja_version = '23.1.0.0'
+;
+
+** Update 2015-06-24 - We also need the service 'blLsSubSum'. thus...:
+
+update tux_services_versions a
+   set a.in_use = 'Y', a.comments = 'IN_USE=Y set by HGU at ' || TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+ where a.svc_name in ('blLsSubSum')
+   and a.in_use is null
+   and a.ninja_version = '23.1.0.0'
+;
+
+...then I re-ran the Step4 java tool (note the two versions passed as argument):
+
+$ java -classpath /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/common/target/ninja-common-26.0-SNAPSHOT.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/common/dist/common.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/ninja-core-26.0-SNAPSHOT.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/joltwls-10.0.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/xilclient-2.40build025.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/joltjse-10.0.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/ninja-common-26.0-SNAPSHOT.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/xilext-2.40build021.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/ojdbc7-12.1.0.2.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/jolt-10.0.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/log4j-1.2.13.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/xil-2.40build025.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/tools/target/ninja-tools-26.0-SNAPSHOT.jar  no.netcom.ninja.tools.Step4CreateServiceAndDatasetClassesFromDatabase All 23.1.0.0 23.0.0.0
+...
+Generating classes for service (121): gnGtAdNmLnk. Conversational = false. Fields shared with csApiBan = false... 278 ms.
+ Generating classes for service (122): gnGtAdrItm. Conversational = false. Fields shared with csApiBan = false... 137 ms.
+ Generating classes for service (123): gnGtLgclDt. Conversational = false. Fields shared with csApiBan = false... 72 ms.
+ Generating classes for service (124): gnGtTree. Conversational = false. Fields shared with csApiBan = false... 205 ms.
+ Generating classes for service (125): gnGtTreeBasic. Conversational = false. Fields shared with csApiBan = false... 174 ms.
+ Generating classes for service (126): gnGtUtcDsc. Conversational = false. Fields shared with csApiBan = false... 181 ms.
+ Generating classes for service (127): gnLsFtrTrx. Conversational = false. Fields shared with csApiBan = false... 162 ms.
+ Generating classes for service (128): gnLsLnkBans. Conversational = false. Fields shared with csApiBan = false... 109 ms.
+ Generating classes for service (129): gnLsLnkSubs. Conversational = false. Fields shared with csApiBan = false... 138 ms.
+ Generating classes for service (130): gnLsUsrPrm. Conversational = false. Fields shared with csApiBan = false... 107 ms.
+ Generating classes for service (131): gnLsUtcDsc. Conversational = false. Fields shared with csApiBan = false... 133 ms.
+ Generating classes for service (132): gnNodeAct. Conversational = false. Fields shared with csApiBan = false... 112 ms.
+ Generating classes for service (133): gnUpLnkEnt. Conversational = false. Fields shared with csApiBan = false... 562 ms.
+ Generating classes for service (134): gnUpNmAdr. Conversational = false. Fields shared with csApiBan = false... 547 ms.
+ Generating classes for service (135): icAdjustIn. Conversational = false. Fields shared with csApiBan = false... 87 ms.
+ Generating classes for service (136): icObsSIM. Conversational = false. Fields shared with csApiBan = false... 97 ms.
+ Generating classes for service (137): mmClosFu. Conversational = false. Fields shared with csApiBan = false... 114 ms.
+ Generating classes for service (138): mmGtMemo. Conversational = false. Fields shared with csApiBan = false... 174 ms.
+ Generating classes for service (139): mmInMemo. Conversational = false. Fields shared with csApiBan = false... 182 ms.
+ Generating classes for service (140): mmLsBanFu. Conversational = false. Fields shared with csApiBan = false... 174 ms.
+ Generating classes for service (141): mmMemoLs. Conversational = false. Fields shared with csApiBan = false... 130 ms.
+ Generating classes for service (142): mmOpenFu. Conversational = false. Fields shared with csApiBan = false... 184 ms.
+ Generating classes for service (143): mmUpMemo. Conversational = false. Fields shared with csApiBan = false... 132 ms.
+ Generating classes for service (144): pnmImAoage. Conversational = false. Fields shared with csApiBan = false... 96 ms.
+ Generating classes for service (145): pnmImLoad. Conversational = false. Fields shared with csApiBan = false... 90 ms.
+ Generating classes for service (146): pnmImUpd. Conversational = false. Fields shared with csApiBan = false... 106 ms.
+ Generating classes for service (147): pnmRsvRlsCtn. Conversational = false. Fields shared with csApiBan = false... 130 ms.
+Total execution time (ms): 38543
+
+(Note the time difference - VPN: 38.543 ms, Wired: 31.353 ms)
+
+<< END

@@ -1,0 +1,6 @@
+long	GENERATION	1	-	
+string	ROWID	1	19	
+string	PABX_ID	1	13	
+string	PABX_DESC	1	21	
+string	LEADING_NUMBER	1	21	
+string	SIP_MAIN	1	21	

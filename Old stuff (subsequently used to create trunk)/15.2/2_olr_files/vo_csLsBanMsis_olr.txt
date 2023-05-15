@@ -1,0 +1,5 @@
+long	GENERATION	1	-	
+short	MOREROWS	1	-	
+long	ROWCOUNT	1	-	
+string	SUBBUFF	50	21	
+string	SIMBUFF	50	21	

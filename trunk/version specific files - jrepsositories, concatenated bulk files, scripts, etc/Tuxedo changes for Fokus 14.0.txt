@@ -1,0 +1,13 @@
+
+Fokus 14
+--------
+
+clGtColHist: there's a new field, COLL_FEE_IND, at the end (seq 43) of the OUT buffer
+
+(The following only affects services that are NOT "in use" by Ninja:
+34 fields have had a definition change. The "max occurances" has changed in many, and the field size has changed in several too. These changes are mostly for clManActv and csRsvMlCtn, plus 1 each for csLsDvcTrx and csLsSrvTrx. See query 6 in the sql file.
+)
+
+
+*** Did I commit the changes to the defaults? ***
+

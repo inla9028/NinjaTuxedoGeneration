@@ -1,0 +1,426 @@
+-------
+ Step0
+-------
+
+$ svn status
+?       0_Notes_HGU_2022-01-18.txt
+M       1_v_files/par_adj_c32_v.v
+M       1_v_files/par_charge_c32_v.v
+M       1_v_files/pbl_bil_c32_v.v
+M       1_v_files/pbl_usage_c32_v.v
+M       1_v_files/pcl_coll_c32_v.v
+M       1_v_files/pcs_ctnact_c32_v.v
+M       1_v_files/pcs_npctrl_c32_v.v
+M       1_v_files/pcs_pp_c32_v.v
+M       1_v_files/pgn_hbilling_c32_v.v
+M       1_v_files/pgn_serv_c32_v.v
+M       1_v_files/pgn_utils_c32_v.v
+M       1_v_files/psec_secur_c32_v.v
+$
+
+-------
+ Step1
+-------
+$ java -classpath /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/tools/target/ninja-tools-34.6-SNAPSHOT.jar no.netcom.ninja.tools.Step1CreateOLRFiles | tee log-Step1.log
+. . .
+Processing file 51 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/1_v_files/pcs_ctn_c32_v.v
+Processing file 52 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/1_v_files/par_disc_c32_v.v
+Finished processing files
+
+
+-------
+ Step2
+-------
+$ java -classpath /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/tools/target/ninja-tools-34.6-SNAPSHOT.jar no.netcom.ninja.tools.Step2CreateBulkloaderFiles | tee log-Step2.log
+. . .
+Processing file 1120 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vo_blGtIToKp_olr.txt
+Processing file 1121 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vi_cvRollback_olr.txt
+Processing file 1122 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vo_cvRollback_olr.txt
+Processing file 1123 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vi_gnGtLgclDt_olr.txt
+Processing file 1124 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vo_gnGtLgclDt_olr.txt
+Processing file 1125 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vi_csCrNpInfo_olr.txt
+Processing file 1126 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vo_csCrNpInfo_olr.txt
+Processing file 1127 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vi_gnGtWsn_olr.txt
+Processing file 1128 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vo_gnGtWsn_olr.txt
+Finished processing files
+
+-------
+ Step3
+-------
+Script: Tuxedo - 1 - check status of tables and clear workspace
+* truncate table TUX_FML_BUFFERS_new;
+
+$ java -classpath /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/common/target/ninja-common-34.6-SNAPSHOT.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/common/dist/common.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/ninja-core-34.6-SNAPSHOT.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/joltwls-10.0.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/xilclient-2.40build025.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/joltjse-10.0.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/ninja-common-34.6-SNAPSHOT.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/xilext-2.40build021.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/ojdbc7-12.1.0.2.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/jolt-10.0.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/log4j-1.2.13.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/xil-2.40build025.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/tools/target/ninja-tools-34.6-SNAPSHOT.jar  no.netcom.ninja.tools.Step3LoadDatabaseFromViewFiles | tee log-Step3.log
+. . .
+Starting File 52 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/1_v_files/par_disc_c32_v.v
+Loading service 560: arLsFeeWa, IN buffer
+Loading service 560: arLsFeeWa, OUT buffer
+Loading service 561: arUpFeeWa, IN buffer
+Loading service 561: arUpFeeWa, OUT buffer
+Loading service 562: arLsDisc, IN buffer
+Loading service 562: arLsDisc, OUT buffer
+Loading service 563: arSvDisc, IN buffer
+Loading service 563: arSvDisc, OUT buffer
+Loading service 564: arGtFeeWa, IN buffer
+Loading service 564: arGtFeeWa, OUT buffer
+Total execution time: 793024 ms
+~13 min 13 sec (via VPN and WiFi at home)
+#~5 min 3 sec (in the office, via Wifi and VPN)
+
+Output of SQL in script 1
+-------------------------
+----------- ------------------- ----------
+CONTENT_TYP NINJA_VERSION         COUNT(*)
+----------- ------------------- ----------
+fields      30.0.0.0                 41799
+fields      31.0.0.0                 41829
+fields      31.0.1.0                 41832
+fields      31.5.0.0                 41899
+fields      31.5.1.0                 41943
+fields      33.0.0.0                 42790
+fields      33.0.0.0.drop1           42056
+fields      33.0.0.0.drop2           42042
+fields      33.0.0.0.drop3           42722
+fields      33.0.0.0.prod            42764
+fields      33.0.7.0                 42798
+fields      34.0.0.0                 42868
+fields      34.0.0.0.drop1           42801
+fields      34.5.0.0                 42912
+fields      34.6.0.0                 43429
+fields a)   tux_fml_buffers_new      43429
+services    30.0.0.0                   538
+services    31.0.0.0                   538
+services    31.0.1.0                   538
+services    31.5.0.0                   539
+services    31.5.1.0                   539
+services    33.0.0.0                   560
+services    33.0.0.0.drop1             541
+services    33.0.0.0.drop2             541
+services    33.0.0.0.drop3             559
+services    33.0.0.0.prod              560
+services    33.0.7.0                   560
+services    34.0.0.0                   561
+services    34.0.0.0.drop1             560
+services    34.5.0.0                   561
+services    34.6.0.0                   563
+services a) tux_services_new           563
+----------- ------------------- ----------
+
+
+SQL Scripts 2 & 3
+-----------------
+Run Script 2: Tuxedo - 2 - update default values.sql
+Run Script 3: Tuxedo - 3 - update conversational mapping values.sql
+
+SQL Script 4: Changed Services
+------------------------------
+** Note! Change the current prod-version in the script first, otherwise you need to re-do all previous steps!
+Run Script 4: Tuxedo - 4 - determine service changes and do copies.sql
+HGU: Copy/Paste into a text-file, then:
+$ cat tmp.txt | awk '{printf("%-30s %-7s %-15s %-37s\n", $1,$2,$3,$4);}'
+
+SQL Script 4: 1. Any existing services changed? (Does counts, and matches fields by sequence)
+-----------------------------------------------------------------------------------------
+SVC_NAME                       In Use In Amdocs doc? Comment
+------------------------------ ------ -------------- ------------------------------------
+arAdjBan	Y
+arAdjCalls
+arAdjCrg	Y
+arAdjHisLs
+arCrCrg	Y
+arGtFinAmt
+arHndlSocCrg	Y
+arMultCrd	Y
+arMultCrdRvrs
+blBlBanTax
+blBlChgTax
+blBlCtnTax
+blGetFMSum	Y
+blGtCrDbNote
+blGtLtStlLoan
+blLsUBChg	Y
+blRvrsLoanStl
+clGtColPath	Y
+csCrNpCncl
+csCrNpTrx	Y
+csGtNpITrx
+csLsNpTrx	Y
+csLsOpSocs
+csLsPpSocs
+csLsPrSocs
+csLsSocs
+csRsvMlCtn	Y
+csUpNpITrx
+gnGbSelfUtc
+gnHandleNum
+gnSvUsrAct
+gnUpSelfUtc
+------------------------------ ------ -------------- ------------------------------------
+
+
+SQL Script 4: 4. Any new fields (on existing services)? On which datasets?
+--------------------------------------------------------------------------
+------------------------------ ------ --- ------------------------------ ---------- ---------- ---------- -------------------
+SVC_NAME                       IN_USE BUF FIELD_NAME                      FIELD_SEQ FIELD_TYPE FIELD_SIZE FIELD_MAX_OCCURENCE
+------------------------------ ------ --- ------------------------------ ---------- ---------- ---------- -------------------
+arAdjBan                            Y IN  DISCOUNT_PCT_L                         66 LONG                                    1
+arAdjBan                            Y OUT DISCOUNT_PCT_L                         43 LONG                                    1
+arAdjCalls                            IN  DISCOUNT_PCT_L                         67 LONG                                   70
+arAdjCrg                            Y IN  DISCOUNT_PCT_L                         67 LONG                                   70
+arAdjHisLs                            OUT ADJ_CATEGORY_S                         24 STRING              3                  50
+arCrCrg                             Y IN  VAT_PERCENT_RATE_L                     97 LONG                                    1
+arCrCrg                             Y IN  DISCOUNT_PCT_L                        102 LONG                                    1
+arCrCrg                             Y IN  PERCENTAGE_RATE_L                     141 LONG                                    1
+arCrCrg                             Y OUT VAT_PERCENT_RATE_L                     66 LONG                                    1
+arCrCrg                             Y OUT DISCOUNT_PCT_L                         71 LONG                                    1
+arCrCrg                             Y OUT PERCENTAGE_RATE_L                     110 LONG                                    1
+arGtFinAmt                            IN  VAT_PERCENT_RATE_L                     68 LONG                                  100
+arGtFinAmt                            IN  DISCOUNT_PCT_L                         73 LONG                                  100
+arGtFinAmt                            IN  PERCENTAGE_RATE_L                     112 LONG                                  100
+arGtFinAmt                            IN  PARCRGARRAYDISCOUNT_PCT_L             148 LONG                                   70
+arGtFinAmt                            OUT VAT_PERCENT_RATE_L                     66 LONG                                    1
+arGtFinAmt                            OUT DISCOUNT_PCT_L                         71 LONG                                    1
+arGtFinAmt                            OUT PERCENTAGE_RATE_L                     110 LONG                                    1
+arHndlSocCrg                        Y IN  REQUEST_STATUS_C                       33 CHAR                                    1
+arMultCrd                           Y IN  VAT_PERCENT_RATE_L                     67 LONG                                  100
+arMultCrd                           Y IN  DISCOUNT_PCT_L                         72 LONG                                  100
+arMultCrd                           Y IN  PERCENTAGE_RATE_L                     111 LONG                                  100
+arMultCrdRvrs                         IN  VAT_PERCENT_RATE_L                     67 LONG                                  100
+arMultCrdRvrs                         IN  DISCOUNT_PCT_L                         72 LONG                                  100
+arMultCrdRvrs                         IN  PERCENTAGE_RATE_L                     111 LONG                                  100
+blBlBanTax                            OUT TAX_PERCENT_RATE_L                     13 LONG                                  600
+blBlChgTax                            OUT TAX_PERCENT_RATE_L                      5 LONG                                    1
+blBlCtnTax                            OUT TAX_PERCENT_RATE_L                     13 LONG                                  600
+blGetFMSum                          Y OUT FM_TYPE_S                               6 STRING              4                 600
+blGtCrDbNote                          OUT VAT_PERCENT_RATE_L                     55 LONG                                  600
+blGtCrDbNote                          OUT DISCOUNT_PCT_L                         60 LONG                                  600
+blGtCrDbNote                          OUT PERCENTAGE_RATE_L                      99 LONG                                  600
+blGtLtStlLoan                         OUT VAT_PERCENT_RATE_L                    128 LONG                                    1
+blGtLtStlLoan                         OUT DISCOUNT_PCT_L                        133 LONG                                    1
+blGtLtStlLoan                         OUT PERCENTAGE_RATE_L                     172 LONG                                    1
+blLsUBChg                           Y OUT DISCOUNT_PCT_L                         42 LONG                                  600
+blLsUBChg                           Y OUT BLADJDISCOUNT_PCT_L                   103 LONG                                  500
+blRvrsLoanStl                         IN  VAT_PERCENT_RATE_L                    128 LONG                                    1
+blRvrsLoanStl                         IN  DISCOUNT_PCT_L                        133 LONG                                    1
+blRvrsLoanStl                         IN  PERCENTAGE_RATE_L                     172 LONG                                    1
+clGtColPath                         Y OUT CRD_LMT_FROM_PCT_L                     38 LONG                                  100
+clGtColPath                         Y OUT CRD_LMT_TO_PCT_L                       39 LONG                                  100
+csCrNpCncl                            IN  TRX_CODE_S                             18 STRING              4                   1
+csCrNpTrx                           Y IN  TRX_CODE_S                             18 STRING              4                   1
+csGtNpITrx                            OUT STATUS_S                                2 STRING             11                   1
+csGtNpITrx                            OUT CUSTOMERID_S                            9 STRING             61                   1
+csLsNpTrx                           Y OUT TRX_CODE_S                              3 STRING              4                   1
+csLsOpSocs                            OUT ET_MAX_PEN_RATE_L                      22 LONG                                  101
+csLsOpSocs                            OUT ET_MIN_PEN_RATE_L                      23 LONG                                  101
+csLsPpSocs                            OUT ET_MAX_PEN_RATE_L                      22 LONG                                  101
+csLsPpSocs                            OUT ET_MIN_PEN_RATE_L                      23 LONG                                  101
+csLsPrSocs                            OUT ET_MAX_PEN_RATE_L                      22 LONG                                  101
+csLsPrSocs                            OUT ET_MIN_PEN_RATE_L                      23 LONG                                  101
+csLsSocs                              OUT ET_MAX_PEN_RATE_L                      22 LONG                                  101
+csLsSocs                              OUT ET_MIN_PEN_RATE_L                      23 LONG                                  101
+csRsvMlCtn                          Y IN  CUSTOMER_ID_S                          50 STRING             61                 500
+csUpNpITrx                            IN  STATUS_S                               17 STRING             11                   1
+csUpNpITrx                            IN  CUSTOMERID_S                           24 STRING             61                   1
+gnGbSelfUtc                           OUT PERCENT_L                              24 LONG                                  500
+gnHandleNum                           IN  TRX_CODE_S                             17 STRING              4                   1
+gnSvUsrAct                            IN  TRX_DURATION_L                         26 LONG                                  500
+gnSvUsrAct                            IN  TOTAL_SVC_TIME_L                       30 LONG                                  500
+gnSvUsrAct                            IN  SVC_1_DURATION_L                       34 LONG                                  500
+gnSvUsrAct                            IN  SVC_2_DURATION_L                       38 LONG                                  500
+gnSvUsrAct                            IN  SVC_3_DURATION_L                       42 LONG                                  500
+gnSvUsrAct                            IN  SVC_4_DURATION_L                       46 LONG                                  500
+gnSvUsrAct                            IN  SVC_5_DURATION_L                       50 LONG                                  500
+gnUpSelfUtc                           IN  PERCENT_L                              39 LONG                                  500
+------------------------------ ------ --- ------------------------------ ---------- ---------- ---------- -------------------
+
+
+SQL Script 4: Any fields removed?
+------------------------
+N/A
+
+SQL Script 4: Changes to fields definitions (type, sizes, etc)
+------------------------
+SVC_NAME                    BUFFER_TYPE                 FIELD_NAME                  FIELD_TYPE                  OLD_FIELD_TYPE              FIELD_SIZE                  OLD_FIELD_SIZE              FIELD_MAX_OCCURENCE         OLD_FIELD_MAX_OCCURENCE     FIELD_DEF_VALUE             OLD_FIELD_DEF_VALUE
+N/A
+
+
+SQL Script 5: Store the data as new version
+-------------------------------------------
+** Note! Change the future prod-version in the script first...
+Run Script 5: Tuxedo - 5 - copies and versioning.sql
+
+
+-----------------
+ Prior to Step 4:
+-----------------
+Are there any new tuxedo-services we should generate Ninja support for? If yes, then run a similar SQL update for the services in question:
+
+UPDATE tux_services_versions a
+   SET a.in_use = 'Y', a.comments = a.comments || '; IN_USE=Y set by HGU at ' || TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+ WHERE a.svc_name IN ( 'csLsAvlRngs' )
+   AND a.in_use IS NULL
+   AND A.ninja_version = '33.0.7.0'
+;
+
+-------
+ Step4
+-------
+#
+# Note; remember to use the correct new Fokus version as argument; in Atom it's most often off-screen... -->
+#
+$ java -classpath /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/common/target/ninja-common-34.6-SNAPSHOT.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/common/dist/common.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/ninja-core-34.6-SNAPSHOT.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/joltwls-10.0.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/xilclient-2.40build025.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/joltjse-10.0.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/ninja-common-34.6-SNAPSHOT.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/xilext-2.40build021.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/ojdbc7-12.1.0.2.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/jolt-10.0.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/log4j-1.2.13.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/xil-2.40build025.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/tools/target/ninja-tools-34.6-SNAPSHOT.jar  no.netcom.ninja.tools.Step4CreateServiceAndDatasetClassesFromDatabase All 35.0.0.0 | tee log-Step4.log
+. . .
+ Generating classes for service (170): csLsOrdLines. Conversational = false. Fields shared with csApiBan = false... 149 ms.
+ Generating classes for service (171): arHndlSocCrg. Conversational = false. Fields shared with csApiBan = false... 219 ms.
+ Generating classes for service (172): csLsAvlRngs. Conversational = false. Fields shared with csApiBan = false... 187 ms.
+ Generating classes for service (173): arLsOrdPym. Conversational = false. Fields shared with csApiBan = false... 187 ms.
+ Generating classes for service (174): arCrOrdPym. Conversational = false. Fields shared with csApiBan = false... 161 ms.
+ Generating classes for service (175): csGtSubRank. Conversational = false. Fields shared with csApiBan = false... 187 ms.
+ Generating classes for service (176): csUpSubRank. Conversational = false. Fields shared with csApiBan = false... 227 ms.
+ Generating classes for service (177): csLsOrgDep. Conversational = false. Fields shared with csApiBan = false... 169 ms.
+ Generating classes for service (178): csSvOrgData. Conversational = false. Fields shared with csApiBan = false... 170 ms.
+ Generating classes for service (179): csChkSubSts. Conversational = false. Fields shared with csApiBan = false... 160 ms.
+ Generating classes for service (180): csSvOrgPabx. Conversational = false. Fields shared with csApiBan = false... 330 ms.
+ Generating classes for service (181): csLsOrgData. Conversational = false. Fields shared with csApiBan = false... 175 ms.
+ Generating classes for service (182): csGtLastOrgCd. Conversational = false. Fields shared with csApiBan = false... 97 ms.
+ Generating classes for service (183): csSvOrgDep. Conversational = false. Fields shared with csApiBan = false... 168 ms.
+ Generating classes for service (184): csGtSubPbxRng. Conversational = false. Fields shared with csApiBan = false... 142 ms.
+ Generating classes for service (185): csLsPabxByNl. Conversational = false. Fields shared with csApiBan = false... 141 ms.
+ Generating classes for service (186): csSvPabxRng. Conversational = false. Fields shared with csApiBan = false... 255 ms.
+ Generating classes for service (187): csSvPabxNl. Conversational = false. Fields shared with csApiBan = false... 159 ms.
+ Generating classes for service (188): csLsPabxRng. Conversational = false. Fields shared with csApiBan = false... 155 ms.
+ Generating classes for service (189): csLsDlrPabxNl. Conversational = false. Fields shared with csApiBan = false... 139 ms.
+ Generating classes for service (190): csLsPabxNoNl. Conversational = false. Fields shared with csApiBan = false... 139 ms.
+ Generating classes for service (191): csLsOrgPabx. Conversational = false. Fields shared with csApiBan = false... 201 ms.
+ Generating classes for service (192): csGtLastPbxId. Conversational = false. Fields shared with csApiBan = false... 113 ms.
+ Generating classes for service (193): csGtLeadNo. Conversational = false. Fields shared with csApiBan = false... 131 ms.
+ Generating classes for service (194): csLsPabxNl. Conversational = false. Fields shared with csApiBan = false... 158 ms.
+Total execution time (ms): 72223
+
+~ 1 min, 12 sec (VPN at home)
+#~6 sec (in the office, not over VPN)
+#~66 sec (in the office, via Wifi, over VPN)
+
+---------
+ Summary
+---------
+
+$ svn status
+?       0_Notes_HGU_2022-01-18.txt
+M       1_v_files/par_adj_c32_v.v
+M       1_v_files/par_charge_c32_v.v
+M       1_v_files/pbl_bil_c32_v.v
+M       1_v_files/pbl_usage_c32_v.v
+M       1_v_files/pcl_coll_c32_v.v
+M       1_v_files/pcs_ctnact_c32_v.v
+M       1_v_files/pcs_npctrl_c32_v.v
+M       1_v_files/pcs_pp_c32_v.v
+M       1_v_files/pgn_hbilling_c32_v.v
+M       1_v_files/pgn_serv_c32_v.v
+M       1_v_files/pgn_utils_c32_v.v
+M       1_v_files/psec_secur_c32_v.v
+M       2_olr_files/vi_arAdjBan_olr.txt
+M       2_olr_files/vi_arAdjCalls_olr.txt
+M       2_olr_files/vi_arAdjCrg_olr.txt
+M       2_olr_files/vi_arCrCrg_olr.txt
+M       2_olr_files/vi_arGtFinAmt_olr.txt
+M       2_olr_files/vi_arHndlSocCrg_olr.txt
+M       2_olr_files/vi_arMultCrdRvrs_olr.txt
+M       2_olr_files/vi_arMultCrd_olr.txt
+M       2_olr_files/vi_blRvrsLoanStl_olr.txt
+M       2_olr_files/vi_csCrNpCncl_olr.txt
+M       2_olr_files/vi_csCrNpTrx_olr.txt
+M       2_olr_files/vi_csRsvMlCtn_olr.txt
+M       2_olr_files/vi_csUpNpITrx_olr.txt
+?       2_olr_files/vi_gnGtEnvWsn_olr.txt
+M       2_olr_files/vi_gnHandleNum_olr.txt
+M       2_olr_files/vi_gnSvUsrAct_olr.txt
+M       2_olr_files/vi_gnUpSelfUtc_olr.txt
+M       2_olr_files/vo_arAdjBan_olr.txt
+M       2_olr_files/vo_arAdjHisLs_olr.txt
+M       2_olr_files/vo_arCrCrg_olr.txt
+M       2_olr_files/vo_arGtFinAmt_olr.txt
+M       2_olr_files/vo_blBlBanTax_olr.txt
+M       2_olr_files/vo_blBlChgTax_olr.txt
+M       2_olr_files/vo_blBlCtnTax_olr.txt
+M       2_olr_files/vo_blGetFMSum_olr.txt
+M       2_olr_files/vo_blGtCrDbNote_olr.txt
+M       2_olr_files/vo_blGtLtStlLoan_olr.txt
+M       2_olr_files/vo_blLsUBChg_olr.txt
+M       2_olr_files/vo_clGtColPath_olr.txt
+M       2_olr_files/vo_csGtNpITrx_olr.txt
+M       2_olr_files/vo_csLsNpTrx_olr.txt
+M       2_olr_files/vo_csLsOpSocs_olr.txt
+M       2_olr_files/vo_csLsPpSocs_olr.txt
+M       2_olr_files/vo_csLsPrSocs_olr.txt
+M       2_olr_files/vo_csLsSocs_olr.txt
+M       2_olr_files/vo_gnGbSelfUtc_olr.txt
+?       2_olr_files/vo_gnGtEnvWsn_olr.txt
+M       3_blk_files/arAdjBan00_blk.txt
+M       3_blk_files/arAdjCalls00_blk.txt
+M       3_blk_files/arAdjCrg00_blk.txt
+M       3_blk_files/arAdjHisLs00_blk.txt
+M       3_blk_files/arCrCrg00_blk.txt
+M       3_blk_files/arGtFinAmt00_blk.txt
+M       3_blk_files/arHndlSocCrg00_blk.txt
+M       3_blk_files/arMultCrd00_blk.txt
+M       3_blk_files/arMultCrdRvrs00_blk.txt
+M       3_blk_files/blBlBanTax00_blk.txt
+M       3_blk_files/blBlChgTax00_blk.txt
+M       3_blk_files/blBlCtnTax00_blk.txt
+M       3_blk_files/blGetFMSum00_blk.txt
+M       3_blk_files/blGtCrDbNote00_blk.txt
+M       3_blk_files/blGtLtStlLoan00_blk.txt
+M       3_blk_files/blLsUBChg00_blk.txt
+M       3_blk_files/blRvrsLoanStl00_blk.txt
+M       3_blk_files/clGtColPath00_blk.txt
+M       3_blk_files/csCrNpCncl00_blk.txt
+M       3_blk_files/csCrNpTrx00_blk.txt
+M       3_blk_files/csGtNpITrx00_blk.txt
+M       3_blk_files/csLsNpTrx00_blk.txt
+M       3_blk_files/csLsOpSocs00_blk.txt
+M       3_blk_files/csLsPpSocs00_blk.txt
+M       3_blk_files/csLsPrSocs00_blk.txt
+M       3_blk_files/csLsSocs00_blk.txt
+M       3_blk_files/csRsvMlCtn00_blk.txt
+M       3_blk_files/csUpNpITrx00_blk.txt
+M       3_blk_files/gnGbSelfUtc00_blk.txt
+?       3_blk_files/gnGtEnvWsn00_blk.txt
+M       3_blk_files/gnHandleNum00_blk.txt
+M       3_blk_files/gnSvUsrAct00_blk.txt
+M       3_blk_files/gnUpSelfUtc00_blk.txt
+M       5_dataset_classes/ArAdjBanInput.java
+M       5_dataset_classes/ArAdjBanOutput.java
+M       5_dataset_classes/ArAdjCrgInput.java
+M       5_dataset_classes/ArCrCrgInput.java
+M       5_dataset_classes/ArCrCrgOutput.java
+M       5_dataset_classes/ArHndlSocCrgInput.java
+M       5_dataset_classes/ArMultCrdInput.java
+M       5_dataset_classes/BlGetFMSumOutput.java
+M       5_dataset_classes/BlLsUBChgOutput.java
+M       5_dataset_classes/ClGtColPathOutput.java
+M       5_dataset_classes/CsCrNpTrxInput.java
+M       5_dataset_classes/CsLsNpTrxOutput.java
+M       5_dataset_classes/CsRsvMlCtnInput.java
+M       Tuxedo - 4 - determine service changes and do copies.sql
+M       log-Step2.log
+M       log-Step3.log
+M       log-Step4.log
+$
+
+$ bash ./doGenerateCopyCommands | tee doCopyToGerrit
+$ bash ./doGenerateCopyCommands | tee doCopyToGerrit | awk '{printf("%s %s %-50s %s\n", $1,$2,$3,$4);}'
+cp -p 5_dataset_classes/ArAdjBanInput.java               /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/ArAdjBanOutput.java              /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/ArAdjCrgInput.java               /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/ArCrCrgInput.java                /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/ArCrCrgOutput.java               /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/ArHndlSocCrgInput.java           /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/ArMultCrdInput.java              /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/BlGetFMSumOutput.java            /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/BlLsUBChgOutput.java             /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/ClGtColPathOutput.java           /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CsCrNpTrxInput.java              /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CsLsNpTrxOutput.java             /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CsRsvMlCtnInput.java             /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+$

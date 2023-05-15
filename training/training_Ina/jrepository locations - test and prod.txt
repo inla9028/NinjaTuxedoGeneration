@@ -1,0 +1,17 @@
+
+jrepository_15_0_0 copied to 
+<home>/rte_tlg/etc/config
+on the following machines/accounts:
+
+Prod:
+nprdoln1@212.45.180.161
+nprdoln2@212.45.180.162
+
+AT:
+ntcntuxa@212.45.180.172
+
+ST:
+ntcntuxs@212.45.180.172
+
+Env 2:
+ntcntux2@212.45.180.172

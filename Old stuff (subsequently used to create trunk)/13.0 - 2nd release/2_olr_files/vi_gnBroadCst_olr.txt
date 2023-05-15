@@ -1,0 +1,5 @@
+long	GENERATION	1	-	
+string	OPERATOR	1	21	
+string	APPLICATION	1	7	
+string	UNSOLMSG	1	3001	
+string	MSG_FROM	1	61	

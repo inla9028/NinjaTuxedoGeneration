@@ -1,0 +1,339 @@
+-------
+ Step1
+-------
+$ java -classpath /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/tools/target/ninja-tools-33.0-SNAPSHOT.jar no.netcom.ninja.tools.Step1CreateOLRFiles | tee log-Step1.log
+. . .
+Processing file 51 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/1_v_files/pcs_ctn_c32_v.v
+Processing file 52 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/1_v_files/par_disc_c32_v.v
+Finished processing files
+
+
+-------
+ Step2
+-------
+$ java -classpath /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/tools/target/ninja-tools-33.0-SNAPSHOT.jar no.netcom.ninja.tools.Step2CreateBulkloaderFiles | tee log-Step2.log
+. . .
+Processing file 1115 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vi_gnGtLgclDt_olr.txt
+Processing file 1116 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vo_gnGtLgclDt_olr.txt
+Processing file 1117 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vi_csCrNpInfo_olr.txt
+Processing file 1118 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vo_csCrNpInfo_olr.txt
+Processing file 1119 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vi_gnGtWsn_olr.txt
+Processing file 1120 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vo_gnGtWsn_olr.txt
+Finished processing files
+
+-------
+ Step3
+-------
+Script: Tuxedo - 1 - check status of tables and clear workspace
+* truncate table TUX_FML_BUFFERS_new;
+
+$ java -classpath /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/common/target/ninja-common-33.0-SNAPSHOT.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/common/dist/common.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/ninja-core-33.0-SNAPSHOT.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/joltwls-10.0.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/xilclient-2.40build025.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/joltjse-10.0.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/ninja-common-33.0-SNAPSHOT.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/xilext-2.40build021.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/ojdbc7-12.1.0.2.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/jolt-10.0.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/log4j-1.2.13.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/xil-2.40build025.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/tools/target/ninja-tools-33.0-SNAPSHOT.jar  no.netcom.ninja.tools.Step3LoadDatabaseFromViewFiles | tee log-Step3.log
+. . .
+Loading service 555: csSvMBL, OUT buffer
+Starting File 52 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/1_v_files/par_disc_c32_v.v
+Loading service 556: arLsFeeWa, IN buffer
+Loading service 556: arLsFeeWa, OUT buffer
+Loading service 557: arUpFeeWa, IN buffer
+Loading service 557: arUpFeeWa, OUT buffer
+Loading service 558: arLsDisc, IN buffer
+Loading service 558: arLsDisc, OUT buffer
+Loading service 559: arSvDisc, IN buffer
+Loading service 559: arSvDisc, OUT buffer
+Loading service 560: arGtFeeWa, IN buffer
+Loading service 560: arGtFeeWa, OUT buffer
+Total execution time: 713736 ms
+~11 min 53 sec (via VPN)
+#~5 min 3 sec (in the office, via Wifi and VPN)
+
+Output of SQL in script 1
+-------------------------
+----------- ------------------- ----------
+CONTENT_TYP NINJA_VERSION         COUNT(*)
+----------- ------------------- ----------
+fields      29.0.0.0                 41799
+fields      30.0.0.0                 41799
+fields      31.0.0.0                 41829
+fields      31.0.1.0                 41832
+fields      31.5.0.0                 41899
+fields      31.5.1.0                 41943
+fields      33.0.0.0                 42042
+fields      33.0.0.0.drop1           42056
+fields	    33.0.0.0.drop2           42042
+fields a)   tux_fml_buffers_new      42722
+services    29.0.0.0                   538
+services    30.0.0.0                   538
+services    31.0.0.0                   538
+services    31.0.1.0                   538
+services    31.5.0.0                   539
+services    31.5.1.0                   539
+services    33.0.0.0                   541
+services    33.0.0.0.drop1             541
+services    33.0.0.0.drop2             541
+services a) tux_services_new           559
+----------- ------------------- ----------
+
+
+SQL Scripts 2 & 3
+-----------------
+Run Script 2: Tuxedo - 2 - update default values.sql
+Run Script 3: Tuxedo - 3 - update conversational mapping values.sql
+
+SQL Script 4: Changed Services
+------------------------------
+** Note! Change the current prod-version in the script first, otherwise you need to re-do all previous steps!
+Run Script 4: Tuxedo - 4 - determine service changes and do copies.sql
+
+SQL Script 4: 1. Any existing services changed? (Does counts, and matches fields by sequence)
+---------------------------------------------------------------------------------------------
+SVC_NAME                       I In Amdocs doc? Comment
+------------------------------ - -------------- ------------------------------------
+N/A
+------------------------------ - -------------- ------------------------------------
+
+
+SQL Script 4: 4. Any new fields (on existing services)? On which datasets?
+--------------------------------------------------------------------------
+-------------  ------  -----------  --------------  ---------  ----------  ----------  -------------------
+SVC_NAME       IN_USE  BUFFER_TYPE  FIELD_NAME      FIELD_SEQ  FIELD_TYPE  FIELD_SIZE  FIELD_MAX_OCCURENCE
+-------------  ------  -----------  --------------  ---------  ----------  ----------  -------------------
+N/A
+-------------  ------  -----------  --------------  ---------  ----------  ----------  -------------------
+
+
+SQL Script 4: Any fields removed?
+------------------------
+N/A
+
+SQL Script 4: Changes to fields definitions (type, sizes, etc)
+------------------------
+SVC_NAME                    BUFFER_TYPE                 FIELD_NAME                  FIELD_TYPE                  OLD_FIELD_TYPE              FIELD_SIZE                  OLD_FIELD_SIZE              FIELD_MAX_OCCURENCE         OLD_FIELD_MAX_OCCURENCE     FIELD_DEF_VALUE             OLD_FIELD_DEF_VALUE
+N/A
+
+
+SQL Script 5: Store the data as new version
+-------------------------------------------
+** Note! Change the future prod-version in the script first...
+Run Script 5: Tuxedo - 5 - copies and versioning.sql
+
+
+-----------------
+ Prior to Step 4:
+-----------------
+Are there any new tuxedo-services we should generate Ninja support for? If yes, then run a similar SQL update for the services in question:
+
+UPDATE tux_services_versions a
+   SET a.in_use = 'Y', a.comments = a.comments || '; IN_USE=Y set by HGU at ' || TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+ WHERE a.svc_name IN ( 'csLsAvlRngs' )
+   AND a.in_use IS NULL
+   AND A.ninja_version = '33.0.0.0'
+;
+
+-------
+ Step4
+-------
+#
+# Note; remember to use the correct new Fokus version as argument; in Atom it's most often off-screen... -->
+#
+$ java -classpath /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/common/target/ninja-common-33.0-SNAPSHOT.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/common/dist/common.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/ninja-core-33.0-SNAPSHOT.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/joltwls-10.0.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/xilclient-2.40build025.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/joltjse-10.0.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/ninja-common-33.0-SNAPSHOT.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/xilext-2.40build021.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/ojdbc7-12.1.0.2.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/jolt-10.0.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/log4j-1.2.13.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/xil-2.40build025.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/tools/target/ninja-tools-33.0-SNAPSHOT.jar  no.netcom.ninja.tools.Step4CreateServiceAndDatasetClassesFromDatabase All 33.0.0.0 | tee log-Step4.log
+. . .
+ Generating classes for service (160): csSvOrgDep. Conversational = false. Fields shared with csApiBan = false... 148 ms.
+ Generating classes for service (161): csGtSubPbxRng. Conversational = false. Fields shared with csApiBan = false... 122 ms.
+ Generating classes for service (162): csLsPabxByNl. Conversational = false. Fields shared with csApiBan = false... 125 ms.
+ Generating classes for service (163): csSvPabxRng. Conversational = false. Fields shared with csApiBan = false... 250 ms.
+ Generating classes for service (164): csSvPabxNl. Conversational = false. Fields shared with csApiBan = false... 146 ms.
+ Generating classes for service (165): csLsPabxRng. Conversational = false. Fields shared with csApiBan = false... 145 ms.
+ Generating classes for service (166): csLsDlrPabxNl. Conversational = false. Fields shared with csApiBan = false... 129 ms.
+ Generating classes for service (167): csLsPabxNoNl. Conversational = false. Fields shared with csApiBan = false... 116 ms.
+ Generating classes for service (168): csLsOrgPabx. Conversational = false. Fields shared with csApiBan = false... 176 ms.
+ Generating classes for service (169): csGtLastPbxId. Conversational = false. Fields shared with csApiBan = false... 91 ms.
+ Generating classes for service (170): csGtLeadNo. Conversational = false. Fields shared with csApiBan = false... 121 ms.
+ Generating classes for service (171): csLsPabxNl. Conversational = false. Fields shared with csApiBan = false... 151 ms.
+ Generating classes for service (172): gnGetNl. Conversational = false. Fields shared with csApiBan = false... 142 ms.
+ Generating classes for service (173): csGtWrkDate. Conversational = false. Fields shared with csApiBan = false... 118 ms.
+ Generating classes for service (174): csChkMulti. Conversational = false. Fields shared with csApiBan = false... 181 ms.
+ Generating classes for service (175): arLsDisc. Conversational = false. Fields shared with csApiBan = false... 164 ms.
+ Generating classes for service (176): blChngCyc. Conversational = false. Fields shared with csApiBan = false... 243 ms.
+ Generating classes for service (177): blGtCycPrd. Conversational = false. Fields shared with csApiBan = false... 144 ms.
+ Generating classes for service (178): gnGetTreeInfo. Conversational = false. Fields shared with csApiBan = false... 169 ms.
+ Generating classes for service (179): gnLsUtcDsc. Conversational = false. Fields shared with csApiBan = false... 177 ms.
+ Generating classes for service (180): csRsvMlCtn. Conversational = false. Fields shared with csApiBan = false... 1441 ms.
+ Generating classes for service (181): mmClosFu. Conversational = false. Fields shared with csApiBan = false... 149 ms.
+ Generating classes for service (182): blGetImUsage. Conversational = false. Fields shared with csApiBan = false... 154 ms.
+Total execution time (ms): 66916
+~ 67 sec (VPN at home)
+#~6 sec (in the office, not over VPN)
+#~66 sec (in the office, via Wifi, over VPN)
+
+---------
+ Summary
+---------
+
+$ svn status
+?      0_Notes_HGU_2020-11-02.txt
+M      log-Step1.log
+M      log-Step2.log
+M      log-Step3.log
+M      log-Step4.log
+?      2_olr_files/vo_csLsOrgPabx_olr.txt
+?      2_olr_files/vi_csSvPabxRng_olr.txt
+?      2_olr_files/vi_csGtLastPbxId_olr.txt
+?      2_olr_files/vi_csLsPabxRng_olr.txt
+?      2_olr_files/vi_csChkSubSts_olr.txt
+?      2_olr_files/vi_csSvOrgPabx_olr.txt
+?      2_olr_files/vo_csLsPabxNoNl_olr.txt
+?      2_olr_files/vi_csSvOrgDep_olr.txt
+?      2_olr_files/vo_csGtLastPbxId_olr.txt
+?      2_olr_files/vi_csLsPabxNoNl_olr.txt
+?      2_olr_files/vi_csLsOrgPabx_olr.txt
+?      2_olr_files/vi_csSvPabxNl_olr.txt
+?      2_olr_files/vo_csGtLeadNo_olr.txt
+?      2_olr_files/vi_csGtLeadNo_olr.txt
+?      2_olr_files/vo_csSvOrgData_olr.txt
+?      2_olr_files/vo_csLsOrgDep_olr.txt
+?      2_olr_files/vo_csLsPabxByNl_olr.txt
+?      2_olr_files/vo_csLsOrgData_olr.txt
+?      2_olr_files/vi_csGtLastOrgCd_olr.txt
+?      2_olr_files/vi_csLsPabxByNl_olr.txt
+?      2_olr_files/vi_csLsDlrPabxNl_olr.txt
+?      2_olr_files/vo_csLsPabxNl_olr.txt
+?      2_olr_files/vo_csGtLastOrgCd_olr.txt
+?      2_olr_files/vi_csSvOrgData_olr.txt
+?      2_olr_files/vo_csLsDlrPabxNl_olr.txt
+?      2_olr_files/vi_csLsOrgData_olr.txt
+?      2_olr_files/vi_csGtSubPbxRng_olr.txt
+?      2_olr_files/vi_csLsOrgDep_olr.txt
+?      2_olr_files/vo_csGtSubPbxRng_olr.txt
+?      2_olr_files/vi_csLsPabxNl_olr.txt
+?      2_olr_files/vo_csSvOrgDep_olr.txt
+?      2_olr_files/vo_csSvPabxRng_olr.txt
+?      2_olr_files/vo_csSvPabxNl_olr.txt
+?      2_olr_files/vo_csLsPabxRng_olr.txt
+?      2_olr_files/vo_csChkSubSts_olr.txt
+?      2_olr_files/vo_csSvOrgPabx_olr.txt
+?      4_service_classes/CsLsPabxNlService.java
+?      4_service_classes/CsLsDlrPabxNlService.java
+?      4_service_classes/CsSvOrgDepService.java
+?      4_service_classes/CsGtSubPbxRngService.java
+?      4_service_classes/CsChkSubStsService.java
+?      4_service_classes/CsSvPabxRngService.java
+?      4_service_classes/CsSvOrgPabxService.java
+?      4_service_classes/CsLsPabxByNlService.java
+?      4_service_classes/CsLsPabxNoNlService.java
+?      4_service_classes/CsGtLastPbxIdService.java
+?      4_service_classes/CsSvPabxNlService.java
+?      4_service_classes/CsGtLeadNoService.java
+?      4_service_classes/CsLsPabxRngService.java
+?      4_service_classes/CsLsOrgPabxService.java
+?      4_service_classes/CsLsOrgDepService.java
+?      4_service_classes/CsLsOrgDataService.java
+?      4_service_classes/CsGtLastOrgCdService.java
+?      5_dataset_classes/CsLsDlrPabxNlOutput.java
+?      5_dataset_classes/CsLsOrgPabxOutput.java
+?      5_dataset_classes/CsLsPabxNoNlInput.java
+?      5_dataset_classes/CsLsPabxNlInput.java
+?      5_dataset_classes/CsLsPabxNlOutput.java
+?      5_dataset_classes/CsLsOrgPabxInput.java
+?      5_dataset_classes/CsLsOrgDepOutput.java
+?      5_dataset_classes/CsLsOrgDataOutput.java
+?      5_dataset_classes/CsSvPabxNlOutput.java
+?      5_dataset_classes/CsGtLeadNoOutput.java
+?      5_dataset_classes/CsSvOrgPabxInput.java
+?      5_dataset_classes/CsSvPabxRngOutput.java
+?      5_dataset_classes/CsSvOrgDepOutput.java
+?      5_dataset_classes/CsChkSubStsOutput.java
+?      5_dataset_classes/CsLsOrgDataInput.java
+?      5_dataset_classes/CsGtSubPbxRngInput.java
+?      5_dataset_classes/CsGtLastOrgCdOutput.java
+?      5_dataset_classes/CsLsOrgDepInput.java
+?      5_dataset_classes/CsLsPabxRngOutput.java
+?      5_dataset_classes/CsGtSubPbxRngOutput.java
+?      5_dataset_classes/CsLsPabxByNlOutput.java
+?      5_dataset_classes/CsGtLastPbxIdInput.java
+?      5_dataset_classes/CsSvPabxNlInput.java
+?      5_dataset_classes/CsGtLeadNoInput.java
+?      5_dataset_classes/CsGtLastPbxIdOutput.java
+?      5_dataset_classes/CsLsPabxRngInput.java
+?      5_dataset_classes/CsSvOrgPabxOutput.java
+?      5_dataset_classes/CsSvPabxRngInput.java
+?      5_dataset_classes/CsGtLastOrgCdInput.java
+?      5_dataset_classes/CsLsPabxByNlInput.java
+?      5_dataset_classes/CsLsDlrPabxNlInput.java
+?      5_dataset_classes/CsSvOrgDepInput.java
+?      5_dataset_classes/CsChkSubStsInput.java
+?      5_dataset_classes/CsLsPabxNoNlOutput.java
+M      Tuxedo - 5 - copies and versioning.sql
+M      Tuxedo - 4.5 - backup previous RC.sql
+M      tlgntc.in
+?      3_blk_files/csLsPabxRng00_blk.txt
+?      3_blk_files/csGtLastOrgCd00_blk.txt
+?      3_blk_files/csLsPabxByNl00_blk.txt
+?      3_blk_files/csLsPabxNoNl00_blk.txt
+?      3_blk_files/csLsOrgPabx00_blk.txt
+?      3_blk_files/csLsOrgData00_blk.txt
+?      3_blk_files/csLsOrgDep00_blk.txt
+?      3_blk_files/csGtLastPbxId00_blk.txt
+?      3_blk_files/csGtLeadNo00_blk.txt
+?      3_blk_files/csSvPabxRng00_blk.txt
+?      3_blk_files/csLsDlrPabxNl00_blk.txt
+?      3_blk_files/csSvOrgDep00_blk.txt
+?      3_blk_files/csChkSubSts00_blk.txt
+?      3_blk_files/csLsPabxNl00_blk.txt
+?      3_blk_files/csSvOrgPabx00_blk.txt
+?      3_blk_files/csGtSubPbxRng00_blk.txt
+?      3_blk_files/csSvOrgData00_blk.txt
+?      3_blk_files/csSvPabxNl00_blk.txt
+$
+
+$ bash ./doGenerateCopyCommands | tee doCopyToGerrit
+cp -p 4_service_classes/CsLsPabxNlService.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/
+cp -p 4_service_classes/CsLsDlrPabxNlService.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/
+cp -p 4_service_classes/CsSvOrgDepService.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/
+cp -p 4_service_classes/CsGtSubPbxRngService.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/
+cp -p 4_service_classes/CsChkSubStsService.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/
+cp -p 4_service_classes/CsSvPabxRngService.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/
+cp -p 4_service_classes/CsSvOrgPabxService.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/
+cp -p 4_service_classes/CsLsPabxByNlService.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/
+cp -p 4_service_classes/CsLsPabxNoNlService.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/
+cp -p 4_service_classes/CsGtLastPbxIdService.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/
+cp -p 4_service_classes/CsSvPabxNlService.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/
+cp -p 4_service_classes/CsGtLeadNoService.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/
+cp -p 4_service_classes/CsLsPabxRngService.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/
+cp -p 4_service_classes/CsLsOrgPabxService.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/
+cp -p 4_service_classes/CsLsOrgDepService.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/
+cp -p 4_service_classes/CsLsOrgDataService.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/
+cp -p 4_service_classes/CsGtLastOrgCdService.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/
+cp -p 5_dataset_classes/CsLsDlrPabxNlOutput.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CsLsOrgPabxOutput.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CsLsPabxNoNlInput.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CsLsPabxNlInput.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CsLsPabxNlOutput.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CsLsOrgPabxInput.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CsLsOrgDepOutput.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CsLsOrgDataOutput.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CsSvPabxNlOutput.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CsGtLeadNoOutput.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CsSvOrgPabxInput.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CsSvPabxRngOutput.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CsSvOrgDepOutput.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CsChkSubStsOutput.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CsLsOrgDataInput.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CsGtSubPbxRngInput.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CsGtLastOrgCdOutput.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CsLsOrgDepInput.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CsLsPabxRngOutput.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CsGtSubPbxRngOutput.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CsLsPabxByNlOutput.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CsGtLastPbxIdInput.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CsSvPabxNlInput.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CsGtLeadNoInput.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CsGtLastPbxIdOutput.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CsLsPabxRngInput.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CsSvOrgPabxOutput.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CsSvPabxRngInput.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CsGtLastOrgCdInput.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CsLsPabxByNlInput.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CsLsDlrPabxNlInput.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CsSvOrgDepInput.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CsChkSubStsInput.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+cp -p 5_dataset_classes/CsLsPabxNoNlOutput.java	/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/src/no/netcom/ninja/core/system/tuxedo/service/parameters/
+$

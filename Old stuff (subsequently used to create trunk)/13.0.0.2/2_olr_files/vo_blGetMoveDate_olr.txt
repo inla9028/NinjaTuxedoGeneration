@@ -1,0 +1,2 @@
+long	GENERATION	1	-	
+string	MOVE_DATE	1	9	

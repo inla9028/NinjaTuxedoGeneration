@@ -1,0 +1,65 @@
+1. Any services changed (does counts and matches fields by sequence)?
+---------------------------------------------------------------------
+
+3 services:
+
+All in use:
+
+a) csChkValImp
+i) To do a failed transaction:
+   Open up np control window (button on lhs)... cancel (on the retrieval criteria), click "Send Trx" button (lhs) and select "105 NP-BEST-Bestilling av nr er" for the Transaction - ie to do a best, use an external number (clean port in) in Main Number... This gives you a "Number is used by external operator. Please perform port in activity using new subscriber/additional number reservation."
+ii) To do a successful transaction:
+    PROBABLY HAVE TO DO RESERVE (WITH AN EXTERNAL NUMBER)
+Open the add new subscriber box and enter the dealer / sales agaent. Click the NP Info button (in the subscriber section - top right of box). Select something external (eg " 734 Telenor Mobil" for Current Operator). Enter an unused external number (something like 900-00-021) and hit tab or save or something.
+
+b) csGetCtnNm
+   This is yer normal "get me x (10 usually) numbers" as used when reserving a bog-standard subscription.
+
+c) csLsNpTrx
+   Open up np control window and type in a suitable number. One that's never been used will come back with very little. One that has been ported (eg one from a previous regression test) will produce some results.
+
+
+2. Any new services?
+--------------------
+
+3 services:
+
+I inserted them into tux_services table (with in_use, conversational and fields_shared_with_csapiban NOT set):
+csUpNpITrx
+csGtNpITrx
+csSrchAddInfo
+
+
+
+3. Deleted services
+-------------------
+
+These have been renoved from tlgntc.in (ie the services are no longer for use by the online system):
+csUpdUMAGrp
+csGtUMAGrp
+csLsUMAGrp
+
+
+
+4. New fields
+-------------
+
+3 fields (1 for each of the changed services)
+
+Buffer name     Type					Field count	Type	Size	Max Occurances
+csChkValImp 	IN  	LOCATION_ID		23			STRING 	5		1
+csGetCtnNm  	IN  	NUMBER_LENGTH 	24			LONG   	       	1
+csLsNpTrx   	OUT 	PORT_IND      	131			CHAR   	       	50
+
+
+
+5. Removed fields
+-----------------
+
+140 - for the 3 "deleted" services
+
+
+6. Changed fields
+-----------------
+
+None

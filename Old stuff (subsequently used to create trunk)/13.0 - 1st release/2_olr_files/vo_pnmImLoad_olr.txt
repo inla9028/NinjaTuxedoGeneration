@@ -1,0 +1,5 @@
+long	GENERATION	1	-	
+string	FROM_CTN	1	21	
+string	TO_CTN	1	21	
+long	LOADED_CTNS	1	-	
+long	NON_LOADED_CTNS	1	-	

@@ -1,0 +1,6 @@
+long	GENERATION	1	-	
+long	ROWCOUNT	1	-	
+string	DISC_GROUP_NAME	600	7	
+double	RC_DISC	600	-	
+double	UC_DISC	600	-	
+string	DISC_GROUP_DESCRIPTION	600	41	

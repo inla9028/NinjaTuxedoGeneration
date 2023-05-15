@@ -1,0 +1,6 @@
+long	GENERATION	1	-	
+string	START_DATE	1	15	
+long	DAYS	1	-	
+long	HOURS	1	-	
+short	ADD_SUB_MODE	1	-	
+string	END_DATE	1	15	

@@ -1,0 +1,7 @@
+long	GENERATION	1	-	
+long	RULE_ID	1	-	
+long	NICENMQTY	1	-	
+long	ROWCOUNT	1	-	
+string	ROWID	10000	19	
+string	NICE_NUMBER	10000	21	
+long	NICENMARRRULE_ID	10000	-	

@@ -1,0 +1,544 @@
+-------
+ Step1
+-------
+$ java -classpath /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/tools/target/ninja-tools-27.0-SNAPSHOT.jar no.netcom.ninja.tools.Step1CreateOLRFiles | tee log-Step1.log
+. . .
+Processing file 51 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/1_v_files/par_disc_c32_v.v
+Finished processing files
+
+
+-------
+ Step2
+-------
+$ java -classpath /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/tools/target/ninja-tools-27.0-SNAPSHOT.jar no.netcom.ninja.tools.Step2CreateBulkloaderFiles | tee log-Step2.log
+. . .
+Processing file 1054 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vo_cvRollback_olr.txt
+Processing file 1055 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vi_gnGtLgclDt_olr.txt
+Processing file 1056 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vo_gnGtLgclDt_olr.txt
+Processing file 1057 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vi_csCrNpInfo_olr.txt
+Processing file 1058 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vo_csCrNpInfo_olr.txt
+Processing file 1059 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vi_gnGtWsn_olr.txt
+Processing file 1060 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/2_olr_files/vo_gnGtWsn_olr.txt
+Finished processing files
+
+
+-------
+ Step3
+-------
+Script: Tuxedo - 1 - check status of tables and clear workspace
+* truncate table TUX_FML_BUFFERS_new;
+
+$ java -classpath /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/common/target/ninja-common-27.0-SNAPSHOT.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/common/dist/common.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/ninja-core-27.0-SNAPSHOT.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/joltwls-10.0.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/xilclient-2.40build025.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/joltjse-10.0.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/ninja-common-27.0-SNAPSHOT.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/xilext-2.40build021.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/ojdbc7-12.1.0.2.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/jolt-10.0.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/log4j-1.2.13.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/xil-2.40build025.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/tools/target/ninja-tools-27.0-SNAPSHOT.jar  no.netcom.ninja.tools.Step3LoadDatabaseFromViewFiles | tee log-Step3.log
+. . .
+Loading service 525: csSvMBL, OUT buffer
+Starting File 51 - /Users/hakgu/Projects/svn/ninja-tuxedo-generation-hgu/1_v_files/par_disc_c32_v.v
+Loading service 526: arLsFeeWa, IN buffer
+Loading service 526: arLsFeeWa, OUT buffer
+Loading service 527: arUpFeeWa, IN buffer
+Loading service 527: arUpFeeWa, OUT buffer
+Loading service 528: arLsDisc, IN buffer
+Loading service 528: arLsDisc, OUT buffer
+Loading service 529: arSvDisc, IN buffer
+Loading service 529: arSvDisc, OUT buffer
+Loading service 530: arGtFeeWa, IN buffer
+Loading service 530: arGtFeeWa, OUT buffer
+Total execution time: 570475 ms
+~9 min 30 sec (via VPN)
+#~1 min 37 sec (in the office, not over VPN)
+
+Output of SQL in script 1
+-------------------------
+Row #	CONTENT_TYPE	NINJA_VERSION      	COUNT(*)
+-----	------------	-------------------	--------
+1    	fields      	25.0.0.0           	39858
+2    	fields      	25.5.0.0           	39948
+3    	fields      	26.0.0.0           	40443
+4    	fields      	27.0.0.0           	40467
+5    	fields      	27.0.0.0.drop2     	40443
+6    	fields      	27.0.0.0.drop3     	40467
+7    	fields      	28.0.0.0.drop1     	40543
+8    	fields a)   	tux_fml_buffers_new	40564
+9    	services    	25.0.0.0           	522
+10   	services    	25.5.0.0           	523
+11   	services    	26.0.0.0           	529
+12   	services    	27.0.0.0           	529
+13   	services    	27.0.0.0.drop2     	529
+14   	services    	27.0.0.0.drop3     	529
+15   	services    	28.0.0.0.drop1     	530
+16   	services a) 	tux_services_new   	530
+
+SQL Scripts 2 & 3
+-----------------
+Run Script 2: "Tuxedo - 2 - update default values.sql"
+Run Script 3: "Tuxedo - 3 - update conversational mapping values.sql"
+
+
+SQL Script 4: Changed Services
+------------------------------
+** Note! Change the current prod-version in the script first, otherwise you need to re-do all previous steps!
+Run Script 4: "Tuxedo - 4 - determine service changes and do copies.sql"
+
+SQL Script 4: 1. Any existing services changed? (Does counts, and matches fields by sequence)
+------------------------
+Row #	SVC_NAME     	IN_USE	In Amdocs doc?	Comment
+-----	-------------	------	--------------	-------
+1    	arBanPym     	Y
+2    	arCrCrg      	Y
+3    	arCrMPym     	Y
+4    	arGtCstBan   	Y
+5    	arGtCtnBan
+6    	arGtFinAmt
+7    	arGtPymByVch
+8    	arGtpymMtd   	Y
+9    	arMultCrd
+10   	arMultCrdRvrs
+11   	arUpPymMtd   	Y
+12   	blGtAllCyc
+13   	blGtBilledChg
+14   	blGtCrDbNote
+15   	blGtCycle
+16   	blGtLtStlLoan
+17   	blLsChgRvn
+18   	blLsUBChg    	Y
+19   	blRvrsLoanStl
+20   	csChgOwner
+21   	csCkCtnEx
+22   	csCrCtn      	Y
+23   	csGtMBL
+24   	csGtPNPCnt
+25   	csGtPNPMin
+26   	csMlRsCanCtn
+27   	csMoveCan
+28   	csMoveMlCtn  	Y
+29   	csMoveRsv
+30   	csMoveSusp
+31   	csRsCanCtn   	Y
+32   	csRsvMlCtn
+33   	csSrchOdBan  	Y
+34   	csSrchPym
+35   	csSvCUG
+36   	csSvMBL
+37   	gnGetTreeInfo	Y
+38   	gnGtTree     	Y
+
+
+SQL Script 4: 4. Any new fields (on existing services)? On which datasets?
+------------------------
+Row #	SVC_NAME     	IN_USE	BUFFER_TYPE	FIELD_NAME          	FIELD_SEQ	FIELD_TYPE	FIELD_SIZE	FIELD_MAX_OCCURENCE
+-----	-------------	------	-----------	--------------------	---------	----------	----------	-------------------
+1    	arBanPym     	     Y	OUT        	CC_MP_TRANS_ID      	73       	STRING    	51        	600
+2    	arCrCrg      	     Y	IN         	TML_UTC_IND         	149      	CHAR      	          	1
+3    	arCrCrg      	     Y	OUT        	TML_UTC_IND         	118      	CHAR      	          	1
+4    	arCrMPym     	     Y	IN         	CC_MP_TRANS_ID      	53       	STRING    	51        	2000
+5    	arCrMPym     	     Y	OUT        	CC_MP_TRANS_ID      	53       	STRING    	51        	2000
+6    	arGtCstBan   	     Y	OUT        	SECOND_POPULATION_CD	267      	CHAR      	          	1
+7    	arGtCtnBan   	      	OUT        	SECOND_POPULATION_CD	252      	CHAR      	          	1
+8    	arGtFinAmt   	      	IN         	TML_UTC_IND         	120      	CHAR      	          	100
+9    	arGtFinAmt   	      	OUT        	TML_UTC_IND         	120      	CHAR      	          	1
+10   	arGtPymByVch 	      	OUT        	CC_MP_TRANS_ID      	50       	STRING    	51        	500
+11   	arGtpymMtd   	     Y	OUT        	CREDIT_CARD_TOKEN   	41       	STRING    	21        	1
+12   	arGtpymMtd   	     Y	OUT        	CREDIT_CARD_NAME    	42       	STRING    	21        	1
+13   	arGtpymMtd   	     Y	OUT        	MP_PYM_AGR_ID       	43       	STRING    	51        	1
+14   	arMultCrd    	      	IN         	TML_UTC_IND         	119      	CHAR      	          	100
+15   	arMultCrdRvrs	      	IN         	TML_UTC_IND         	119      	CHAR      	          	100
+16   	arUpPymMtd   	     Y	IN         	CREDIT_CARD_TOKEN   	67       	STRING    	21        	2
+17   	arUpPymMtd   	     Y	IN         	CREDIT_CARD_NAME    	68       	STRING    	21        	2
+18   	arUpPymMtd   	     Y	IN         	MP_PYM_AGR_ID       	69       	STRING    	51        	2
+19   	blGtAllCyc   	      	OUT        	SECOND_POPULATION_CD	35       	CHAR      	          	100
+20   	blGtBilledChg	      	OUT        	TML_UTC_IND         	34       	CHAR      	          	600
+21   	blGtCrDbNote 	      	OUT        	TML_UTC_IND         	107      	CHAR      	          	600
+22   	blGtCycle    	      	OUT        	SECOND_POPULATION_CD	34       	CHAR      	          	1
+23   	blGtLtStlLoan	      	OUT        	TML_UTC_IND         	168      	CHAR      	          	1
+24   	blLsChgRvn   	      	OUT        	TML_UTC_IND         	34       	CHAR      	          	600
+25   	blLsUBChg    	     Y	OUT        	TML_UTC_IND         	62       	CHAR      	          	600
+26   	blLsUBChg    	     Y	OUT        	BLADJTML_UTC_IND    	123      	CHAR      	          	500
+27   	blRvrsLoanStl	      	IN         	TML_UTC_IND         	168      	CHAR      	          	1
+28   	csChgOwner   	      	IN         	PCTNCNCLBUFROW_COUNT	389      	LONG      	          	1
+29   	csCrCtn      	     Y	IN         	ROW_COUNT           	168      	LONG      	          	1
+30   	csGtMBL      	      	OUT        	EFFECTIVE_DATE      	21       	STRING    	15        	1000
+31   	csGtMBL      	      	OUT        	EXPIRATION_DATE     	28       	STRING    	15        	1000
+32   	csGtMBL      	      	OUT        	RESUME_AS_PREV      	29       	CHAR      	          	1000
+33   	csGtPNPCnt   	      	IN         	PNI_TYPE            	19       	CHAR      	          	1
+34   	csGtPNPMin   	      	IN         	PNI_TYPE            	19       	CHAR      	          	1
+35   	csMlRsCanCtn 	      	IN         	ROW_COUNT           	17       	LONG      	          	1
+36   	csMoveCan    	      	IN         	ROW_COUNT           	130      	LONG      	          	1
+37   	csMoveMlCtn  	     Y	IN         	ROW_COUNT           	24       	LONG      	          	1
+38   	csMoveRsv    	      	IN         	PCTNCNCLBUFROW_COUNT	389      	LONG      	          	1
+39   	csMoveSusp   	      	IN         	PCTNCNCLBUFROW_COUNT	389      	LONG      	          	1
+40   	csRsCanCtn   	     Y	IN         	PINSTLBUFROW_COUNT  	388      	LONG      	          	1
+41   	csRsvMlCtn   	      	IN         	ROW_COUNT           	214      	LONG      	          	1
+42   	csSrchOdBan  	     Y	OUT        	MOREROWS            	17       	SHORT     	          	1
+43   	csSrchOdBan  	     Y	OUT        	ROWCOUNT            	18       	LONG      	          	1
+44   	csSrchPym    	      	OUT        	CC_MP_TRANS_ID      	73       	STRING    	51        	600
+45   	csSvCUG      	      	IN         	PNI_TYPE            	22       	CHAR      	          	20
+46   	csSvCUG      	      	OUT        	PNI_TYPE            	22       	CHAR      	          	20
+47   	csSvMBL      	      	IN         	EFFECTIVE_DATE      	21       	STRING    	15        	1
+48   	csSvMBL      	      	IN         	EXPIRATION_DATE     	28       	STRING    	15        	1
+49   	csSvMBL      	      	IN         	RESUME_AS_PREV      	29       	CHAR      	          	1
+50   	gnGetTreeInfo	     Y	OUT        	TML_IND             	30       	CHAR      	          	1
+51   	gnGtTree     	     Y	OUT        	TML_IND             	29       	CHAR      	          	1000
+52   	gnGtTreeBasic	     Y	OUT        	TML_IND             	31       	CHAR      	          	1000
+53   	gnNodeAct    	     Y	IN         	TML_IND             	22       	CHAR      	          	1
+
+
+SQL Script 4: Any fields removed?
+------------------------
+NINJA_VERSION SVC_NAME BUFFER_TYPE BUF FIELD_NAME FIELD_SEQ FIELD_TYPE FIELD_SIZE FIELD_MAX_OCCURENCE FIELD_DEF_VALUE EXCLUDE_FROM_CSAPIBAN_COPY CSAPIBAN_MAPPING1 CSAPIBAN_MAPPING2 CSAPIBAN_MAPPING3 COMMENTS
+N/A
+
+
+SQL Script 4: Changes to fields definitions (type, sizes, etc)
+------------------------
+Row #	SVC_NAME    	BUFFER_TYPE	FIELD_NAME        	FIELD_TYPE	OLD_FIELD_TYPE	FIELD_SIZE	OLD_FIELD_SIZE	FIELD_MAX_OCCURENCE	OLD_FIELD_MAX_OCCURENCE	FIELD_DEF_VALUE	OLD_FIELD_DEF_VALUE
+-----	------------	-----------	------------------	----------	--------------	----------	--------------	-------------------	-----------------------	---------------	-------------------
+1    	csChgOwner  	IN         	ACT_CODE          	STRING    	STRING        	4         	4             	50                 	1
+2    	csChgOwner  	IN         	ACT_REASON        	STRING    	STRING        	5         	5             	50                 	1
+3    	csChgOwner  	IN         	CHARGE_AMT        	DOUBLE    	DOUBLE        	          	              	50                 	1
+4    	csChgOwner  	IN         	CHARGE_AMT_IND    	CHAR      	CHAR          	          	              	50                 	1
+5    	csChgOwner  	IN         	MEMO_AMT          	DOUBLE    	DOUBLE        	          	              	50                 	1
+6    	csChgOwner  	IN         	MEMO_CTN          	STRING    	STRING        	21        	21            	50                 	1
+7    	csChgOwner  	IN         	MEMO_SOURCE       	CHAR      	CHAR          	          	              	50                 	1
+8    	csChgOwner  	IN         	P1                	STRING    	STRING        	51        	51            	50                 	1
+9    	csChgOwner  	IN         	P10               	STRING    	STRING        	51        	51            	50                 	1
+10   	csChgOwner  	IN         	P2                	STRING    	STRING        	51        	51            	50                 	1
+11   	csChgOwner  	IN         	P3                	STRING    	STRING        	51        	51            	50                 	1
+12   	csChgOwner  	IN         	P4                	STRING    	STRING        	51        	51            	50                 	1
+13   	csChgOwner  	IN         	P5                	STRING    	STRING        	51        	51            	50                 	1
+14   	csChgOwner  	IN         	P6                	STRING    	STRING        	51        	51            	50                 	1
+15   	csChgOwner  	IN         	P7                	STRING    	STRING        	51        	51            	50                 	1
+16   	csChgOwner  	IN         	P8                	STRING    	STRING        	51        	51            	50                 	1
+17   	csChgOwner  	IN         	P9                	STRING    	STRING        	51        	51            	50                 	1
+18   	csChgOwner  	IN         	PARAM_COUNT       	LONG      	LONG          	          	              	50                 	1
+19   	csChgOwner  	IN         	RMS_ACT_CODE      	STRING    	STRING        	5         	5             	50                 	1
+20   	csChgOwner  	IN         	SUSP_RC_RATE_TYPE 	CHAR      	CHAR          	          	              	50                 	1
+21   	csChgOwner  	IN         	USER_TEXT         	STRING    	STRING        	2001      	2001          	50                 	1
+22   	csChgOwner  	IN         	WAIVE_IND         	CHAR      	CHAR          	          	              	50                 	1
+23   	csChgOwner  	IN         	WAIVE_REASON      	STRING    	STRING        	7         	7             	50                 	1
+24   	csCkCtnEx   	IN         	PRODTP_ARR        	STRING    	STRING        	4         	4             	50                 	10
+25   	csCkCtnEx   	OUT        	CTNEXIST          	STRING    	STRING        	51        	11            	1                  	1
+26   	csCrCtn     	IN         	ACT_CODE          	STRING    	STRING        	4         	4             	50                 	1
+27   	csCrCtn     	IN         	ACT_REASON        	STRING    	STRING        	5         	5             	50                 	1
+28   	csCrCtn     	IN         	CHARGE_AMT        	DOUBLE    	DOUBLE        	          	              	50                 	1
+29   	csCrCtn     	IN         	CHARGE_AMT_IND    	CHAR      	CHAR          	          	              	50                 	1
+30   	csCrCtn     	IN         	MEMO_AMT          	DOUBLE    	DOUBLE        	          	              	50                 	1
+31   	csCrCtn     	IN         	MEMO_CTN          	STRING    	STRING        	21        	21            	50                 	1
+32   	csCrCtn     	IN         	MEMO_SOURCE       	CHAR      	CHAR          	          	              	50                 	1
+33   	csCrCtn     	IN         	P1                	STRING    	STRING        	51        	51            	50                 	1
+34   	csCrCtn     	IN         	P10               	STRING    	STRING        	51        	51            	50                 	1
+35   	csCrCtn     	IN         	P2                	STRING    	STRING        	51        	51            	50                 	1
+36   	csCrCtn     	IN         	P3                	STRING    	STRING        	51        	51            	50                 	1
+37   	csCrCtn     	IN         	P4                	STRING    	STRING        	51        	51            	50                 	1
+38   	csCrCtn     	IN         	P5                	STRING    	STRING        	51        	51            	50                 	1
+39   	csCrCtn     	IN         	P6                	STRING    	STRING        	51        	51            	50                 	1
+40   	csCrCtn     	IN         	P7                	STRING    	STRING        	51        	51            	50                 	1
+41   	csCrCtn     	IN         	P8                	STRING    	STRING        	51        	51            	50                 	1
+42   	csCrCtn     	IN         	P9                	STRING    	STRING        	51        	51            	50                 	1
+43   	csCrCtn     	IN         	PARAM_COUNT       	LONG      	LONG          	          	              	50                 	1
+44   	csCrCtn     	IN         	RMS_ACT_CODE      	STRING    	STRING        	5         	5             	50                 	1
+45   	csCrCtn     	IN         	SUSP_RC_RATE_TYPE 	CHAR      	CHAR          	          	              	50                 	1
+46   	csCrCtn     	IN         	USER_TEXT         	STRING    	STRING        	2001      	2001          	50                 	1
+47   	csCrCtn     	IN         	WAIVE_IND         	CHAR      	CHAR          	          	              	50                 	1
+48   	csCrCtn     	IN         	WAIVE_REASON      	STRING    	STRING        	7         	7             	50                 	1
+49   	csMlRsCanCtn	IN         	ACT_CODE          	STRING    	STRING        	4         	4             	50                 	1
+50   	csMlRsCanCtn	IN         	ACT_REASON        	STRING    	STRING        	5         	5             	50                 	1
+51   	csMlRsCanCtn	IN         	CHARGE_AMT        	DOUBLE    	DOUBLE        	          	              	50                 	1
+52   	csMlRsCanCtn	IN         	CHARGE_AMT_IND    	CHAR      	CHAR          	          	              	50                 	1
+53   	csMlRsCanCtn	IN         	MEMO_AMT          	DOUBLE    	DOUBLE        	          	              	50                 	1
+54   	csMlRsCanCtn	IN         	MEMO_CTN          	STRING    	STRING        	21        	21            	50                 	1
+55   	csMlRsCanCtn	IN         	MEMO_SOURCE       	CHAR      	CHAR          	          	              	50                 	1
+56   	csMlRsCanCtn	IN         	P1                	STRING    	STRING        	51        	51            	50                 	1
+57   	csMlRsCanCtn	IN         	P10               	STRING    	STRING        	51        	51            	50                 	1
+58   	csMlRsCanCtn	IN         	P2                	STRING    	STRING        	51        	51            	50                 	1
+59   	csMlRsCanCtn	IN         	P3                	STRING    	STRING        	51        	51            	50                 	1
+60   	csMlRsCanCtn	IN         	P4                	STRING    	STRING        	51        	51            	50                 	1
+61   	csMlRsCanCtn	IN         	P5                	STRING    	STRING        	51        	51            	50                 	1
+62   	csMlRsCanCtn	IN         	P6                	STRING    	STRING        	51        	51            	50                 	1
+63   	csMlRsCanCtn	IN         	P7                	STRING    	STRING        	51        	51            	50                 	1
+64   	csMlRsCanCtn	IN         	P8                	STRING    	STRING        	51        	51            	50                 	1
+65   	csMlRsCanCtn	IN         	P9                	STRING    	STRING        	51        	51            	50                 	1
+66   	csMlRsCanCtn	IN         	PARAM_COUNT       	LONG      	LONG          	          	              	50                 	1
+67   	csMlRsCanCtn	IN         	RMS_ACT_CODE      	STRING    	STRING        	5         	5             	50                 	1
+68   	csMlRsCanCtn	IN         	SUSP_RC_RATE_TYPE 	CHAR      	CHAR          	          	              	50                 	1
+69   	csMlRsCanCtn	IN         	USER_TEXT         	STRING    	STRING        	2001      	2001          	50                 	1
+70   	csMlRsCanCtn	IN         	WAIVE_IND         	CHAR      	CHAR          	          	              	50                 	1
+71   	csMlRsCanCtn	IN         	WAIVE_REASON      	STRING    	STRING        	7         	7             	50                 	1
+72   	csMoveCan   	IN         	ACT_CODE          	STRING    	STRING        	4         	4             	50                 	1
+73   	csMoveCan   	IN         	ACT_REASON        	STRING    	STRING        	5         	5             	50                 	1
+74   	csMoveCan   	IN         	CHARGE_AMT        	DOUBLE    	DOUBLE        	          	              	50                 	1
+75   	csMoveCan   	IN         	CHARGE_AMT_IND    	CHAR      	CHAR          	          	              	50                 	1
+76   	csMoveCan   	IN         	MEMO_AMT          	DOUBLE    	DOUBLE        	          	              	50                 	1
+77   	csMoveCan   	IN         	MEMO_CTN          	STRING    	STRING        	21        	21            	50                 	1
+78   	csMoveCan   	IN         	MEMO_SOURCE       	CHAR      	CHAR          	          	              	50                 	1
+79   	csMoveCan   	IN         	P1                	STRING    	STRING        	51        	51            	50                 	1
+80   	csMoveCan   	IN         	P10               	STRING    	STRING        	51        	51            	50                 	1
+81   	csMoveCan   	IN         	P2                	STRING    	STRING        	51        	51            	50                 	1
+82   	csMoveCan   	IN         	P3                	STRING    	STRING        	51        	51            	50                 	1
+83   	csMoveCan   	IN         	P4                	STRING    	STRING        	51        	51            	50                 	1
+84   	csMoveCan   	IN         	P5                	STRING    	STRING        	51        	51            	50                 	1
+85   	csMoveCan   	IN         	P6                	STRING    	STRING        	51        	51            	50                 	1
+86   	csMoveCan   	IN         	P7                	STRING    	STRING        	51        	51            	50                 	1
+87   	csMoveCan   	IN         	P8                	STRING    	STRING        	51        	51            	50                 	1
+88   	csMoveCan   	IN         	P9                	STRING    	STRING        	51        	51            	50                 	1
+89   	csMoveCan   	IN         	PARAM_COUNT       	LONG      	LONG          	          	              	50                 	1
+90   	csMoveCan   	IN         	RMS_ACT_CODE      	STRING    	STRING        	5         	5             	50                 	1
+91   	csMoveCan   	IN         	SUSP_RC_RATE_TYPE 	CHAR      	CHAR          	          	              	50                 	1
+92   	csMoveCan   	IN         	USER_TEXT         	STRING    	STRING        	2001      	2001          	50                 	1
+93   	csMoveCan   	IN         	WAIVE_IND         	CHAR      	CHAR          	          	              	50                 	1
+94   	csMoveCan   	IN         	WAIVE_REASON      	STRING    	STRING        	7         	7             	50                 	1
+95   	csMoveMlCtn 	IN         	ACT_CODE          	STRING    	STRING        	4         	4             	50                 	1
+96   	csMoveMlCtn 	IN         	ACT_REASON        	STRING    	STRING        	5         	5             	50                 	1
+97   	csMoveMlCtn 	IN         	CHARGE_AMT        	DOUBLE    	DOUBLE        	          	              	50                 	1
+98   	csMoveMlCtn 	IN         	CHARGE_AMT_IND    	CHAR      	CHAR          	          	              	50                 	1
+99   	csMoveMlCtn 	IN         	MEMO_AMT          	DOUBLE    	DOUBLE        	          	              	50                 	1
+100  	csMoveMlCtn 	IN         	MEMO_CTN          	STRING    	STRING        	21        	21            	50                 	1
+101  	csMoveMlCtn 	IN         	MEMO_SOURCE       	CHAR      	CHAR          	          	              	50                 	1
+102  	csMoveMlCtn 	IN         	P1                	STRING    	STRING        	51        	51            	50                 	1
+103  	csMoveMlCtn 	IN         	P10               	STRING    	STRING        	51        	51            	50                 	1
+104  	csMoveMlCtn 	IN         	P2                	STRING    	STRING        	51        	51            	50                 	1
+105  	csMoveMlCtn 	IN         	P3                	STRING    	STRING        	51        	51            	50                 	1
+106  	csMoveMlCtn 	IN         	P4                	STRING    	STRING        	51        	51            	50                 	1
+107  	csMoveMlCtn 	IN         	P5                	STRING    	STRING        	51        	51            	50                 	1
+108  	csMoveMlCtn 	IN         	P6                	STRING    	STRING        	51        	51            	50                 	1
+109  	csMoveMlCtn 	IN         	P7                	STRING    	STRING        	51        	51            	50                 	1
+110  	csMoveMlCtn 	IN         	P8                	STRING    	STRING        	51        	51            	50                 	1
+111  	csMoveMlCtn 	IN         	P9                	STRING    	STRING        	51        	51            	50                 	1
+112  	csMoveMlCtn 	IN         	PARAM_COUNT       	LONG      	LONG          	          	              	50                 	1
+113  	csMoveMlCtn 	IN         	RMS_ACT_CODE      	STRING    	STRING        	5         	5             	50                 	1
+114  	csMoveMlCtn 	IN         	SUSP_RC_RATE_TYPE 	CHAR      	CHAR          	          	              	50                 	1
+115  	csMoveMlCtn 	IN         	USER_TEXT         	STRING    	STRING        	2001      	2001          	50                 	1
+116  	csMoveMlCtn 	IN         	WAIVE_IND         	CHAR      	CHAR          	          	              	50                 	1
+117  	csMoveMlCtn 	IN         	WAIVE_REASON      	STRING    	STRING        	7         	7             	50                 	1
+118  	csMoveRsv   	IN         	ACT_CODE          	STRING    	STRING        	4         	4             	50                 	1
+119  	csMoveRsv   	IN         	ACT_REASON        	STRING    	STRING        	5         	5             	50                 	1
+120  	csMoveRsv   	IN         	CHARGE_AMT        	DOUBLE    	DOUBLE        	          	              	50                 	1
+121  	csMoveRsv   	IN         	CHARGE_AMT_IND    	CHAR      	CHAR          	          	              	50                 	1
+122  	csMoveRsv   	IN         	MEMO_AMT          	DOUBLE    	DOUBLE        	          	              	50                 	1
+123  	csMoveRsv   	IN         	MEMO_CTN          	STRING    	STRING        	21        	21            	50                 	1
+124  	csMoveRsv   	IN         	MEMO_SOURCE       	CHAR      	CHAR          	          	              	50                 	1
+125  	csMoveRsv   	IN         	P1                	STRING    	STRING        	51        	51            	50                 	1
+126  	csMoveRsv   	IN         	P10               	STRING    	STRING        	51        	51            	50                 	1
+127  	csMoveRsv   	IN         	P2                	STRING    	STRING        	51        	51            	50                 	1
+128  	csMoveRsv   	IN         	P3                	STRING    	STRING        	51        	51            	50                 	1
+129  	csMoveRsv   	IN         	P4                	STRING    	STRING        	51        	51            	50                 	1
+130  	csMoveRsv   	IN         	P5                	STRING    	STRING        	51        	51            	50                 	1
+131  	csMoveRsv   	IN         	P6                	STRING    	STRING        	51        	51            	50                 	1
+132  	csMoveRsv   	IN         	P7                	STRING    	STRING        	51        	51            	50                 	1
+133  	csMoveRsv   	IN         	P8                	STRING    	STRING        	51        	51            	50                 	1
+134  	csMoveRsv   	IN         	P9                	STRING    	STRING        	51        	51            	50                 	1
+135  	csMoveRsv   	IN         	PARAM_COUNT       	LONG      	LONG          	          	              	50                 	1
+136  	csMoveRsv   	IN         	RMS_ACT_CODE      	STRING    	STRING        	5         	5             	50                 	1
+137  	csMoveRsv   	IN         	SUSP_RC_RATE_TYPE 	CHAR      	CHAR          	          	              	50                 	1
+138  	csMoveRsv   	IN         	USER_TEXT         	STRING    	STRING        	2001      	2001          	50                 	1
+139  	csMoveRsv   	IN         	WAIVE_IND         	CHAR      	CHAR          	          	              	50                 	1
+140  	csMoveRsv   	IN         	WAIVE_REASON      	STRING    	STRING        	7         	7             	50                 	1
+141  	csMoveSusp  	IN         	ACT_CODE          	STRING    	STRING        	4         	4             	50                 	1
+142  	csMoveSusp  	IN         	ACT_REASON        	STRING    	STRING        	5         	5             	50                 	1
+143  	csMoveSusp  	IN         	CHARGE_AMT        	DOUBLE    	DOUBLE        	          	              	50                 	1
+144  	csMoveSusp  	IN         	CHARGE_AMT_IND    	CHAR      	CHAR          	          	              	50                 	1
+145  	csMoveSusp  	IN         	MEMO_AMT          	DOUBLE    	DOUBLE        	          	              	50                 	1
+146  	csMoveSusp  	IN         	MEMO_CTN          	STRING    	STRING        	21        	21            	50                 	1
+147  	csMoveSusp  	IN         	MEMO_SOURCE       	CHAR      	CHAR          	          	              	50                 	1
+148  	csMoveSusp  	IN         	P1                	STRING    	STRING        	51        	51            	50                 	1
+149  	csMoveSusp  	IN         	P10               	STRING    	STRING        	51        	51            	50                 	1
+150  	csMoveSusp  	IN         	P2                	STRING    	STRING        	51        	51            	50                 	1
+151  	csMoveSusp  	IN         	P3                	STRING    	STRING        	51        	51            	50                 	1
+152  	csMoveSusp  	IN         	P4                	STRING    	STRING        	51        	51            	50                 	1
+153  	csMoveSusp  	IN         	P5                	STRING    	STRING        	51        	51            	50                 	1
+154  	csMoveSusp  	IN         	P6                	STRING    	STRING        	51        	51            	50                 	1
+155  	csMoveSusp  	IN         	P7                	STRING    	STRING        	51        	51            	50                 	1
+156  	csMoveSusp  	IN         	P8                	STRING    	STRING        	51        	51            	50                 	1
+157  	csMoveSusp  	IN         	P9                	STRING    	STRING        	51        	51            	50                 	1
+158  	csMoveSusp  	IN         	PARAM_COUNT       	LONG      	LONG          	          	              	50                 	1
+159  	csMoveSusp  	IN         	RMS_ACT_CODE      	STRING    	STRING        	5         	5             	50                 	1
+160  	csMoveSusp  	IN         	SUSP_RC_RATE_TYPE 	CHAR      	CHAR          	          	              	50                 	1
+161  	csMoveSusp  	IN         	USER_TEXT         	STRING    	STRING        	2001      	2001          	50                 	1
+162  	csMoveSusp  	IN         	WAIVE_IND         	CHAR      	CHAR          	          	              	50                 	1
+163  	csMoveSusp  	IN         	WAIVE_REASON      	STRING    	STRING        	7         	7             	50                 	1
+164  	csRsCanCtn  	IN         	ACT_CODE          	STRING    	STRING        	4         	4             	50                 	1
+165  	csRsCanCtn  	IN         	ACT_REASON        	STRING    	STRING        	5         	5             	50                 	1
+166  	csRsCanCtn  	IN         	CHARGE_AMT        	DOUBLE    	DOUBLE        	          	              	50                 	1
+167  	csRsCanCtn  	IN         	CHARGE_AMT_IND    	CHAR      	CHAR          	          	              	50                 	1
+168  	csRsCanCtn  	IN         	MEMO_AMT          	DOUBLE    	DOUBLE        	          	              	50                 	1
+169  	csRsCanCtn  	IN         	MEMO_CTN          	STRING    	STRING        	21        	21            	50                 	1
+170  	csRsCanCtn  	IN         	MEMO_SOURCE       	CHAR      	CHAR          	          	              	50                 	1
+171  	csRsCanCtn  	IN         	P1                	STRING    	STRING        	51        	51            	50                 	1
+172  	csRsCanCtn  	IN         	P10               	STRING    	STRING        	51        	51            	50                 	1
+173  	csRsCanCtn  	IN         	P2                	STRING    	STRING        	51        	51            	50                 	1
+174  	csRsCanCtn  	IN         	P3                	STRING    	STRING        	51        	51            	50                 	1
+175  	csRsCanCtn  	IN         	P4                	STRING    	STRING        	51        	51            	50                 	1
+176  	csRsCanCtn  	IN         	P5                	STRING    	STRING        	51        	51            	50                 	1
+177  	csRsCanCtn  	IN         	P6                	STRING    	STRING        	51        	51            	50                 	1
+178  	csRsCanCtn  	IN         	P7                	STRING    	STRING        	51        	51            	50                 	1
+179  	csRsCanCtn  	IN         	P8                	STRING    	STRING        	51        	51            	50                 	1
+180  	csRsCanCtn  	IN         	P9                	STRING    	STRING        	51        	51            	50                 	1
+181  	csRsCanCtn  	IN         	PARAM_COUNT       	LONG      	LONG          	          	              	50                 	1
+182  	csRsCanCtn  	IN         	RMS_ACT_CODE      	STRING    	STRING        	5         	5             	50                 	1
+183  	csRsCanCtn  	IN         	SUSP_RC_RATE_TYPE 	CHAR      	CHAR          	          	              	50                 	1
+184  	csRsCanCtn  	IN         	USER_TEXT         	STRING    	STRING        	2001      	2001          	50                 	1
+185  	csRsCanCtn  	IN         	WAIVE_IND         	CHAR      	CHAR          	          	              	50                 	1
+186  	csRsCanCtn  	IN         	WAIVE_REASON      	STRING    	STRING        	7         	7             	50                 	1
+187  	csRsvMlCtn  	IN         	ACT_CODE          	STRING    	STRING        	4         	4             	50                 	1
+188  	csRsvMlCtn  	IN         	ACT_REASON        	STRING    	STRING        	5         	5             	50                 	1
+189  	csRsvMlCtn  	IN         	CHARGE_AMT        	DOUBLE    	DOUBLE        	          	              	50                 	1
+190  	csRsvMlCtn  	IN         	CHARGE_AMT_IND    	CHAR      	CHAR          	          	              	50                 	1
+191  	csRsvMlCtn  	IN         	MEMO_AMT          	DOUBLE    	DOUBLE        	          	              	50                 	1
+192  	csRsvMlCtn  	IN         	MEMO_CTN          	STRING    	STRING        	21        	21            	50                 	1
+193  	csRsvMlCtn  	IN         	MEMO_SOURCE       	CHAR      	CHAR          	          	              	50                 	1
+194  	csRsvMlCtn  	IN         	P1                	STRING    	STRING        	51        	51            	50                 	1
+195  	csRsvMlCtn  	IN         	P10               	STRING    	STRING        	51        	51            	50                 	1
+196  	csRsvMlCtn  	IN         	P2                	STRING    	STRING        	51        	51            	50                 	1
+197  	csRsvMlCtn  	IN         	P3                	STRING    	STRING        	51        	51            	50                 	1
+198  	csRsvMlCtn  	IN         	P4                	STRING    	STRING        	51        	51            	50                 	1
+199  	csRsvMlCtn  	IN         	P5                	STRING    	STRING        	51        	51            	50                 	1
+200  	csRsvMlCtn  	IN         	P6                	STRING    	STRING        	51        	51            	50                 	1
+201  	csRsvMlCtn  	IN         	P7                	STRING    	STRING        	51        	51            	50                 	1
+202  	csRsvMlCtn  	IN         	P8                	STRING    	STRING        	51        	51            	50                 	1
+203  	csRsvMlCtn  	IN         	P9                	STRING    	STRING        	51        	51            	50                 	1
+204  	csRsvMlCtn  	IN         	PARAM_COUNT       	LONG      	LONG          	          	              	50                 	1
+205  	csRsvMlCtn  	IN         	RMS_ACT_CODE      	STRING    	STRING        	5         	5             	50                 	1
+206  	csRsvMlCtn  	IN         	SUSP_RC_RATE_TYPE 	CHAR      	CHAR          	          	              	50                 	1
+207  	csRsvMlCtn  	IN         	USER_TEXT         	STRING    	STRING        	2001      	2001          	50                 	1
+208  	csRsvMlCtn  	IN         	WAIVE_IND         	CHAR      	CHAR          	          	              	50                 	1
+209  	csRsvMlCtn  	IN         	WAIVE_REASON      	STRING    	STRING        	7         	7             	50                 	1
+210  	csSrchOdBan 	OUT        	ACCOUNT_SUB_TYPE  	STRING    	STRING        	3         	3             	100                	1
+211  	csSrchOdBan 	OUT        	ACCOUNT_TYPE      	CHAR      	CHAR          	          	              	100                	1
+212  	csSrchOdBan 	OUT        	ADDITIONAL_TITLE  	STRING    	STRING        	61        	61            	100                	1
+213  	csSrchOdBan 	OUT        	ADDRESS_ID        	LONG      	LONG          	          	              	100                	1
+214  	csSrchOdBan 	OUT        	ADR_CITY          	STRING    	STRING        	40        	40            	100                	1
+215  	csSrchOdBan 	OUT        	ADR_POB           	STRING    	STRING        	11        	11            	100                	1
+216  	csSrchOdBan 	OUT        	ADR_STREET_NAME   	STRING    	STRING        	61        	61            	100                	1
+217  	csSrchOdBan 	OUT        	ADR_ZIP           	STRING    	STRING        	10        	10            	100                	1
+218  	csSrchOdBan 	OUT        	AR_BALANCE        	DOUBLE    	DOUBLE        	          	              	100                	1
+219  	csSrchOdBan 	OUT        	BAN               	LONG      	LONG          	          	              	100                	1
+220  	csSrchOdBan 	OUT        	BAN_STATUS        	CHAR      	CHAR          	          	              	100                	1
+221  	csSrchOdBan 	OUT        	BILL_CYCLE        	SHORT     	SHORT         	          	              	100                	1
+222  	csSrchOdBan 	OUT        	BL_BILL_PROD_IND  	CHAR      	CHAR          	          	              	100                	1
+223  	csSrchOdBan 	OUT        	BL_HIER_BAN_IND   	CHAR      	CHAR          	          	              	100                	1
+224  	csSrchOdBan 	OUT        	CONTROL_NAME      	STRING    	STRING        	41        	41            	100                	1
+225  	csSrchOdBan 	OUT        	CURR_ROOT_BAN     	LONG      	LONG          	          	              	100                	1
+226  	csSrchOdBan 	OUT        	LINK_TYPE         	CHAR      	CHAR          	          	              	100                	1
+227  	csSrchOdBan 	OUT        	NAME_FORMAT       	CHAR      	CHAR          	          	              	100                	1
+228  	csSrchOdBan 	OUT        	NAME_ID           	LONG      	LONG          	          	              	100                	1
+229  	csSrchOdBan 	OUT        	NEXT_CONF_ROOT_BAN	LONG      	LONG          	          	              	100                	1
+230  	csSrchOdBan 	OUT        	NEXT_ROOT_BAN     	LONG      	LONG          	          	              	100                	1
+231  	csSrchOdBan 	OUT        	O_ATTRADDRROWID   	STRING    	STRING        	19        	19            	100                	1
+232  	csSrchOdBan 	OUT        	ROWID             	STRING    	STRING        	19        	19            	100                	1
+233  	csSrchOdBan 	OUT        	START_SERVICE_DATE	STRING    	STRING        	9         	9             	100                	1
+234  	csSrchOdBan 	OUT        	STATUS_LAST_DATE  	STRING    	STRING        	9         	9             	100                	1
+235  	csSrchOdBan 	OUT        	VIP_IND           	CHAR      	CHAR          	          	              	100                	1
+
+
+
+SQL Script 5: Store the data as new version
+-------------------------------------------
+** Note! Change the future prod-version in the script first...
+Run Script 5: "Tuxedo - 5 - copies and versioning.sql"
+
+
+-----------------
+ Prior to Step 4:
+-----------------
+Are there any new tuxedo-services we should generate Ninja support for? If yes, then run a similar SQL update for the services in question:
+
+UPDATE tux_services_versions a
+   SET a.in_use = 'Y', a.comments = 'IN_USE=Y set by HGU at ' || TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+ WHERE a.svc_name IN ( 'csActvLoan', 'arMoveBanLn', 'csSrchAddInfo', 'csLsDvcTrx', 'csLsSrvTrx' )
+   AND a.in_use IS NULL
+   AND a.ninja_version = '26.0.0.0'
+;
+
+-------
+ Step4
+-------
+# Note; remember to use the correct new Fokus version as argument; in Atom it's most often off-screen... -->
+$ java -classpath /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/common/target/ninja-common-27.0-SNAPSHOT.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/common/dist/common.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/ninja-core-27.0-SNAPSHOT.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/joltwls-10.0.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/xilclient-2.40build025.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/joltjse-10.0.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/ninja-common-27.0-SNAPSHOT.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/xilext-2.40build021.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/ojdbc7-12.1.0.2.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/jolt-10.0.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/log4j-1.2.13.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/xil-2.40build025.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/tools/target/ninja-tools-27.0-SNAPSHOT.jar  no.netcom.ninja.tools.Step4CreateServiceAndDatasetClassesFromDatabase All 28.0.0.0 | tee log-Step4.log
+. . .
+Generating classes for service (121): gnGtAdNmLnk. Conversational = false. Fields shared with csApiBan = false... 336 ms.
+Generating classes for service (122): gnGtAdrItm. Conversational = false. Fields shared with csApiBan = false... 150 ms.
+Generating classes for service (123): gnGtLgclDt. Conversational = false. Fields shared with csApiBan = false... 79 ms.
+Generating classes for service (124): gnGtTree. Conversational = false. Fields shared with csApiBan = false... 223 ms.
+Generating classes for service (125): gnGtTreeBasic. Conversational = false. Fields shared with csApiBan = false... 202 ms.
+Generating classes for service (126): gnGtUtcDsc. Conversational = false. Fields shared with csApiBan = false... 204 ms.
+Generating classes for service (127): gnLsFtrTrx. Conversational = false. Fields shared with csApiBan = false... 181 ms.
+Generating classes for service (128): gnLsLnkBans. Conversational = false. Fields shared with csApiBan = false... 121 ms.
+Generating classes for service (129): gnLsLnkSubs. Conversational = false. Fields shared with csApiBan = false... 160 ms.
+Generating classes for service (130): gnLsUsrPrm. Conversational = false. Fields shared with csApiBan = false... 134 ms.
+Generating classes for service (131): gnLsUtcDsc. Conversational = false. Fields shared with csApiBan = false... 152 ms.
+Generating classes for service (132): gnNodeAct. Conversational = false. Fields shared with csApiBan = false... 125 ms.
+Generating classes for service (133): gnUpLnkEnt. Conversational = false. Fields shared with csApiBan = false... 621 ms.
+Generating classes for service (134): gnUpNmAdr. Conversational = false. Fields shared with csApiBan = false... 637 ms.
+Generating classes for service (135): icAdjustIn. Conversational = false. Fields shared with csApiBan = false... 103 ms.
+Generating classes for service (136): icObsSIM. Conversational = false. Fields shared with csApiBan = false... 103 ms.
+Generating classes for service (137): mmClosFu. Conversational = false. Fields shared with csApiBan = false... 121 ms.
+Generating classes for service (138): mmGtMemo. Conversational = false. Fields shared with csApiBan = false... 202 ms.
+Generating classes for service (139): mmInMemo. Conversational = false. Fields shared with csApiBan = false... 202 ms.
+Generating classes for service (140): mmLsBanFu. Conversational = false. Fields shared with csApiBan = false... 221 ms.
+Generating classes for service (141): mmMemoLs. Conversational = false. Fields shared with csApiBan = false... 149 ms.
+Generating classes for service (142): mmOpenFu. Conversational = false. Fields shared with csApiBan = false... 219 ms.
+Generating classes for service (143): mmUpMemo. Conversational = false. Fields shared with csApiBan = false... 149 ms.
+Generating classes for service (144): pnmImAoage. Conversational = false. Fields shared with csApiBan = false... 112 ms.
+Generating classes for service (145): pnmImLoad. Conversational = false. Fields shared with csApiBan = false... 104 ms.
+Generating classes for service (146): pnmImUpd. Conversational = false. Fields shared with csApiBan = false... 135 ms.
+Generating classes for service (147): pnmRsvRlsCtn. Conversational = false. Fields shared with csApiBan = false... 155 ms.
+Total execution time (ms): 47059
+~ 47 sec (VPN)
+#~6 sec (in the office, not over VPN)
+
+If there had been any new classes, I would have had to add them manually; like this (for Fokus 23.1):
+
+BEGIN>>
+
+Since we want to generate classes for three never-before used tuxedo-services, arMultCrd, blGtBillDet & blGtBilledChg, I had to manually update the TUX_SERVICES_VERSIONS table...:
+
+update tux_services_versions a
+   set a.in_use = 'Y', a.comments = 'IN_USE=Y set by HGU at ' || TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+ where a.svc_name in ('blLsBillList', 'blGtBillDet', 'blGtBilledChg', 'arMultCrd')
+   and a.in_use is null
+   and a.ninja_version = '23.1.0.0'
+;
+
+** Update 2015-06-24 - We also need the service 'blLsSubSum'. thus...:
+
+update tux_services_versions a
+   set a.in_use = 'Y', a.comments = 'IN_USE=Y set by HGU at ' || TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+ where a.svc_name in ('blLsSubSum')
+   and a.in_use is null
+   and a.ninja_version = '23.1.0.0'
+;
+
+...then I re-ran the Step4 java tool (note the two versions passed as argument):
+
+$ java -classpath /Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/common/target/ninja-common-27.0-SNAPSHOT.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/common/dist/common.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/ninja-core-27.0-SNAPSHOT.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/joltwls-10.0.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/xilclient-2.40build025.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/joltjse-10.0.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/ninja-common-27.0-SNAPSHOT.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/xilext-2.40build021.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/ojdbc7-12.1.0.2.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/jolt-10.0.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/log4j-1.2.13.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/core/target/dependency/xil-2.40build025.jar:/Users/hakgu/Projects/gerrit/NinjaCore/ninja-core-root/tools/target/ninja-tools-27.0-SNAPSHOT.jar  no.netcom.ninja.tools.Step4CreateServiceAndDatasetClassesFromDatabase All 23.1.0.0 23.0.0.0
+...
+Generating classes for service (121): gnGtAdNmLnk. Conversational = false. Fields shared with csApiBan = false... 278 ms.
+ Generating classes for service (122): gnGtAdrItm. Conversational = false. Fields shared with csApiBan = false... 137 ms.
+ Generating classes for service (123): gnGtLgclDt. Conversational = false. Fields shared with csApiBan = false... 72 ms.
+ Generating classes for service (124): gnGtTree. Conversational = false. Fields shared with csApiBan = false... 205 ms.
+ Generating classes for service (125): gnGtTreeBasic. Conversational = false. Fields shared with csApiBan = false... 174 ms.
+ Generating classes for service (126): gnGtUtcDsc. Conversational = false. Fields shared with csApiBan = false... 181 ms.
+ Generating classes for service (127): gnLsFtrTrx. Conversational = false. Fields shared with csApiBan = false... 162 ms.
+ Generating classes for service (128): gnLsLnkBans. Conversational = false. Fields shared with csApiBan = false... 109 ms.
+ Generating classes for service (129): gnLsLnkSubs. Conversational = false. Fields shared with csApiBan = false... 138 ms.
+ Generating classes for service (130): gnLsUsrPrm. Conversational = false. Fields shared with csApiBan = false... 107 ms.
+ Generating classes for service (131): gnLsUtcDsc. Conversational = false. Fields shared with csApiBan = false... 133 ms.
+ Generating classes for service (132): gnNodeAct. Conversational = false. Fields shared with csApiBan = false... 112 ms.
+ Generating classes for service (133): gnUpLnkEnt. Conversational = false. Fields shared with csApiBan = false... 562 ms.
+ Generating classes for service (134): gnUpNmAdr. Conversational = false. Fields shared with csApiBan = false... 547 ms.
+ Generating classes for service (135): icAdjustIn. Conversational = false. Fields shared with csApiBan = false... 87 ms.
+ Generating classes for service (136): icObsSIM. Conversational = false. Fields shared with csApiBan = false... 97 ms.
+ Generating classes for service (137): mmClosFu. Conversational = false. Fields shared with csApiBan = false... 114 ms.
+ Generating classes for service (138): mmGtMemo. Conversational = false. Fields shared with csApiBan = false... 174 ms.
+ Generating classes for service (139): mmInMemo. Conversational = false. Fields shared with csApiBan = false... 182 ms.
+ Generating classes for service (140): mmLsBanFu. Conversational = false. Fields shared with csApiBan = false... 174 ms.
+ Generating classes for service (141): mmMemoLs. Conversational = false. Fields shared with csApiBan = false... 130 ms.
+ Generating classes for service (142): mmOpenFu. Conversational = false. Fields shared with csApiBan = false... 184 ms.
+ Generating classes for service (143): mmUpMemo. Conversational = false. Fields shared with csApiBan = false... 132 ms.
+ Generating classes for service (144): pnmImAoage. Conversational = false. Fields shared with csApiBan = false... 96 ms.
+ Generating classes for service (145): pnmImLoad. Conversational = false. Fields shared with csApiBan = false... 90 ms.
+ Generating classes for service (146): pnmImUpd. Conversational = false. Fields shared with csApiBan = false... 106 ms.
+ Generating classes for service (147): pnmRsvRlsCtn. Conversational = false. Fields shared with csApiBan = false... 130 ms.
+Total execution time (ms): 38543
+
+(Note the time difference - VPN: 38.543 ms, Wired: 31.353 ms)
+
+<< END

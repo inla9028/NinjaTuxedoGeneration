@@ -1,0 +1,5 @@
+long	GENERATION	1	-	
+long	NUMBERKEY_1	1	-	
+long	NUMBER_2	1	-	
+long	NUMBER_3	1	-	
+double	DOUBLE_1	1	-	

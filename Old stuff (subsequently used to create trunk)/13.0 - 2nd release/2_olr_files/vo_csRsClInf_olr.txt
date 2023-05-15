@@ -1,0 +1,3 @@
+long	GENERATION	1	-	
+long	CUSTOMER_BAN	1	-	
+string	CTN_STATUS	1	3	

@@ -1,0 +1,3 @@
+long	GENERATION	1	-	
+string	USERNAME	1	31	
+string	PASSWORD	1	31	

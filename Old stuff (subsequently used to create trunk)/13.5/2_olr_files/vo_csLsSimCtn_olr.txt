@@ -1,0 +1,7 @@
+long	GENERATION	1	-	
+short	MOREROWS	1	-	
+long	ROWCOUNT	1	-	
+string	ROWID	50	19	
+string	CTN	50	21	
+string	LAST_TRX_DATE	50	15	
+string	SERIAL_NUMBER	50	21	

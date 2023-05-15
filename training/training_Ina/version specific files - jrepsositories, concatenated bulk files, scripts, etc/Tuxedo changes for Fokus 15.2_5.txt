@@ -1,0 +1,142 @@
+
+15.2.5.2 - multi-fixed port-in thing
+
+197 more fields than 15.2.0, 157 on a new service, 40 on 20 existing services
+
+Note: FIXED_AS_GSM_IND as added to cvSvCtnInput and csApiBan. No special mapping required as the names are the same (ie should come out in the wash).
+
+
+1. Any services changed (does counts and matches fields by sequence)?
+---------------------------------------------------------------------
+
+30 services, 13 in use:
+
+Service			In use?
+blLsCallsDet  	Y 	
+csActvCtn     	Y 	
+csActvMlCtn   	  	
+csApiBan      	Y 	*** Requires extra mapping work? ***
+csChgCtn      	Y 	
+csChgOwner    	  	
+csChkValImp   	Y 	
+csCrCtn       	Y 	
+csEnvActCtn   	  	
+csGetCtnNm    	Y 	
+csGtCtn       	Y 	
+csGtNpITrx    	  	
+csGtUMAGrp    	  	
+csInCtn       	  	
+csLsNpTrx     	Y 	
+csLsSimCtn    	  	
+csLsUMAGrp    	  	
+csMoveCan     	  	
+csMoveCtn     	Y 	
+csMoveRsv     	  	
+csMoveSusp    	  	
+csRelsCtn     	Y 	
+csRsCanCtn    	Y 	
+csRsvCtn      	  	
+csRsvMlCtn    	  	
+csSrchAddInfo 	  	
+csUpCtn       	  	
+csUpNpITrx    	  	
+csUpdUMAGrp   	  	
+cvSvCtn       	Y 	
+
+*******************************************************************************
+NOTE: Of the above the following do not appear to have any field changes. 3 are the deleted services. Need to look into the other 7.
+csChkValImp   	Y
+csGetCtnNm    	Y
+csGtNpITrx    	
+csGtUMAGrp    	
+csLsNpTrx     	Y - *** This one generated new classes - but they were the same!?! ***
+csLsSimCtn    	
+csLsUMAGrp    	
+csSrchAddInfo 	
+csUpNpITrx    	
+csUpdUMAGrp   	
+*******************************************************************************
+
+
+2. Any new services?
+--------------------
+
+1 Service:
+
+Service		Field count
+csGtDumSIM 	157                                   
+
+
+
+3. Deleted services
+-------------------
+
+3 services:
+
+*** Looks like these were removed for 15.2.0 and I missed it (ie didn't delete the entries from the services table)!! 140 fields for these 3 were removed at that point (poss into non-CSM *.v files? ***
+
+csGtUMAGrp
+csLsUMAGrp
+csUpdUMAGrp
+
+
+4. New fields (on existing services)
+-------------
+
+40 fields (in 20 services)
+
+Service name	In/out	Type	Field name				       Seq	Type	      Size	     Max Occurances
+blLsCallsDet 	     Y 	OUT 	COUNTRY_NAME         	        50	STRING 	        26	                600	 	 	 	 	 	
+blLsCallsDet 	     Y 	OUT 	RM_OPERATOR_DESC     	        51	STRING 	        31	                600	 	 	 	 	 	
+csActvCtn    	     Y 	IN  	RESERVE_TYPE         	        25	CHAR   	          	                  1	 	 	 	 	 	
+csActvCtn    	     Y 	IN  	FIXED_AS_GSM_IND     	       275	CHAR   	          	                  1	 	 	 	 	 	
+csActvMlCtn  	       	IN  	RESERVE_TYPE         	        25	CHAR   	          	                  1	 	 	 	 	 	
+csActvMlCtn  	       	IN  	FIXED_AS_GSM_IND     	       229	CHAR   	          	                  1	 	 	 	 	 	
+csApiBan     	     Y 	IN  	FIXED_AS_GSM_IND     	       230	CHAR   	          	                  1	 	 	 	 	 	
+csChgCtn     	     Y 	IN  	FIXED_AS_GSM_IND     	       266	CHAR   	          	                  1	 	 	 	 	 	
+csChgOwner   	       	IN  	FIXED_AS_GSM_IND     	       270	CHAR   	          	                  1	 	 	 	 	 	
+csChgOwner   	       	OUT 	FIXED_AS_GSM_IND     	       107	CHAR   	          	                  1	 	 	 	 	 	
+csCrCtn      	     Y 	IN  	RESERVE_TYPE         	        25	CHAR   	          	                  1	 	 	 	 	 	
+csCrCtn      	     Y 	IN  	FIXED_AS_GSM_IND     	       274	CHAR   	          	                  1	 	 	 	 	 	
+csEnvActCtn  	       	IN  	RESERVE_TYPE         	        25	CHAR   	          	                  1	 	 	 	 	 	
+csEnvActCtn  	       	IN  	FIXED_AS_GSM_IND     	       213	CHAR   	          	                  1	 	 	 	 	 	
+csGtCtn      	     Y 	OUT 	FIXED_AS_GSM_IND     	        92	CHAR   	          	                  1	 	 	 	 	 	
+csInCtn      	       	IN  	FIXED_AS_GSM_IND     	       107	CHAR   	          	                  1	 	 	 	 	 	
+csInCtn      	       	OUT 	FIXED_AS_GSM_IND     	       107	CHAR   	          	                  1	 	 	 	 	 	
+csMoveCan    	       	IN  	FIXED_AS_GSM_IND     	       244	CHAR   	          	                  1	 	 	 	 	 	
+csMoveCtn    	     Y 	IN  	FIXED_AS_GSM_IND     	       271	CHAR   	          	                  1	 	 	 	 	 	
+csMoveRsv    	       	IN  	FIXED_AS_GSM_IND     	       270	CHAR   	          	                  1	 	 	 	 	 	
+csMoveSusp   	       	IN  	FIXED_AS_GSM_IND     	       270	CHAR   	          	                  1	 	 	 	 	 	
+csRelsCtn    	     Y 	IN  	FIXED_AS_GSM_IND     	       130	CHAR   	          	                  1	 	 	 	 	 	
+csRsCanCtn   	     Y 	IN  	FIXED_AS_GSM_IND     	       274	CHAR   	          	                  1	 	 	 	 	 	
+csRsvCtn     	       	IN  	FIXED_AS_GSM_IND     	       131	CHAR   	          	                  1	 	 	 	 	 	
+csRsvMlCtn   	       	IN  	RESERVE_TYPE         	        71	CHAR   	          	                  1	 	 	 	 	 	
+csRsvMlCtn   	       	IN  	FIXED_AS_GSM_IND     	       320	CHAR   	          	                  1	 	 	 	 	 	
+csRsvMlCtn   	       	IN  	MAIN_NUMBER          	       447	STRING 	        21	                  1	 	 	 	 	 	
+csRsvMlCtn   	       	IN  	ADDITIONAL_NUMBER_1  	       448	STRING 	       255	                  1	 	 	 	 	 	
+csRsvMlCtn   	       	IN  	ADDITIONAL_NUMBER_2  	       449	STRING 	       255	                  1	 	 	 	 	 	
+csRsvMlCtn   	       	IN  	ADDITIONAL_NUMBER_3  	       450	STRING 	       255	                  1	 	 	 	 	 	
+csRsvMlCtn   	       	IN  	ADDITIONAL_NUMBER_4  	       451	STRING 	       255	                  1	 	 	 	 	 	
+csRsvMlCtn   	       	IN  	ADDITIONAL_NUMBER_5  	       452	STRING 	       255	                  1	 	 	 	 	 	
+csRsvMlCtn   	       	IN  	ADDITIONAL_NUMBER_6  	       453	STRING 	       255	                  1	 	 	 	 	 	
+csRsvMlCtn   	       	IN  	ADDITIONAL_NUMBER_7  	       454	STRING 	       255	                  1	 	 	 	 	 	
+csRsvMlCtn   	       	IN  	ADDITIONAL_NUMBER_8  	       455	STRING 	       255	                  1	 	 	 	 	 	
+csRsvMlCtn   	       	IN  	ADDITIONAL_NUMBER_9  	       456	STRING 	       255	                  1	 	 	 	 	 	
+csRsvMlCtn   	       	IN  	ADDITIONAL_NUMBER_10 	       457	STRING 	       255	                  1	 	 	 	 	 	
+csUpCtn      	       	IN  	FIXED_AS_GSM_IND     	       107	CHAR   	          	                  1	 	 	 	 	 	
+csUpCtn      	       	OUT 	FIXED_AS_GSM_IND     	       107	CHAR   	          	                  1	 	 	 	 	 	
+cvSvCtn      	     Y 	IN  	FIXED_AS_GSM_IND     	       107	CHAR   	          	                  1	 	 	 	 	 	
+
+
+5. Removed fields
+-----------------
+
+As per point 3, 140 fields for 3 removed services went walkies with 15.2.0 (and I missed it) - no actual changes in this regard between 15.2.0 and this version.
+
+None
+
+
+6. Changed fields
+-----------------
+
+None

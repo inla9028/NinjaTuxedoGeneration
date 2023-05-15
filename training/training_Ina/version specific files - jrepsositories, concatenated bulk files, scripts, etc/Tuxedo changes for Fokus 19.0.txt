@@ -1,0 +1,76 @@
+
+Fokus 19.0 (based on view files mailed by Sorin Dobre - 02/04/2012 @ 14:46)
+
+
+1. Any services changed (does counts and matches fields by sequence)?
+---------------------------------------------------------------------
+
+5 services, 3 in use (so we'll only be regenerating those):
+
+Service		In use?	Comment
+arCrMPym    	Y	
+arDisputeCre	 	
+arGtDispInfo	 	
+blLsUBChg   	Y	
+blLsUBInfo  	Y	
+
+
+2. Any new services?
+--------------------
+
+1 service 
+
+Service		Field count	In Amdocs doc?
+gnLsCmpHst
+
+
+3. Deleted services
+-------------------
+
+0 services:
+
+
+4. New fields (on existing services)
+-------------
+
+17 fields (in 3 services)
+
+Service name	In use 	Buffer	Field name			Seq	Type	Size	Max Occurances
+
+arDisputeCre	     	IN 		DISPUTE_EXP_DATE 	43	STRING	9 		1
+
+arGtDispInfo	     	IN 		DISPUTE_EXP_DATE 	20	STRING	9 		1
+
+blLsUBInfo  	   Y	OUT		DIRECTIVE        	2 	LONG  	  		1
+blLsUBInfo  	   Y	OUT		FIRST_DIRECTIVE  	3 	LONG  	  		1
+blLsUBInfo  	   Y	OUT		SECOND_DIRECTIVE 	4 	LONG  	  		1
+blLsUBInfo  	   Y	OUT		OPERATOR_ID      	5 	LONG  	  		1
+blLsUBInfo  	   Y	OUT		APPLICATION_ID   	6 	STRING	7 		1
+blLsUBInfo  	   Y	OUT		TRANSACTION_MODE 	7 	CHAR  	  		1
+blLsUBInfo  	   Y	OUT		RUN_DATE         	8 	STRING	9 		1
+blLsUBInfo  	   Y	OUT		MARKET_CODE      	9 	STRING	4 		1
+blLsUBInfo  	   Y	OUT		SVC_STATUS       	10	CHAR  	  		1
+blLsUBInfo  	   Y	OUT		LAST_UPDATE_DATE 	11	STRING	15		1
+blLsUBInfo  	   Y	OUT		LAST_UPDATE_STAMP	12	SHORT 	  		1
+blLsUBInfo  	   Y	OUT		ENV_CODE         	13	STRING	11		1
+blLsUBInfo  	   Y	OUT		SESSION_ID       	14	LONG  	  		1
+blLsUBInfo  	   Y	OUT		ONLINE_TRX_NO    	15	LONG  	  		1
+blLsUBInfo  	   Y	OUT		GROUP_TRX_ID     	16	LONG  	  		1
+
+
+
+5. Removed fields
+-----------------
+
+None
+
+
+6. Changed fields (ie attribute changes to existing fields)
+-----------------
+
+Lots of fields in 2 services have had their maximum number of occurances increased:
+- arCrMPym (in and out): 300 -> 2000
+- blLsUBChg (out only): 200 -> 500
+
+Service		Type	Field name
+

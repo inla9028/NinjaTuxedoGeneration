@@ -1,0 +1,5 @@
+long	GENERATION	1	-	
+char	FTR_VALID	1	-	
+string	SUB_OWNER	1	21	
+string	OWNER_EFFDT	1	9	
+string	OWNER_EXPDT	1	9	

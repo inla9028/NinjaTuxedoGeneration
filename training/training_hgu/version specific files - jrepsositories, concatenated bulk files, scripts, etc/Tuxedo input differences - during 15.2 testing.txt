@@ -1,0 +1,44 @@
+Tuxedo differences CSM vs Ninja
+-------------------------------
+
+csLsNpTrx (input)
+-----------------
+This seems to work fine (and note that it's the output that's changed for 15.2). However there are minor differences in the input.
+
+a) We still send the Directive. CSM no longer does this.
+b) CSM has ENV_CODE NTCNENV5, while we always have PRDENV. This is not a big deal, but it would be nice if Ninja got this from the system defaults (via the/a system defauls reference table class), or even from Fokus itself - does it have a system properties we could load the value from (into a fokus system properties class)?
+c) CSM sends RUN_DATE 20091214 - we don't!!
+d) While it clearly doesn't matter (assuming that we do have them when they have an actual value), Ninja is missing all of these:
+USER_ID	0
+EXT_ORDER_ID	0
+FROM_DATE	 <space>
+TO_DATE	 <space>
+INITI_ORDER_TP	 <space>
+BUFFER_SIZE	0
+ORDID_STR	 <space>
+ORIGINATING_NUMBER	 <space>
+TEMPORARY_MSISDN	 <space>
+
+
+csGetCtnNm (input)
+------------------
+This seems to work fine too, although one thing is making me nervous.
+a) and b) above (csLsNpTrx) are true here too, although the run_date is set.
+
+c) We set the hlr (to 01) in this case. CSM doesn't set it. (Do they filter in the client? Perhaps it defaults to 01 and they set it for SPs?)
+
+d) **** We still set CTN_PATTERN to 047*, CSM is now setting it to "047%%%%%%%%" ****
+
+e) CSM sets PAGESIZE to 10, Ninja sets it to 0.
+The output, apart from a couple of the actual available numbers being different, is identical though.
+
+
+CsChkValImp (input)
+-------------------
+This seems to work fine too. Neither CSM nor Ninja sends the LOCATION_ID (which is the new 15.2 field, and it only for Telia)
+a) and b) above (csLsNpTrx) are true here too, although the run_date is set.
+
+c) We send ACCTYPE (B) and ACCSUBTYPE (R) while CSM didn't (for the particular transaction I did).
+
+d) *** we send NUMBER_TYPE P, CSM sends @ (but that was for an NP Best)
+
